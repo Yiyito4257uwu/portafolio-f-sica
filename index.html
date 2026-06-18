@@ -1,884 +1,419 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio Docente — Física | Jiro</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jiro Martín Fabián Vásquez — Portafolio Docente</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --void: #05070F;
-      --nebula: #0D1B3E;
-      --pulsar: #4CC9F0;
-      --starlight: #E8F4FD;
-      --dust: #7B8FA6;
-      --corona: #F72585;
-      --accretion: #1A2F5A;
-      --surface: #0A1628;
-      --border: rgba(76, 201, 240, 0.15);
+    :root{
+      --void:#05070F;--nebula:#0D1B3E;--pulsar:#4CC9F0;--starlight:#E8F4FD;
+      --dust:#7B8FA6;--corona:#F72585;--accretion:#1A2F5A;--surface:#0A1628;
+      --border:rgba(76,201,240,0.15);--card-bg:#0D1B3E;--nav-bg:rgba(5,7,15,0.88);
     }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--void);
-      color: var(--starlight);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
-      overflow-x: hidden;
+    [data-theme="light"]{
+      --void:#F0F4FF;--nebula:#E2E8F8;--pulsar:#1A6FB5;--starlight:#0D1B3E;
+      --dust:#4A5568;--corona:#C0166A;--accretion:#C8D6F0;--surface:#E8EEF8;
+      --border:rgba(26,111,181,0.2);--card-bg:#E2E8F8;--nav-bg:rgba(240,244,255,0.92);
     }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--void);color:var(--starlight);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background .4s,color .4s;}
 
     /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 0 2rem;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(5, 7, 15, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--pulsar);
-      letter-spacing: 0.05em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      color: var(--dust);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--pulsar); }
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .4s;}
+    .nav-logo{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--pulsar);letter-spacing:.06em;}
+    .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+    .nav-links a{font-size:13px;color:var(--dust);text-decoration:none;transition:color .2s;}
+    .nav-links a:hover{color:var(--pulsar);}
+    .nav-controls{display:flex;gap:8px;align-items:center;}
+    .lang-btn{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;border:1px solid var(--border);color:var(--dust);background:transparent;border-radius:2px;cursor:pointer;transition:all .2s;}
+    .lang-btn.active,.lang-btn:hover{border-color:var(--pulsar);color:var(--pulsar);}
+    .theme-btn{width:32px;height:32px;border:1px solid var(--border);background:transparent;color:var(--dust);border-radius:2px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+    .theme-btn:hover{border-color:var(--pulsar);color:var(--pulsar);}
+    .contact-btn{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;padding:5px 14px;border:1px solid var(--pulsar);color:var(--pulsar);background:transparent;border-radius:2px;cursor:pointer;transition:all .2s;text-decoration:none;}
+    .contact-btn:hover{background:var(--pulsar);color:var(--void);}
 
     /* ── HERO ── */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      overflow: hidden;
-    }
+    #hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+        #starfield{position:absolute;inset:0;z-index:1;pointer-events:none;}
+    .hero-content{position:relative;z-index:2;max-width:760px;padding:2rem;display:flex;flex-direction:column;align-items:center;}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    .hero-coords{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);letter-spacing:.14em;margin-bottom:1rem;opacity:.75;}
+    .hero-eyebrow{font-size:12px;color:var(--dust);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem;}
+    .hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,7vw,5.8rem);font-weight:700;line-height:1.02;letter-spacing:-.025em;margin-bottom:.6rem;color:var(--starlight);}
+    .hero-name .accent{color:var(--pulsar);}
+    .hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1rem,2.2vw,1.35rem);font-weight:300;color:var(--dust);margin-bottom:1.5rem;letter-spacing:.04em;text-align:center;}
+    .hero-desc{font-size:.95rem;color:var(--dust);max-width:500px;margin-bottom:2rem;line-height:1.7;text-align:center;}
+    .hero-line{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--pulsar),transparent);margin:.5rem auto 1.5rem;animation:lineGrow 1.2s ease forwards;}
+    @keyframes lineGrow{from{width:0;opacity:0}to{width:60px;opacity:1}}
+    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+    .btn-primary{display:inline-flex;align-items:center;gap:6px;padding:.7rem 1.6rem;background:var(--pulsar);color:var(--void);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;border-radius:2px;transition:opacity .2s,transform .2s;}
+    .btn-primary:hover{opacity:.85;transform:translateY(-2px);}
+    .btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:.7rem 1.6rem;border:1px solid var(--border);color:var(--dust);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:13px;border-radius:2px;transition:all .2s;}
+    .btn-secondary:hover{border-color:var(--pulsar);color:var(--pulsar);}
+    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--dust);font-size:11px;letter-spacing:.1em;animation:bounce 2s infinite;}
+    .scroll-hint::after{content:'';display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--dust),transparent);}
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-    #starfield {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 760px;
-      padding: 2rem;
-    }
-
-    .coords {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--pulsar);
-      letter-spacing: 0.15em;
-      margin-bottom: 1.5rem;
-      opacity: 0.8;
-    }
-
-    .hero-eyebrow {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--dust);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-    }
-
-    h1 .accent { color: var(--pulsar); }
-
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--dust);
-      max-width: 520px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.6;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 2rem;
-      border: 1px solid var(--pulsar);
-      color: var(--pulsar);
-      text-decoration: none;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      border-radius: 2px;
-      transition: background 0.2s, color 0.2s;
-    }
-
-    .hero-cta:hover {
-      background: var(--pulsar);
-      color: var(--void);
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: var(--dust);
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      animation: bounce 2s infinite;
-    }
-
-    .scroll-hint::after {
-      content: '';
-      display: block;
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--dust), transparent);
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
-    }
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+    .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal-left.visible{opacity:1;transform:none;}
+    .reveal-right{opacity:0;transform:translateX(32px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal-right.visible{opacity:1;transform:none;}
+    .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+    .stagger.visible>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s;}
+    .stagger.visible>*:nth-child(2){opacity:1;transform:none;transition-delay:.15s;}
+    .stagger.visible>*:nth-child(3){opacity:1;transform:none;transition-delay:.25s;}
+    .stagger.visible>*:nth-child(4){opacity:1;transform:none;transition-delay:.35s;}
+    .stagger.visible>*:nth-child(5){opacity:1;transform:none;transition-delay:.45s;}
+    .stagger.visible>*:nth-child(6){opacity:1;transform:none;transition-delay:.55s;}
 
     /* ── SECTIONS ── */
-    section {
-      padding: 6rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+    .section-inner{padding:6rem 2rem;max-width:1100px;margin:0 auto;}
+    .full-section{padding:6rem 0;background:var(--surface);}
+    .section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;}
+    h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;margin-bottom:1rem;color:var(--starlight);}
+    h3{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:500;color:var(--starlight);margin-bottom:.5rem;}
+    .section-intro{font-size:1rem;color:var(--dust);max-width:600px;margin-bottom:3rem;}
+    .star-divider{text-align:center;color:var(--border);font-size:20px;letter-spacing:.5rem;padding:1rem 0;user-select:none;}
 
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--pulsar);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
+    /* ── ABOUT ── */
+    .about-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:center;}
+    .avatar-wrap{aspect-ratio:1;max-width:280px;background:var(--accretion);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+    .avatar-placeholder{font-size:72px;opacity:.5;}
+    .avatar-label{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dust);letter-spacing:.08em;}
+    .about-text p{color:var(--dust);margin-bottom:1rem;font-size:.95rem;}
+    .quote-block{border-left:2px solid var(--pulsar);padding:.75rem 1.25rem;margin:1.5rem 0;background:rgba(76,201,240,.04);}
+    .quote-block p{font-style:italic;color:var(--starlight)!important;font-size:1rem!important;}
+    .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem;}
+    .tag{font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;border:1px solid var(--border);color:var(--pulsar);border-radius:2px;letter-spacing:.05em;}
 
-    h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 600;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      margin-bottom: 1rem;
-      color: var(--starlight);
-    }
-
-    h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 500;
-      color: var(--starlight);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-intro {
-      font-size: 1rem;
-      color: var(--dust);
-      max-width: 600px;
-      margin-bottom: 3rem;
-    }
-
-    /* ── SOBRE MÍ ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    @media (max-width: 700px) {
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .nav-links { display: none; }
-    }
-
-    .avatar-wrap {
-      aspect-ratio: 1;
-      max-width: 320px;
-      background: var(--accretion);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .avatar-placeholder {
-      font-size: 80px;
-      opacity: 0.5;
-    }
-
-    .avatar-label {
-      position: absolute;
-      bottom: 12px;
-      left: 0; right: 0;
-      text-align: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: var(--dust);
-      letter-spacing: 0.1em;
-    }
-
-    .about-text p {
-      color: var(--dust);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .quote-block {
-      border-left: 2px solid var(--pulsar);
-      padding: 0.75rem 1.25rem;
-      margin: 1.5rem 0;
-      background: rgba(76, 201, 240, 0.04);
-    }
-
-    .quote-block p {
-      font-style: italic;
-      color: var(--starlight) !important;
-      font-size: 1rem !important;
-    }
-
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 1.5rem;
-    }
-
-    .tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      color: var(--pulsar);
-      border-radius: 2px;
-      letter-spacing: 0.05em;
-    }
+    /* ── PROYECTOS ── */
+    .proyectos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
+    .proyecto-card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:1.5rem;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden;}
+    .proyecto-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pulsar),var(--corona));opacity:0;transition:opacity .25s;}
+    .proyecto-card:hover{border-color:rgba(76,201,240,.5);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+    .proyecto-card:hover::before{opacity:1;}
+    .proyecto-status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:2px;margin-bottom:1rem;display:inline-block;}
+    .status-active{background:rgba(34,197,94,.1);color:#22C55E;border:1px solid rgba(34,197,94,.25);}
+    .status-pub{background:rgba(76,201,240,.1);color:var(--pulsar);border:1px solid var(--border);}
+    .status-prog{background:rgba(251,146,60,.1);color:#FB923C;border:1px solid rgba(251,146,60,.25);}
+    .proyecto-card p{font-size:.88rem;color:var(--dust);margin-bottom:1rem;line-height:1.6;}
+    .proyecto-tags{display:flex;flex-wrap:wrap;gap:5px;}
+    .ptag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;border:1px solid var(--border);color:var(--dust);border-radius:2px;}
 
     /* ── RECURSOS ── */
-    #recursos { background: var(--surface); max-width: 100%; padding: 6rem 0; }
-    #recursos > .inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-    .recursos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 0;
-    }
-
-    .recurso-card {
-      background: var(--nebula);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.5rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .recurso-card:hover {
-      border-color: rgba(76, 201, 240, 0.4);
-      transform: translateY(-3px);
-    }
-
-    .recurso-icon {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    .recurso-card h3 { margin-bottom: 0.4rem; }
-
-    .recurso-card p {
-      font-size: 0.88rem;
-      color: var(--dust);
-      margin-bottom: 1rem;
-    }
-
-    .recurso-link {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--pulsar);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    .recurso-link:hover { border-color: var(--pulsar); }
+    .recursos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+    .recurso-card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:1.5rem;transition:border-color .25s,transform .25s,box-shadow .25s;}
+    .recurso-card:hover{border-color:rgba(76,201,240,.4);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.35);}
+    .recurso-icon{font-size:1.8rem;margin-bottom:1rem;display:block;}
+    .recurso-card p{font-size:.88rem;color:var(--dust);margin-bottom:1rem;}
+    .recurso-link{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
+    .recurso-link:hover{border-color:var(--pulsar);}
 
     /* ── METODOLOGÍAS ── */
-    .metod-list { display: flex; flex-direction: column; gap: 1px; margin-top: 0; }
+    .metod-item{border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:12px;transition:border-color .2s;}
+    .metod-item:hover{border-color:rgba(76,201,240,.3);}
+    .metod-header{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;cursor:pointer;background:var(--card-bg);transition:background .2s;list-style:none;}
+    .metod-header:hover{background:var(--accretion);}
+    .metod-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--corona);min-width:24px;}
+    .metod-title{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:500;flex:1;color:var(--starlight);}
+    .metod-badge{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);color:var(--dust);border-radius:2px;}
+    .metod-chevron{color:var(--dust);font-size:18px;transition:transform .3s;}
+    details[open] .metod-chevron{transform:rotate(180deg);}
+    .metod-body{padding:1.5rem;background:rgba(13,27,62,.5);border-top:1px solid var(--border);}
+    .metod-body p{font-size:.93rem;color:var(--dust);margin-bottom:1rem;}
+    .metod-steps{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem;}
+    .metod-steps li{font-size:.9rem;color:var(--dust);padding-left:1.25rem;position:relative;}
+    .metod-steps li::before{content:'→';position:absolute;left:0;color:var(--pulsar);}
+    .tic-used{display:flex;flex-wrap:wrap;gap:6px;margin-top:.5rem;}
+    .tic-chip{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;background:rgba(76,201,240,.08);border:1px solid var(--border);color:var(--pulsar);border-radius:2px;}
 
-    .metod-item {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-
-    .metod-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1.25rem 1.5rem;
-      cursor: pointer;
-      background: var(--nebula);
-      transition: background 0.2s;
-      list-style: none;
-    }
-
-    .metod-header:hover { background: var(--accretion); }
-
-    .metod-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--corona);
-      min-width: 24px;
-    }
-
-    .metod-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 500;
-      flex: 1;
-    }
-
-    .metod-badge {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      padding: 3px 9px;
-      border: 1px solid var(--border);
-      color: var(--dust);
-      border-radius: 2px;
-    }
-
-    .metod-chevron {
-      color: var(--dust);
-      font-size: 18px;
-      transition: transform 0.3s;
-    }
-
-    details[open] .metod-chevron { transform: rotate(180deg); }
-
-    .metod-body {
-      padding: 1.5rem;
-      background: rgba(13, 27, 62, 0.5);
-      border-top: 1px solid var(--border);
-    }
-
-    .metod-body p {
-      font-size: 0.93rem;
-      color: var(--dust);
-      margin-bottom: 1rem;
-    }
-
-    .metod-steps {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .metod-steps li {
-      font-size: 0.9rem;
-      color: var(--dust);
-      padding-left: 1.25rem;
-      position: relative;
-    }
-
-    .metod-steps li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--pulsar);
-    }
-
-    .tic-used {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 0.5rem;
-    }
-
-    .tic-chip {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      padding: 3px 8px;
-      background: rgba(76, 201, 240, 0.08);
-      border: 1px solid var(--border);
-      color: var(--pulsar);
-      border-radius: 2px;
-    }
-
-    /* ── TIC ── */
-    #tic { background: var(--surface); max-width: 100%; padding: 6rem 0; }
-    #tic > .inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-
-    .tic-table-wrap { overflow-x: auto; margin-top: 0; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-
-    thead th {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--pulsar);
-      text-align: left;
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    tbody tr {
-      border-bottom: 1px solid rgba(76, 201, 240, 0.06);
-      transition: background 0.15s;
-    }
-
-    tbody tr:hover { background: rgba(76, 201, 240, 0.04); }
-
-    tbody td {
-      padding: 0.9rem 1rem;
-      color: var(--dust);
-      vertical-align: top;
-    }
-
-    tbody td:first-child {
-      color: var(--starlight);
-      font-weight: 500;
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .cat-pill {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 2px;
-      white-space: nowrap;
-    }
-
-    .cat-sim   { background: rgba(76, 201, 240, 0.12); color: #4CC9F0; border: 1px solid rgba(76,201,240,0.25); }
-    .cat-video { background: rgba(247, 37, 133, 0.10); color: #F72585; border: 1px solid rgba(247,37,133,0.25); }
-    .cat-eval  { background: rgba(168, 85, 247, 0.10); color: #A855F7; border: 1px solid rgba(168,85,247,0.25); }
-    .cat-ia    { background: rgba(34, 197, 94, 0.10);  color: #22C55E; border: 1px solid rgba(34,197,94,0.25); }
-    .cat-lms   { background: rgba(251, 146, 60, 0.10); color: #FB923C; border: 1px solid rgba(251,146,60,0.25); }
+    /* ── TIC TABLE ── */
+    .tic-table-wrap{overflow-x:auto;}
+    table{width:100%;border-collapse:collapse;font-size:.88rem;}
+    thead th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pulsar);text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--border);}
+    tbody tr{border-bottom:1px solid rgba(76,201,240,.06);transition:background .15s;}
+    tbody tr:hover{background:rgba(76,201,240,.04);}
+    tbody td{padding:.9rem 1rem;color:var(--dust);vertical-align:top;}
+    tbody td:first-child{color:var(--starlight);font-weight:500;font-family:'Space Grotesk',sans-serif;}
+    .cat-pill{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;white-space:nowrap;}
+    .cat-sim{background:rgba(76,201,240,.12);color:#4CC9F0;border:1px solid rgba(76,201,240,.25);}
+    .cat-video{background:rgba(247,37,133,.10);color:#F72585;border:1px solid rgba(247,37,133,.25);}
+    .cat-eval{background:rgba(168,85,247,.10);color:#A855F7;border:1px solid rgba(168,85,247,.25);}
+    .cat-ia{background:rgba(34,197,94,.10);color:#22C55E;border:1px solid rgba(34,197,94,.25);}
+    .cat-lms{background:rgba(251,146,60,.10);color:#FB923C;border:1px solid rgba(251,146,60,.25);}
 
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
+    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;}
+    .footer-logo{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--pulsar);margin-bottom:.5rem;}
+    .footer-sub{font-size:12px;color:var(--dust);}
 
-    .footer-logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 13px;
-      color: var(--pulsar);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-sub {
-      font-size: 12px;
-      color: var(--dust);
-    }
-
-    /* ── DIVIDER ── */
-    .star-divider {
-      text-align: center;
-      color: var(--border);
-      font-size: 20px;
-      letter-spacing: 0.5rem;
-      padding: 1rem 0;
-      user-select: none;
+    @media(max-width:700px){
+      .about-grid{grid-template-columns:1fr;gap:2rem;}
+      .nav-links{display:none;}
+      .hero-content{padding:2rem 1.5rem;}
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">RA 12h 39m · Dec −12°</span>
-    <ul class="nav-links">
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#recursos">Recursos</a></li>
-      <li><a href="#metodologias">Metodologías</a></li>
-      <li><a href="#tic">TIC</a></li>
-    </ul>
-  </nav>
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Jiro Fabián · RA 12h 39m</span>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
+    <li><a href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
+    <li><a href="#recursos" data-i18n="nav_resources">Recursos</a></li>
+    <li><a href="#metodologias" data-i18n="nav_methods">Metodologías</a></li>
+    <li><a href="#tic">TIC</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('ru')">RU</button>
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+    <a href="mailto:jiro.fabian@unmsm.edu.pe" class="contact-btn" data-i18n="nav_contact">Contacto</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section id="hero">
-    <canvas id="starfield"></canvas>
-    <div class="hero-content">
-      <p class="coords">12h 02m 39s S · −77° 01′ 42″ W · 154 m.s.n.m.</p>
-      <p class="hero-eyebrow">Portafolio Docente · Física UNMSM</p>
-      <h1>Donde la<br /><span class="accent">física</span> cobra vida</h1>
-      <p class="hero-sub">
-        Recursos, metodologías activas y tecnologías para enseñar física
-        desde la mecánica clásica hasta la astrofísica de objetos compactos.
-      </p>
-      <a href="#sobre-mi" class="hero-cta">Explorar portafolio ↓</a>
+<!-- HERO -->
+<section id="hero">
+  
+  <canvas id="starfield"></canvas>
+  <div class="hero-content">
+      <p class="hero-coords">12h 02m 39s S &nbsp;·&nbsp; −77° 01′ 42″ W &nbsp;·&nbsp; 154 m.s.n.m.</p>
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Física · UNMSM · Lima, Perú</p>
+    <h1 class="hero-name">Jiro Martín<br/><span class="accent">Fabián</span> Vásquez</h1>
+    <div class="hero-line"></div>
+    <p class="hero-title" data-i18n="hero_title">Docente de Física · Astrofísico en formación</p>
+    <p class="hero-desc" data-i18n="hero_desc">Investigador en astrofísica de objetos compactos, miembro de SPACE UNMSM e IEEE NPSS. Apasionado por hacer la física accesible y emocionante.</p>
+    <div class="hero-btns">
+      <a href="#proyectos" class="btn-primary" data-i18n="hero_btn1">Ver proyectos →</a>
+      <a href="#sobre-mi" class="btn-secondary" data-i18n="hero_btn2">Sobre mí</a>
     </div>
-    <div class="scroll-hint">scroll</div>
-  </section>
+  </div>
+  <div class="scroll-hint">scroll</div>
+</section>
 
-  <!-- SOBRE MÍ -->
-  <section id="sobre-mi">
-    <p class="section-label">// 01 · Presentación</p>
-    <h2>El docente</h2>
-    <div class="about-grid">
-      <div>
-        <div class="avatar-wrap">
-          <span class="avatar-placeholder">🔭</span>
-          <span class="avatar-label">[ reemplazar con foto ]</span>
-        </div>
-      </div>
-      <div class="about-text">
-        <p>
-          Soy estudiante de 8.° semestre de Física en la
-          <strong style="color:var(--starlight);">Universidad Nacional Mayor de San Marcos (UNMSM)</strong>,
-          Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos
-          y la física de altas energías: agujeros negros, estrellas de neutrones y
-          fenómenos de acreción.
-        </p>
-        <p>
-          Soy miembro activo de <strong style="color:var(--pulsar);">SPACE UNMSM</strong>,
-          el primer grupo de astronomía profesional del Perú, y Vicepresidente del
-          <strong style="color:var(--pulsar);">IEEE NPSS UNMSM</strong>.
-          Participo en los <em>Viernes Astronómicos</em> y en actividades de divulgación
-          científica del Museo de Historia Natural UNMSM.
-        </p>
-        <div class="quote-block">
-          <p>"La física no se memoriza — se experimenta, se visualiza y se cuestiona.
-          Mi objetivo como docente es que cada estudiante logre ver el universo con otros ojos."</p>
-        </div>
-        <div class="tag-list">
-          <span class="tag">Astrofísica</span>
-          <span class="tag">Objetos compactos</span>
-          <span class="tag">Física moderna</span>
-          <span class="tag">Divulgación científica</span>
-          <span class="tag">Lima, Perú</span>
-        </div>
+<!-- SOBRE MÍ -->
+<div id="sobre-mi" class="section-inner">
+  <div class="reveal"><p class="section-label">// 01 · <span data-i18n="nav_about">Presentación</span></p></div>
+  <div class="reveal"><h2 data-i18n="about_h2">El docente</h2></div>
+  <div class="about-grid">
+    <div class="reveal-left">
+      <div class="avatar-wrap">
+        <span class="avatar-placeholder">🔭</span>
+        <span class="avatar-label">[ tu foto aquí ]</span>
       </div>
     </div>
-  </section>
-
-  <div class="star-divider">· · · ✦ · · ·</div>
-
-  <!-- RECURSOS -->
-  <section id="recursos">
-    <div class="inner">
-      <p class="section-label">// 02 · Recursos educativos</p>
-      <h2>Herramientas para aprender física</h2>
-      <p class="section-intro">
-        Recursos digitales seleccionados para visualizar, experimentar y comprender
-        fenómenos físicos que son difíciles de reproducir en el laboratorio convencional.
-      </p>
-      <div class="recursos-grid">
-
-        <div class="recurso-card">
-          <span class="recurso-icon">⚛️</span>
-          <h3>PhET Interactive Simulations</h3>
-          <p>Simulaciones gratuitas de la Universidad de Colorado para mecánica, electricidad, ondas y termodinámica. Los estudiantes experimentan y formulan hipótesis en tiempo real.</p>
-          <a class="recurso-link" href="https://phet.colorado.edu/es/" target="_blank">→ phet.colorado.edu</a>
-        </div>
-
-        <div class="recurso-card">
-          <span class="recurso-icon">🧪</span>
-          <h3>Physics Aviary</h3>
-          <p>Laboratorios virtuales de mecánica, electricidad y óptica con guía estructurada. Permiten repetir experimentos y variar parámetros sin límite de material.</p>
-          <a class="recurso-link" href="https://www.physicsaviary.com/" target="_blank">→ physicsaviary.com</a>
-        </div>
-
-        <div class="recurso-card">
-          <span class="recurso-icon">▶️</span>
-          <h3>Khan Academy · Física</h3>
-          <p>Videos en español para estudio previo a clase (Flipped Classroom). Cubre desde cinemática hasta física cuántica introductoria con ejercicios inmediatos.</p>
-          <a class="recurso-link" href="https://es.khanacademy.org/science/physics" target="_blank">→ es.khanacademy.org</a>
-        </div>
-
-        <div class="recurso-card">
-          <span class="recurso-icon">🌌</span>
-          <h3>NASA Eyes on the Solar System</h3>
-          <p>Visualización 3D del sistema solar con datos reales en tiempo real. Ideal para proyectos de gravitación, órbitas y exploración espacial.</p>
-          <a class="recurso-link" href="https://eyes.nasa.gov/" target="_blank">→ eyes.nasa.gov</a>
-        </div>
-
-        <div class="recurso-card">
-          <span class="recurso-icon">📊</span>
-          <h3>oPhysics</h3>
-          <p>Applets interactivos de física para experimentos de movimiento, ondas y óptica. Excelente complemento visual para sesiones de laboratorio.</p>
-          <a class="recurso-link" href="https://ophysics.com/" target="_blank">→ ophysics.com</a>
-        </div>
-
-        <div class="recurso-card">
-          <span class="recurso-icon">🐍</span>
-          <h3>Google Colab · Python</h3>
-          <p>Introducción a modelamiento físico con Python. Los estudiantes analizan datos reales, grafican trayectorias y comprueban leyes físicas con código.</p>
-          <a class="recurso-link" href="https://colab.research.google.com/" target="_blank">→ colab.research.google.com</a>
-        </div>
-
+    <div class="about-text reveal-right">
+      <p data-i18n="about_p1">Soy estudiante de 8.° semestre de Física en la <strong style="color:var(--starlight)">Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías: agujeros negros, estrellas de neutrones y fenómenos de acreción.</p>
+      <p data-i18n="about_p2">Soy miembro activo de <strong style="color:var(--pulsar)">SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style="color:var(--pulsar)">IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo en divulgación en el Museo de Historia Natural UNMSM.</p>
+      <div class="quote-block">
+        <p data-i18n="about_quote">"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre ver el universo con otros ojos."</p>
+      </div>
+      <div class="tag-list">
+        <span class="tag">Astrofísica</span><span class="tag">AGN</span><span class="tag">SPACE UNMSM</span>
+        <span class="tag">IEEE NPSS</span><span class="tag">Divulgación</span><span class="tag">Lima, Perú</span>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <div class="star-divider">· · · ✦ · · ·</div>
+<div class="star-divider">· · · ✦ · · ·</div>
 
-  <!-- METODOLOGÍAS -->
-  <section id="metodologias">
-    <p class="section-label">// 03 · Metodologías activas</p>
-    <h2>Cómo enseño</h2>
-    <p class="section-intro">
-      Tres metodologías activas que ponen al estudiante en el centro del aprendizaje,
-      usando TIC como puente entre la ecuación y la comprensión real.
-    </p>
-    <div class="metod-list">
-
-      <details class="metod-item" open>
-        <summary class="metod-header">
-          <span class="metod-num">01</span>
-          <span class="metod-title">Flipped Classroom — Aula invertida</span>
-          <span class="metod-badge">Flipped</span>
-          <span class="metod-chevron">⌄</span>
-        </summary>
-        <div class="metod-body">
-          <p>El estudiante accede al contenido teórico en casa mediante videos o lecturas digitales. El tiempo de clase se dedica a resolver problemas, debatir y aplicar con acompañamiento docente.</p>
-          <ul class="metod-steps">
-            <li>Antes de clase: el estudiante ve un video de Khan Academy sobre cinemática (15 min) y responde un formulario breve en Google Forms.</li>
-            <li>En clase: se trabaja directamente con la simulación PhET de movimiento de proyectiles. El docente guía, no explica desde cero.</li>
-            <li>Los estudiantes llegan con contexto — la clase se convierte en espacio de práctica real, no de copia pasiva.</li>
-          </ul>
-          <div class="tic-used">
-            <span class="tic-chip">YouTube</span>
-            <span class="tic-chip">Google Forms</span>
-            <span class="tic-chip">PhET</span>
-            <span class="tic-chip">Moodle</span>
-          </div>
-        </div>
-      </details>
-
-      <details class="metod-item">
-        <summary class="metod-header">
-          <span class="metod-num">02</span>
-          <span class="metod-title">ABC — Aprendizaje Basado en Casos</span>
-          <span class="metod-badge">ABC</span>
-          <span class="metod-chevron">⌄</span>
-        </summary>
-        <div class="metod-body">
-          <p>Se presenta un caso real o científico como punto de partida. Los estudiantes investigan, analizan y proponen explicaciones fundamentadas en equipos de trabajo.</p>
-          <ul class="metod-steps">
-            <li>Caso ejemplo: "En 2019 se fotografió por primera vez un agujero negro. ¿Qué principios físicos explican cómo fue posible?"</li>
-            <li>Los equipos investigan: ondas electromagnéticas, interferometría, relatividad general.</li>
-            <li>Presentan hallazgos con apoyo de recursos digitales, simuladores y IA como herramienta de búsqueda guiada.</li>
-          </ul>
-          <div class="tic-used">
-            <span class="tic-chip">ChatGPT</span>
-            <span class="tic-chip">YouTube</span>
-            <span class="tic-chip">Google Slides</span>
-            <span class="tic-chip">Kahoot</span>
-          </div>
-        </div>
-      </details>
-
-      <details class="metod-item">
-        <summary class="metod-header">
-          <span class="metod-num">03</span>
-          <span class="metod-title">AOP — Aprendizaje Orientado a Proyectos</span>
-          <span class="metod-badge">AOP</span>
-          <span class="metod-chevron">⌄</span>
-        </summary>
-        <div class="metod-body">
-          <p>Los estudiantes desarrollan un proyecto completo: diseñan, ejecutan, analizan y comunican resultados. Desarrollan pensamiento científico completo, no solo aplicación de fórmulas.</p>
-          <ul class="metod-steps">
-            <li>Proyecto ejemplo: "Modela la trayectoria de un satélite en órbita baja usando datos reales de la NASA."</li>
-            <li>Etapas: investigación → recolección de datos → simulación con PhET o Python → análisis → presentación.</li>
-            <li>Duración: 3 semanas. Equipos de 3–4 personas con roles definidos.</li>
-          </ul>
-          <div class="tic-used">
-            <span class="tic-chip">PhET</span>
-            <span class="tic-chip">NASA Eyes</span>
-            <span class="tic-chip">Google Colab</span>
-            <span class="tic-chip">Canva</span>
-          </div>
-        </div>
-      </details>
-
-    </div>
-  </section>
-
-  <div class="star-divider">· · · ✦ · · ·</div>
-
-  <!-- TIC -->
-  <section id="tic">
-    <div class="inner">
-      <p class="section-label">// 04 · TIC utilizadas</p>
-      <h2>Tecnologías en el aula</h2>
-      <p class="section-intro">
-        Herramientas digitales seleccionadas por su capacidad para visualizar,
-        evaluar y personalizar el aprendizaje de la física.
-      </p>
-      <div class="tic-table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Herramienta</th>
-              <th>Categoría</th>
-              <th>Uso pedagógico</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>PhET Simulations</td>
-              <td><span class="cat-pill cat-sim">Simulador</span></td>
-              <td>Visualizar fenómenos físicos de forma interactiva y segura</td>
-            </tr>
-            <tr>
-              <td>YouTube / Khan Academy</td>
-              <td><span class="cat-pill cat-video">Video</span></td>
-              <td>Material de estudio previo a clase y refuerzo conceptual</td>
-            </tr>
-            <tr>
-              <td>Kahoot</td>
-              <td><span class="cat-pill cat-eval">Evaluación</span></td>
-              <td>Diagnóstico de conocimientos previos y repaso gamificado</td>
-            </tr>
-            <tr>
-              <td>Google Forms</td>
-              <td><span class="cat-pill cat-eval">Evaluación</span></td>
-              <td>Cuestionarios previos a clase y seguimiento del aprendizaje</td>
-            </tr>
-            <tr>
-              <td>ChatGPT / Gemini</td>
-              <td><span class="cat-pill cat-ia">IA Educativa</span></td>
-              <td>Generación de ejercicios contextualizados y tutoría de apoyo</td>
-            </tr>
-            <tr>
-              <td>Moodle / Classroom</td>
-              <td><span class="cat-pill cat-lms">LMS</span></td>
-              <td>Organización de recursos, entregas y comunicación con estudiantes</td>
-            </tr>
-            <tr>
-              <td>Google Colab</td>
-              <td><span class="cat-pill cat-sim">Modelamiento</span></td>
-              <td>Análisis de datos y modelamiento físico con Python</td>
-            </tr>
-            <tr>
-              <td>NASA Eyes</td>
-              <td><span class="cat-pill cat-sim">Visualización</span></td>
-              <td>Exploración del sistema solar con datos reales en 3D</td>
-            </tr>
-          </tbody>
-        </table>
+<!-- PROYECTOS -->
+<div id="proyectos" class="full-section">
+  <div class="section-inner" style="padding-top:0;padding-bottom:0;">
+    <div class="reveal"><p class="section-label">// 02 · <span data-i18n="nav_projects">Investigación</span></p></div>
+    <div class="reveal"><h2 data-i18n="proj_h2">Proyectos de investigación</h2></div>
+    <div class="reveal"><p class="section-intro" data-i18n="proj_intro">Investigación en astrofísica observacional, astronomía computacional y divulgación científica.</p></div>
+    <div class="proyectos-grid stagger">
+      <div class="proyecto-card">
+        <span class="proyecto-status status-active" data-i18n="s_active">● En curso</span>
+        <h3 data-i18n="p1t">Acoplamiento disco-corona en AGN</h3>
+        <p data-i18n="p1d">Análisis de 2,530 AGN Tipo 1 del catálogo SDSS DR16 × Chandra CSC 2.1. Correlaciones entre emisión en rayos X y UV/óptico para caracterizar la geometría del disco de acreción y corona. Presentado en DIA Peru — Cajamarca 2026.</p>
+        <div class="proyecto-tags"><span class="ptag">SDSS DR16</span><span class="ptag">Chandra CSC 2.1</span><span class="ptag">Rayos X</span><span class="ptag">Python</span></div>
+      </div>
+      <div class="proyecto-card">
+        <span class="proyecto-status status-active" data-i18n="s_active">● En curso</span>
+        <h3 data-i18n="p2t">Fotometría JWST/RUBIES</h3>
+        <p data-i18n="p2d">Proyecto de fotometría con datos del James Webb Space Telescope bajo supervisión del MSc. Adrián Díaz. Análisis de galaxias de alto redshift del programa RUBIES.</p>
+        <div class="proyecto-tags"><span class="ptag">JWST</span><span class="ptag">RUBIES</span><span class="ptag">Fotometría</span><span class="ptag">Alto redshift</span></div>
+      </div>
+      <div class="proyecto-card">
+        <span class="proyecto-status status-pub" data-i18n="s_pub">✓ Publicado</span>
+        <h3 data-i18n="p3t">Calendario Astronómico 2026</h3>
+        <p data-i18n="p3d">Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.</p>
+        <div class="proyecto-tags"><span class="ptag">SPACE UNMSM</span><span class="ptag">IAU</span><span class="ptag">Divulgación</span></div>
+      </div>
+      <div class="proyecto-card">
+        <span class="proyecto-status status-prog" data-i18n="s_prog">◌ En preparación</span>
+        <h3 data-i18n="p4t">Vuelo aviar en exoplanetas</h3>
+        <p data-i18n="p4d">Manuscrito sobre condiciones físicas (densidad atmosférica, gravedad, presión) que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.</p>
+        <div class="proyecto-tags"><span class="ptag">Exoplanetas</span><span class="ptag">Biofísica</span><span class="ptag">Manuscript</span></div>
+      </div>
+      <div class="proyecto-card">
+        <span class="proyecto-status status-prog" data-i18n="s_prog">◌ En preparación</span>
+        <h3 data-i18n="p5t">Astronomía posicional Inca</h3>
+        <p data-i18n="p5d">Investigación sobre sistemas de orientación astronómica de los Incas y correspondencia con eventos celestes. Co-autoría con arqueólogo.</p>
+        <div class="proyecto-tags"><span class="ptag">Arqueoastronomía</span><span class="ptag">Incas</span><span class="ptag">Manuscript</span></div>
+      </div>
+      <div class="proyecto-card">
+        <span class="proyecto-status status-pub" data-i18n="s_pub">✓ Presentado</span>
+        <h3 data-i18n="p6t">Detección IASC/Pan-STARRS</h3>
+        <p data-i18n="p6d">Detección de asteroides en el programa IASC usando datos de Pan-STARRS. Análisis de imágenes y reporte de candidatos.</p>
+        <div class="proyecto-tags"><span class="ptag">IASC</span><span class="ptag">Pan-STARRS</span><span class="ptag">Asteroides</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p class="footer-logo">🔭 Portafolio Docente · Física UNMSM · 2025</p>
-    <p class="footer-sub">Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez</p>
-  </footer>
+<div class="star-divider">· · · ✦ · · ·</div>
 
-  <!-- STARFIELD CANVAS -->
-  <script>
-    const canvas = document.getElementById('starfield');
-    const ctx = canvas.getContext('2d');
-    let stars = [];
-    let W, H;
+<!-- RECURSOS -->
+<div id="recursos" class="section-inner">
+  <div class="reveal"><p class="section-label">// 03 · <span data-i18n="nav_resources">Recursos</span></p></div>
+  <div class="reveal"><h2 data-i18n="rec_h2">Herramientas para aprender física</h2></div>
+  <div class="reveal"><p class="section-intro" data-i18n="rec_intro">Recursos digitales para visualizar, experimentar y comprender fenómenos físicos.</p></div>
+  <div class="recursos-grid stagger">
+    <div class="recurso-card"><span class="recurso-icon">⚛️</span><h3>PhET Simulations</h3><p data-i18n="r1d">Simulaciones gratuitas para mecánica, electricidad, ondas y termodinámica.</p><a class="recurso-link" href="https://phet.colorado.edu/es/" target="_blank">→ phet.colorado.edu</a></div>
+    <div class="recurso-card"><span class="recurso-icon">🧪</span><h3>Physics Aviary</h3><p data-i18n="r2d">Laboratorios virtuales con guía estructurada y repetición ilimitada.</p><a class="recurso-link" href="https://www.physicsaviary.com/" target="_blank">→ physicsaviary.com</a></div>
+    <div class="recurso-card"><span class="recurso-icon">▶️</span><h3>Khan Academy</h3><p data-i18n="r3d">Videos en español para estudio previo a clase. Desde cinemática hasta física cuántica.</p><a class="recurso-link" href="https://es.khanacademy.org/science/physics" target="_blank">→ es.khanacademy.org</a></div>
+    <div class="recurso-card"><span class="recurso-icon">🌌</span><h3>NASA Eyes</h3><p data-i18n="r4d">Visualización 3D del sistema solar con datos reales en tiempo real.</p><a class="recurso-link" href="https://eyes.nasa.gov/" target="_blank">→ eyes.nasa.gov</a></div>
+    <div class="recurso-card"><span class="recurso-icon">📊</span><h3>oPhysics</h3><p data-i18n="r5d">Applets interactivos para movimiento, ondas y óptica.</p><a class="recurso-link" href="https://ophysics.com/" target="_blank">→ ophysics.com</a></div>
+    <div class="recurso-card"><span class="recurso-icon">🐍</span><h3>Google Colab</h3><p data-i18n="r6d">Modelamiento físico con Python directamente en el navegador.</p><a class="recurso-link" href="https://colab.research.google.com/" target="_blank">→ colab.research.google.com</a></div>
+  </div>
+</div>
 
-    function resize() {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-    }
+<div class="star-divider">· · · ✦ · · ·</div>
 
-    function initStars() {
-      stars = [];
-      for (let i = 0; i < 220; i++) {
-        stars.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          r: Math.random() * 1.4 + 0.2,
-          alpha: Math.random() * 0.7 + 0.15,
-          speed: Math.random() * 0.25 + 0.05,
-          twinkle: Math.random() * Math.PI * 2
-        });
-      }
-    }
+<!-- METODOLOGÍAS -->
+<div id="metodologias" class="full-section">
+  <div class="section-inner" style="padding-top:0;padding-bottom:0;">
+    <div class="reveal"><p class="section-label">// 04 · <span data-i18n="nav_methods">Metodologías</span></p></div>
+    <div class="reveal"><h2 data-i18n="met_h2">Cómo enseño</h2></div>
+    <div class="reveal"><p class="section-intro" data-i18n="met_intro">Tres metodologías activas que ponen al estudiante en el centro del aprendizaje.</p></div>
+    <div class="reveal">
+    <details class="metod-item" open>
+      <summary class="metod-header"><span class="metod-num">01</span><span class="metod-title" data-i18n="m1t">Flipped Classroom — Aula invertida</span><span class="metod-badge">Flipped</span><span class="metod-chevron">⌄</span></summary>
+      <div class="metod-body">
+        <p data-i18n="m1d">El estudiante accede al contenido teórico en casa. La clase se dedica a resolver problemas y aplicar con acompañamiento docente.</p>
+        <ul class="metod-steps">
+          <li data-i18n="m1s1">Antes de clase: video Khan Academy + formulario Google Forms.</li>
+          <li data-i18n="m1s2">En clase: trabajo con PhET. El docente guía, no explica desde cero.</li>
+          <li data-i18n="m1s3">La clase se convierte en espacio de práctica real.</li>
+        </ul>
+        <div class="tic-used"><span class="tic-chip">YouTube</span><span class="tic-chip">Google Forms</span><span class="tic-chip">PhET</span><span class="tic-chip">Moodle</span></div>
+      </div>
+    </details>
+    <details class="metod-item">
+      <summary class="metod-header"><span class="metod-num">02</span><span class="metod-title" data-i18n="m2t">ABC — Aprendizaje Basado en Casos</span><span class="metod-badge">ABC</span><span class="metod-chevron">⌄</span></summary>
+      <div class="metod-body">
+        <p data-i18n="m2d">Un caso real como punto de partida para investigar y proponer soluciones en equipo.</p>
+        <ul class="metod-steps">
+          <li data-i18n="m2s1">Caso: "¿Qué principios físicos explican la primera foto de un agujero negro?"</li>
+          <li data-i18n="m2s2">Investigación grupal: ondas EM, interferometría, relatividad general.</li>
+          <li data-i18n="m2s3">Presentación con recursos digitales e IA como apoyo.</li>
+        </ul>
+        <div class="tic-used"><span class="tic-chip">ChatGPT</span><span class="tic-chip">YouTube</span><span class="tic-chip">Google Slides</span><span class="tic-chip">Kahoot</span></div>
+      </div>
+    </details>
+    <details class="metod-item">
+      <summary class="metod-header"><span class="metod-num">03</span><span class="metod-title" data-i18n="m3t">AOP — Aprendizaje Orientado a Proyectos</span><span class="metod-badge">AOP</span><span class="metod-chevron">⌄</span></summary>
+      <div class="metod-body">
+        <p data-i18n="m3d">Proyecto completo: diseño, ejecución, análisis y comunicación de resultados.</p>
+        <ul class="metod-steps">
+          <li data-i18n="m3s1">Proyecto: "Modela la trayectoria de un satélite en órbita baja con datos NASA."</li>
+          <li data-i18n="m3s2">Etapas: investigación → datos → simulación → análisis → presentación.</li>
+          <li data-i18n="m3s3">3 semanas. Equipos de 3–4 personas con roles definidos.</li>
+        </ul>
+        <div class="tic-used"><span class="tic-chip">PhET</span><span class="tic-chip">NASA Eyes</span><span class="tic-chip">Google Colab</span><span class="tic-chip">Canva</span></div>
+      </div>
+    </details>
+    </div>
+  </div>
+</div>
 
-    function draw(t) {
-      ctx.clearRect(0, 0, W, H);
-      stars.forEach(s => {
-        s.twinkle += 0.012;
-        const a = s.alpha * (0.6 + 0.4 * Math.sin(s.twinkle));
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(232, 244, 253, ${a})`;
-        ctx.fill();
-      });
-      requestAnimationFrame(draw);
-    }
+<div class="star-divider">· · · ✦ · · ·</div>
 
-    window.addEventListener('resize', () => { resize(); initStars(); });
-    resize();
-    initStars();
-    requestAnimationFrame(draw);
+<!-- TIC -->
+<div id="tic" class="section-inner">
+  <div class="reveal"><p class="section-label">// 05 · TIC</p></div>
+  <div class="reveal"><h2 data-i18n="tic_h2">Tecnologías en el aula</h2></div>
+  <div class="reveal"><p class="section-intro" data-i18n="tic_intro">Herramientas para visualizar, evaluar y personalizar el aprendizaje de la física.</p></div>
+  <div class="reveal">
+  <div class="tic-table-wrap">
+    <table>
+      <thead><tr><th data-i18n="th1">Herramienta</th><th data-i18n="th2">Categoría</th><th data-i18n="th3">Uso pedagógico</th></tr></thead>
+      <tbody>
+        <tr><td>PhET Simulations</td><td><span class="cat-pill cat-sim">Simulador</span></td><td data-i18n="tr1">Visualizar fenómenos físicos de forma interactiva</td></tr>
+        <tr><td>YouTube / Khan Academy</td><td><span class="cat-pill cat-video">Video</span></td><td data-i18n="tr2">Material previo a clase y refuerzo conceptual</td></tr>
+        <tr><td>Kahoot</td><td><span class="cat-pill cat-eval">Evaluación</span></td><td data-i18n="tr3">Diagnóstico y repaso gamificado</td></tr>
+        <tr><td>Google Forms</td><td><span class="cat-pill cat-eval">Evaluación</span></td><td data-i18n="tr4">Cuestionarios y seguimiento del aprendizaje</td></tr>
+        <tr><td>ChatGPT / Gemini</td><td><span class="cat-pill cat-ia">IA Educativa</span></td><td data-i18n="tr5">Ejercicios contextualizados y tutoría</td></tr>
+        <tr><td>Moodle / Classroom</td><td><span class="cat-pill cat-lms">LMS</span></td><td data-i18n="tr6">Organización, entregas y comunicación</td></tr>
+        <tr><td>Google Colab</td><td><span class="cat-pill cat-sim">Modelamiento</span></td><td data-i18n="tr7">Análisis de datos y modelamiento con Python</td></tr>
+        <tr><td>NASA Eyes</td><td><span class="cat-pill cat-sim">Visualización</span></td><td data-i18n="tr8">Exploración 3D del sistema solar con datos reales</td></tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
 
-    // Parallax on scroll
-    window.addEventListener('scroll', () => {
-      const offset = window.scrollY * 0.15;
-      canvas.style.transform = `translateY(${offset}px)`;
-    });
-  </script>
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">🔭 Jiro Martín Fabián Vásquez · Física UNMSM · 2026</p>
+  <p class="footer-sub" data-i18n="footer_sub">Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez</p>
+</footer>
 
+<script>
+/* ══════════════════════════════════════════
+   TRANSLATIONS
+══════════════════════════════════════════ */
+const T={
+  es:{nav_about:"Sobre mí",nav_projects:"Proyectos",nav_resources:"Recursos",nav_methods:"Metodologías",nav_contact:"Contacto",hero_drag:"Arrastra el agujero negro",hero_eyebrow:"Física · UNMSM · Lima, Perú",hero_title:"Docente de Física · Astrofísico en formación",hero_desc:"Investigador en astrofísica de objetos compactos, miembro de SPACE UNMSM e IEEE NPSS. Apasionado por hacer la física accesible y emocionante.",hero_btn1:"Ver proyectos →",hero_btn2:"Sobre mí",about_h2:"El docente",about_p1:"Soy estudiante de 8.° semestre de Física en la <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.",about_p2:"Soy miembro activo de <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo en el Museo de Historia Natural UNMSM.",about_quote:'"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre ver el universo con otros ojos."',proj_h2:"Proyectos de investigación",proj_intro:"Investigación en astrofísica observacional, astronomía computacional y divulgación científica.",s_active:"● En curso",s_pub:"✓ Publicado",s_prog:"◌ En preparación",p1t:"Acoplamiento disco-corona en AGN",p1d:"Análisis de 2,530 AGN Tipo 1 del catálogo SDSS DR16 × Chandra CSC 2.1. Correlaciones X/UV para caracterizar la geometría del disco de acreción. Presentado en DIA Peru — Cajamarca 2026.",p2t:"Fotometría JWST/RUBIES",p2d:"Fotometría con datos del James Webb Space Telescope bajo supervisión del MSc. Adrián Díaz. Análisis de galaxias de alto redshift del programa RUBIES.",p3t:"Calendario Astronómico 2026",p3d:"Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.",p4t:"Vuelo aviar en exoplanetas",p4d:"Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.",p5t:"Astronomía posicional Inca",p5d:"Investigación sobre sistemas de orientación astronómica de los Incas y correspondencia con eventos celestes. Co-autoría con arqueólogo.",p6t:"Detección IASC/Pan-STARRS",p6d:"Detección de asteroides en el programa IASC usando datos de Pan-STARRS.",rec_h2:"Herramientas para aprender física",rec_intro:"Recursos digitales para visualizar, experimentar y comprender fenómenos físicos.",r1d:"Simulaciones gratuitas para mecánica, electricidad, ondas y termodinámica.",r2d:"Laboratorios virtuales con guía estructurada y repetición ilimitada.",r3d:"Videos en español para estudio previo a clase.",r4d:"Visualización 3D del sistema solar con datos reales.",r5d:"Applets interactivos para movimiento, ondas y óptica.",r6d:"Modelamiento físico con Python en el navegador.",met_h2:"Cómo enseño",met_intro:"Tres metodologías activas que ponen al estudiante en el centro.",m1t:"Flipped Classroom — Aula invertida",m1d:"El estudiante accede al contenido en casa. La clase se dedica a practicar con acompañamiento.",m1s1:"Antes de clase: video Khan Academy + formulario Google Forms.",m1s2:"En clase: PhET. El docente guía, no explica desde cero.",m1s3:"La clase se convierte en práctica real.",m2t:"ABC — Aprendizaje Basado en Casos",m2d:"Un caso real como punto de partida para investigar en equipo.",m2s1:"Caso: '¿Qué principios explican la primera foto de un agujero negro?'",m2s2:"Investigación grupal: ondas EM, interferometría, relatividad.",m2s3:"Presentación con recursos digitales e IA.",m3t:"AOP — Aprendizaje Orientado a Proyectos",m3d:"Proyecto completo: diseño, ejecución, análisis y comunicación.",m3s1:"Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'",m3s2:"Etapas: investigación → datos → simulación → análisis → presentación.",m3s3:"3 semanas. Equipos de 3–4 personas.",tic_h2:"Tecnologías en el aula",tic_intro:"Herramientas para visualizar, evaluar y personalizar el aprendizaje.",th1:"Herramienta",th2:"Categoría",th3:"Uso pedagógico",tr1:"Visualizar fenómenos físicos de forma interactiva",tr2:"Material previo a clase y refuerzo conceptual",tr3:"Diagnóstico y repaso gamificado",tr4:"Cuestionarios y seguimiento del aprendizaje",tr5:"Ejercicios contextualizados y tutoría",tr6:"Organización, entregas y comunicación",tr7:"Análisis de datos y modelamiento con Python",tr8:"Exploración 3D del sistema solar",footer_sub:"Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez"},
+  en:{nav_about:"About",nav_projects:"Projects",nav_resources:"Resources",nav_methods:"Methods",nav_contact:"Contact",hero_drag:"Drag the black hole",hero_eyebrow:"Physics · UNMSM · Lima, Peru",hero_title:"Physics Teacher · Astrophysicist in training",hero_desc:"Researcher in compact object astrophysics, member of SPACE UNMSM and IEEE NPSS. Passionate about making physics accessible and exciting.",hero_btn1:"See projects →",hero_btn2:"About me",about_h2:"The teacher",about_p1:"I am an 8th-semester Physics student at the <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Peru. My focus is compact object astrophysics and high-energy physics.",about_p2:"Active member of <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, Peru's first professional astronomy group, and Vice-President of <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. I organize the <em>Viernes Astronómicos</em> and participate in the Natural History Museum UNMSM.",about_quote:'"Physics is not memorized — it is experienced, visualized and questioned. My goal is for every student to see the universe through new eyes."',proj_h2:"Research projects",proj_intro:"Research in observational astrophysics, computational astronomy and science outreach.",s_active:"● Active",s_pub:"✓ Published",s_prog:"◌ In preparation",p1t:"AGN disk-corona coupling",p1d:"Analysis of 2,530 Type 1 AGNs from SDSS DR16 × Chandra CSC 2.1. X-ray/UV correlations to characterize accretion disk geometry. Presented at DIA Peru — Cajamarca 2026.",p2t:"JWST/RUBIES photometry",p2d:"Photometry with James Webb Space Telescope data under MSc. Adrián Díaz. Analysis of high-redshift galaxies from the RUBIES program.",p3t:"Astronomical Calendar 2026",p3d:"Publication of the 2026 Astronomical Calendar through SPACE UNMSM, registered with the IAU and covered by Agencia Andina.",p4t:"Avian flight on exoplanets",p4d:"Manuscript on physical conditions allowing bird flight on habitable exoplanets. Target: Nature.",p5t:"Inca positional astronomy",p5d:"Research on Inca astronomical orientation systems and celestial event correspondence. Co-authored with an archaeologist.",p6t:"IASC/Pan-STARRS detection",p6d:"Asteroid detection in the IASC program using Pan-STARRS data.",rec_h2:"Tools to learn physics",rec_intro:"Digital resources to visualize, experiment and understand physical phenomena.",r1d:"Free simulations for mechanics, electricity, waves and thermodynamics.",r2d:"Virtual labs with structured guidance and unlimited repetition.",r3d:"Videos for pre-class study in Spanish and English.",r4d:"3D solar system visualization with real-time data.",r5d:"Interactive applets for motion, waves and optics.",r6d:"Physical modeling with Python in the browser.",met_h2:"How I teach",met_intro:"Three active methodologies placing the student at the center of learning.",m1t:"Flipped Classroom",m1d:"Students access theory at home. Class time is for practice and application.",m1s1:"Before class: Khan Academy video + Google Forms quiz.",m1s2:"In class: PhET simulation. Teacher guides, doesn't re-explain from scratch.",m1s3:"Class becomes real hands-on practice.",m2t:"CBL — Case-Based Learning",m2d:"A real scientific case as starting point for group investigation.",m2s1:"Case: 'What physics explains the first black hole photo?'",m2s2:"Group research: EM waves, interferometry, general relativity.",m2s3:"Presentation with digital resources and AI assistance.",m3t:"PBL — Project-Based Learning",m3d:"Full project: design, execution, analysis and communication of results.",m3s1:"Project: 'Model a satellite orbit with real NASA data.'",m3s2:"Stages: research → data → simulation → analysis → presentation.",m3s3:"3 weeks. Teams of 3–4 with defined roles.",tic_h2:"Technologies in the classroom",tic_intro:"Tools to visualize, evaluate and personalize physics learning.",th1:"Tool",th2:"Category",th3:"Pedagogical use",tr1:"Visualize physical phenomena interactively",tr2:"Pre-class material and conceptual reinforcement",tr3:"Diagnosis and gamified review",tr4:"Pre-class quizzes and learning tracking",tr5:"Contextualized exercises and AI tutoring",tr6:"Resources, assignments and communication",tr7:"Data analysis and physical modeling with Python",tr8:"3D solar system exploration with real data",footer_sub:"Physics Teaching Methodology · Dr. Silvia Marisel Espinoza Suárez"},
+  ru:{nav_about:"Обо мне",nav_projects:"Проекты",nav_resources:"Ресурсы",nav_methods:"Методики",nav_contact:"Контакт",hero_drag:"Перетащите чёрную дыру",hero_eyebrow:"Физика · UNMSM · Лима, Перу",hero_title:"Преподаватель физики · Астрофизик",hero_desc:"Исследователь астрофизики компактных объектов, член SPACE UNMSM и IEEE NPSS. Страстный сторонник доступной физики.",hero_btn1:"Проекты →",hero_btn2:"Обо мне",about_h2:"Преподаватель",about_p1:"Студент 8-го семестра физического факультета <strong style='color:var(--starlight)'>UNMSM</strong>, Лима, Перу. Специализация — астрофизика компактных объектов и физика высоких энергий.",about_p2:"Член <strong style='color:var(--pulsar)'>SPACE UNMSM</strong> и вице-президент <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Организую <em>Viernes Astronómicos</em> и участвую в Музее естественной истории UNMSM.",about_quote:'"Физику не запоминают — её переживают, визуализируют и ставят под сомнение. Моя цель — помочь каждому студенту увидеть вселенную иначе."',proj_h2:"Исследовательские проекты",proj_intro:"Исследования в наблюдательной астрофизике, вычислительной астрономии и популяризации науки.",s_active:"● Активный",s_pub:"✓ Опубликован",s_prog:"◌ В подготовке",p1t:"Связь диска-короны в АЯГ",p1d:"Анализ 2530 АЯГ Типа 1 из SDSS DR16 × Chandra CSC 2.1. Корреляции X/УФ для геометрии диска аккреции. Представлено на DIA Peru — Cajamarca 2026.",p2t:"Фотометрия JWST/RUBIES",p2d:"Фотометрия с данными JWST под руководством MSc. Адриана Диаса. Анализ галактик высокого красного смещения.",p3t:"Астрономический календарь 2026",p3d:"Публикация через SPACE UNMSM, зарегистрирована в МАС.",p4t:"Полёт птиц на экзопланетах",p4d:"Рукопись об условиях полёта птиц на обитаемых экзопланетах. Цель: Nature.",p5t:"Позиционная астрономия инков",p5d:"Системы ориентации инков и небесные события. Совместно с археологом.",p6t:"Обнаружение астероидов IASC",p6d:"Обнаружение астероидов по данным Pan-STARRS в программе IASC.",rec_h2:"Инструменты для изучения физики",rec_intro:"Цифровые ресурсы для понимания физических явлений.",r1d:"Бесплатные симуляции механики, электричества и термодинамики.",r2d:"Виртуальные лаборатории с пошаговым руководством.",r3d:"Видео для самостоятельной подготовки.",r4d:"3D-визуализация Солнечной системы.",r5d:"Интерактивные апплеты для волн и оптики.",r6d:"Физическое моделирование на Python.",met_h2:"Как я преподаю",met_intro:"Три активные методики, ставящие студента в центр обучения.",m1t:"Перевёрнутый класс",m1d:"Студенты изучают теорию дома, практикуются на занятии.",m1s1:"До занятия: видео + опрос Google Forms.",m1s2:"На занятии: PhET. Преподаватель направляет.",m1s3:"Занятие — пространство реальной практики.",m2t:"ОМС — Обучение на основе случаев",m2d:"Реальный случай как отправная точка для групповых исследований.",m2s1:"Случай: «Физика первой фотографии чёрной дыры?»",m2s2:"Групповое исследование: ЭМ волны, интерферометрия, ОТО.",m2s3:"Презентация с цифровыми ресурсами и ИИ.",m3t:"ПОО — Проектно-ориентированное обучение",m3d:"Полный проект: проектирование, выполнение, анализ.",m3s1:"Проект: «Траектория спутника на НОО по данным NASA.»",m3s2:"Этапы: исследование → данные → симуляция → анализ.",m3s3:"3 недели. Команды 3–4 человека.",tic_h2:"Технологии в аудитории",tic_intro:"Инструменты для визуализации, оценки и персонализации обучения.",th1:"Инструмент",th2:"Категория",th3:"Педагогическое применение",tr1:"Интерактивная визуализация физических явлений",tr2:"Материал перед занятием и закрепление",tr3:"Диагностика и геймифицированное повторение",tr4:"Опросники и отслеживание прогресса",tr5:"Контекстуализированные упражнения и ИИ",tr6:"Организация, задания и коммуникация",tr7:"Анализ данных и моделирование на Python",tr8:"3D-исследование Солнечной системы",footer_sub:"Методика преподавания физики · Д-р Сильвия Эспиноса Суарес"}
+};
+function setLang(l){
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
+  document.documentElement.lang=l;
+  const t=T[l];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});
+}
+function toggleTheme(){
+  const h=document.documentElement,dark=h.getAttribute('data-theme')==='dark';
+  h.setAttribute('data-theme',dark?'light':'dark');
+  document.getElementById('themeBtn').textContent=dark?'☀️':'🌙';
+}
+
+/* ══════════════════════════════════════════
+   STARFIELD
+══════════════════════════════════════════ */
+const sfC=document.getElementById('starfield'),sfX=sfC.getContext('2d');
+let stars=[];
+function rsf(){sfC.width=innerWidth;sfC.height=innerHeight;}
+function ist(){stars=[];for(let i=0;i<200;i++)stars.push({x:Math.random()*sfC.width,y:Math.random()*sfC.height,r:Math.random()*1.3+.2,a:Math.random()*.6+.15,tw:Math.random()*Math.PI*2});}
+function dsf(){sfX.clearRect(0,0,sfC.width,sfC.height);stars.forEach(s=>{s.tw+=.011;const a=s.a*(.55+.45*Math.sin(s.tw));sfX.beginPath();sfX.arc(s.x,s.y,s.r,0,Math.PI*2);sfX.fillStyle=`rgba(232,244,253,${a})`;sfX.fill();});requestAnimationFrame(dsf);}
+window.addEventListener('resize',()=>{rsf();ist();});rsf();ist();dsf();
+window.addEventListener('scroll',()=>{sfC.style.transform=`translateY(${scrollY*.1}px)`;});
+
+
+
+/* ══════════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════════ */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.12});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
