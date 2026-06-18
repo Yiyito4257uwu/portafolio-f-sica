@@ -13,11 +13,6 @@
       --dust:#7B8FA6;--corona:#F72585;--accretion:#1A2F5A;--surface:#0A1628;
       --border:rgba(76,201,240,0.15);--card-bg:#0D1B3E;--nav-bg:rgba(5,7,15,0.88);
     }
-    [data-theme="light"]{
-      --void:#F0F4FF;--nebula:#E2E8F8;--pulsar:#1A6FB5;--starlight:#0D1B3E;
-      --dust:#4A5568;--corona:#C0166A;--accretion:#C8D6F0;--surface:#E8EEF8;
-      --border:rgba(26,111,181,0.2);--card-bg:#E2E8F8;--nav-bg:rgba(240,244,255,0.92);
-    }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--void);color:var(--starlight);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background .4s,color .4s;}
@@ -84,7 +79,7 @@
 
     /* ── ABOUT ── */
     .about-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:center;}
-    .avatar-wrap{aspect-ratio:1;max-width:280px;background:var(--accretion);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+    .avatar-wrap{max-width:260px;display:flex;align-items:center;justify-content:center;}
     .avatar-placeholder{font-size:72px;opacity:.5;}
     .avatar-label{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dust);letter-spacing:.08em;}
     .about-text p{color:var(--dust);margin-bottom:1rem;font-size:.95rem;}
@@ -106,6 +101,9 @@
     .proyecto-card p{font-size:.88rem;color:var(--dust);margin-bottom:1rem;line-height:1.6;}
     .proyecto-tags{display:flex;flex-wrap:wrap;gap:5px;}
     .ptag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;border:1px solid var(--border);color:var(--dust);border-radius:2px;}
+    .proyecto-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:.75rem;}
+    .proyecto-paper-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
+    .proyecto-paper-link:hover{border-color:var(--pulsar);}
 
     /* ── RECURSOS ── */
     .recursos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
@@ -165,7 +163,7 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">Jiro Fabián · RA 12h 39m</span>
+  <span class="nav-logo">Jiro Fabián</span>
   <ul class="nav-links">
     <li><a href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
     <li><a href="#proyectos" data-i18n="nav_projects">Proyectos</a></li>
@@ -177,7 +175,6 @@
     <button class="lang-btn active" onclick="setLang('es')">ES</button>
     <button class="lang-btn" onclick="setLang('en')">EN</button>
     <button class="lang-btn" onclick="setLang('ru')">RU</button>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
     <a href="mailto:jiro.fabian@unmsm.edu.pe" class="contact-btn" data-i18n="nav_contact">Contacto</a>
   </div>
 </nav>
@@ -187,9 +184,9 @@
   
   <canvas id="starfield"></canvas>
   <div class="hero-content">
-      <p class="hero-coords">12h 02m 39s S &nbsp;·&nbsp; −77° 01′ 42″ W &nbsp;·&nbsp; 154 m.s.n.m.</p>
+      <p class="hero-coords">12° 03′ S &nbsp;·&nbsp; 77° 02′ W &nbsp;·&nbsp; 154 m.s.n.m.</p>
     <p class="hero-eyebrow" data-i18n="hero_eyebrow">Física · UNMSM · Lima, Perú</p>
-    <h1 class="hero-name">Jiro Martín<br/><span class="accent">Fabián</span> Vásquez</h1>
+    <h1 class="hero-name">Jiro Martín Fabián Vásquez</h1>
     <div class="hero-line"></div>
     <p class="hero-title" data-i18n="hero_title">Docente de Física · Astrofísico en formación</p>
     <p class="hero-desc" data-i18n="hero_desc">Investigador en astrofísica de objetos compactos, miembro de SPACE UNMSM e IEEE NPSS. Apasionado por hacer la física accesible y emocionante.</p>
@@ -207,14 +204,84 @@
   <div class="reveal"><h2 data-i18n="about_h2">El docente</h2></div>
   <div class="about-grid">
     <div class="reveal-left">
-      <div class="avatar-wrap">
-        <span class="avatar-placeholder">🔭</span>
-        <span class="avatar-label">[ tu foto aquí ]</span>
+      <div class="avatar-wrap" id="bhWrap">
+        <svg id="bhSvg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="display:block;overflow:visible;">
+          <defs>
+            <radialGradient id="bgG" cx="50%" cy="55%" r="60%">
+              <stop offset="0%"   stop-color="#1a0e00"/>
+              <stop offset="55%"  stop-color="#0a0500"/>
+              <stop offset="100%" stop-color="#020100"/>
+            </radialGradient>
+            <radialGradient id="sunCore" cx="40%" cy="36%" r="65%">
+              <stop offset="0%"   stop-color="#fffceb"/>
+              <stop offset="40%"  stop-color="#ffe680"/>
+              <stop offset="70%"  stop-color="#ffc150"/>
+              <stop offset="100%" stop-color="#ffa320"/>
+            </radialGradient>
+            <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%"   stop-color="#ffcc4488"/>
+              <stop offset="60%"  stop-color="#ff882022"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+            <filter id="blur12"><feGaussianBlur stdDeviation="12"/></filter>
+          </defs>
+
+          <rect width="300" height="300" fill="url(#bgG)" rx="10"/>
+
+          <!-- Stars -->
+          <g fill="white">
+            <circle cx="20"  cy="25"  r="1.3" opacity="0.85"/><circle cx="50"  cy="14"  r="0.9" opacity="0.7"/>
+            <circle cx="260" cy="20"  r="1.2" opacity="0.8"/><circle cx="282" cy="40"  r="1"   opacity="0.75"/>
+            <circle cx="18"  cy="260" r="1.1" opacity="0.8"/><circle cx="36"  cy="280" r="0.9" opacity="0.7"/>
+            <circle cx="270" cy="265" r="1.2" opacity="0.8"/><circle cx="150" cy="14"  r="0.8" opacity="0.65"/>
+            <circle cx="14"  cy="150" r="0.9" opacity="0.6"/><circle cx="286" cy="150" r="1"   opacity="0.65"/>
+            <circle cx="60"  cy="282" r="1"   opacity="0.75"/><circle cx="230" cy="285" r="0.9" opacity="0.7"/>
+          </g>
+
+          <!-- Outer glow halo -->
+          <circle cx="150" cy="150" r="135" fill="url(#sunGlow)" filter="url(#blur12)"/>
+          <circle cx="150" cy="150" r="100" fill="#ffaa3322" filter="url(#blur6)"/>
+
+          <!-- Sun rays (simple, friendly) -->
+          <g id="sunRays" stroke="#ffcc55" stroke-linecap="round" opacity="0.7">
+            <line x1="150" y1="28"  x2="150" y2="14"  stroke-width="5"/>
+            <line x1="150" y1="272" x2="150" y2="286" stroke-width="5"/>
+            <line x1="28"  y1="150" x2="14"  y2="150" stroke-width="5"/>
+            <line x1="272" y1="150" x2="286" y2="150" stroke-width="5"/>
+            <line x1="65"  y1="65"  x2="54"  y2="54"  stroke-width="4.5"/>
+            <line x1="235" y1="65"  x2="246" y2="54"  stroke-width="4.5"/>
+            <line x1="65"  y1="235" x2="54"  y2="246" stroke-width="4.5"/>
+            <line x1="235" y1="235" x2="246" y2="246" stroke-width="4.5"/>
+          </g>
+
+          <!-- Sun body -->
+          <circle cx="150" cy="150" r="90" fill="url(#sunCore)"/>
+          <!-- Soft surface highlight only (top-left, no dark spots near face) -->
+          <circle cx="115" cy="110" r="22" fill="#fff5d0" opacity="0.4" filter="url(#blur12)"/>
+
+          <!-- ══ CUTE SIMPLE FACE (kawaii style: small dot eyes, no eyebrows) ══ -->
+          <!-- Eyes: small simple round dots, friendly not staring -->
+          <g id="eyeLeft">
+            <circle id="pupilL" cx="128" cy="148" r="6" fill="#7a3a00"/>
+          </g>
+          <g id="eyeRight">
+            <circle id="pupilR" cx="172" cy="148" r="6" fill="#7a3a00"/>
+          </g>
+
+          <!-- Blush cheeks: soft, low opacity -->
+          <ellipse cx="112" cy="168" rx="11" ry="6" fill="#ff7733" opacity="0.35" filter="url(#blur6)"/>
+          <ellipse cx="188" cy="168" rx="11" ry="6" fill="#ff7733" opacity="0.35" filter="url(#blur6)"/>
+
+          <!-- Simple curved smile line, no teeth/open mouth -->
+          <path d="M 130 170 Q 150 184 170 170" fill="none" stroke="#7a3a00" stroke-width="5" stroke-linecap="round"/>
+        </svg>
       </div>
     </div>
     <div class="about-text reveal-right">
       <p data-i18n="about_p1">Soy estudiante de 8.° semestre de Física en la <strong style="color:var(--starlight)">Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías: agujeros negros, estrellas de neutrones y fenómenos de acreción.</p>
-      <p data-i18n="about_p2">Soy miembro activo de <strong style="color:var(--pulsar)">SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style="color:var(--pulsar)">IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo en divulgación en el Museo de Historia Natural UNMSM.</p>
+      <p data-i18n="about_p2">Soy miembro activo de <strong style="color:var(--pulsar)">SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style="color:var(--pulsar)">IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.</p>
+        <p data-i18n="about_p3">Formo parte del comité del <strong style="color:var(--pulsar)">Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.</p>
       <div class="quote-block">
         <p data-i18n="about_quote">"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre ver el universo con otros ojos."</p>
       </div>
@@ -241,17 +308,16 @@
         <p data-i18n="p1d">Análisis de 2,530 AGN Tipo 1 del catálogo SDSS DR16 × Chandra CSC 2.1. Correlaciones entre emisión en rayos X y UV/óptico para caracterizar la geometría del disco de acreción y corona. Presentado en DIA Peru — Cajamarca 2026.</p>
         <div class="proyecto-tags"><span class="ptag">SDSS DR16</span><span class="ptag">Chandra CSC 2.1</span><span class="ptag">Rayos X</span><span class="ptag">Python</span></div>
       </div>
-      <div class="proyecto-card">
-        <span class="proyecto-status status-active" data-i18n="s_active">● En curso</span>
-        <h3 data-i18n="p2t">Fotometría JWST/RUBIES</h3>
-        <p data-i18n="p2d">Proyecto de fotometría con datos del James Webb Space Telescope bajo supervisión del MSc. Adrián Díaz. Análisis de galaxias de alto redshift del programa RUBIES.</p>
-        <div class="proyecto-tags"><span class="ptag">JWST</span><span class="ptag">RUBIES</span><span class="ptag">Fotometría</span><span class="ptag">Alto redshift</span></div>
-      </div>
+      
       <div class="proyecto-card">
         <span class="proyecto-status status-pub" data-i18n="s_pub">✓ Publicado</span>
         <h3 data-i18n="p3t">Calendario Astronómico 2026</h3>
         <p data-i18n="p3d">Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.</p>
         <div class="proyecto-tags"><span class="ptag">SPACE UNMSM</span><span class="ptag">IAU</span><span class="ptag">Divulgación</span></div>
+        <div class="proyecto-links">
+          <a class="proyecto-paper-link" href="https://revistasinvestigacion.unmsm.edu.pe/index.php/fisica/article/view/31971" target="_blank" data-i18n="link_paper">↗ Ver publicación</a>
+          <a class="proyecto-paper-link" href="https://iauoutreach.org/astronomy-outreach/map" target="_blank" data-i18n="link_iau">↗ Ver registro IAU</a>
+        </div>
       </div>
       <div class="proyecto-card">
         <span class="proyecto-status status-prog" data-i18n="s_prog">◌ En preparación</span>
@@ -261,8 +327,8 @@
       </div>
       <div class="proyecto-card">
         <span class="proyecto-status status-prog" data-i18n="s_prog">◌ En preparación</span>
-        <h3 data-i18n="p5t">Astronomía posicional Inca</h3>
-        <p data-i18n="p5d">Investigación sobre sistemas de orientación astronómica de los Incas y correspondencia con eventos celestes. Co-autoría con arqueólogo.</p>
+        <h3 data-i18n="p5t">Arqueoastronomía andina</h3>
+        <p data-i18n="p5d">Investigación sobre prácticas astronómicas en la civilización andina y su relación con el entorno celeste. Proyecto interdisciplinario en curso.</p>
         <div class="proyecto-tags"><span class="ptag">Arqueoastronomía</span><span class="ptag">Incas</span><span class="ptag">Manuscript</span></div>
       </div>
       <div class="proyecto-card">
@@ -378,9 +444,9 @@
    TRANSLATIONS
 ══════════════════════════════════════════ */
 const T={
-  es:{nav_about:"Sobre mí",nav_projects:"Proyectos",nav_resources:"Recursos",nav_methods:"Metodologías",nav_contact:"Contacto",hero_drag:"Arrastra el agujero negro",hero_eyebrow:"Física · UNMSM · Lima, Perú",hero_title:"Docente de Física · Astrofísico en formación",hero_desc:"Investigador en astrofísica de objetos compactos, miembro de SPACE UNMSM e IEEE NPSS. Apasionado por hacer la física accesible y emocionante.",hero_btn1:"Ver proyectos →",hero_btn2:"Sobre mí",about_h2:"El docente",about_p1:"Soy estudiante de 8.° semestre de Física en la <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.",about_p2:"Soy miembro activo de <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo en el Museo de Historia Natural UNMSM.",about_quote:'"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre ver el universo con otros ojos."',proj_h2:"Proyectos de investigación",proj_intro:"Investigación en astrofísica observacional, astronomía computacional y divulgación científica.",s_active:"● En curso",s_pub:"✓ Publicado",s_prog:"◌ En preparación",p1t:"Acoplamiento disco-corona en AGN",p1d:"Análisis de 2,530 AGN Tipo 1 del catálogo SDSS DR16 × Chandra CSC 2.1. Correlaciones X/UV para caracterizar la geometría del disco de acreción. Presentado en DIA Peru — Cajamarca 2026.",p2t:"Fotometría JWST/RUBIES",p2d:"Fotometría con datos del James Webb Space Telescope bajo supervisión del MSc. Adrián Díaz. Análisis de galaxias de alto redshift del programa RUBIES.",p3t:"Calendario Astronómico 2026",p3d:"Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.",p4t:"Vuelo aviar en exoplanetas",p4d:"Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.",p5t:"Astronomía posicional Inca",p5d:"Investigación sobre sistemas de orientación astronómica de los Incas y correspondencia con eventos celestes. Co-autoría con arqueólogo.",p6t:"Detección IASC/Pan-STARRS",p6d:"Detección de asteroides en el programa IASC usando datos de Pan-STARRS.",rec_h2:"Herramientas para aprender física",rec_intro:"Recursos digitales para visualizar, experimentar y comprender fenómenos físicos.",r1d:"Simulaciones gratuitas para mecánica, electricidad, ondas y termodinámica.",r2d:"Laboratorios virtuales con guía estructurada y repetición ilimitada.",r3d:"Videos en español para estudio previo a clase.",r4d:"Visualización 3D del sistema solar con datos reales.",r5d:"Applets interactivos para movimiento, ondas y óptica.",r6d:"Modelamiento físico con Python en el navegador.",met_h2:"Cómo enseño",met_intro:"Tres metodologías activas que ponen al estudiante en el centro.",m1t:"Flipped Classroom — Aula invertida",m1d:"El estudiante accede al contenido en casa. La clase se dedica a practicar con acompañamiento.",m1s1:"Antes de clase: video Khan Academy + formulario Google Forms.",m1s2:"En clase: PhET. El docente guía, no explica desde cero.",m1s3:"La clase se convierte en práctica real.",m2t:"ABC — Aprendizaje Basado en Casos",m2d:"Un caso real como punto de partida para investigar en equipo.",m2s1:"Caso: '¿Qué principios explican la primera foto de un agujero negro?'",m2s2:"Investigación grupal: ondas EM, interferometría, relatividad.",m2s3:"Presentación con recursos digitales e IA.",m3t:"AOP — Aprendizaje Orientado a Proyectos",m3d:"Proyecto completo: diseño, ejecución, análisis y comunicación.",m3s1:"Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'",m3s2:"Etapas: investigación → datos → simulación → análisis → presentación.",m3s3:"3 semanas. Equipos de 3–4 personas.",tic_h2:"Tecnologías en el aula",tic_intro:"Herramientas para visualizar, evaluar y personalizar el aprendizaje.",th1:"Herramienta",th2:"Categoría",th3:"Uso pedagógico",tr1:"Visualizar fenómenos físicos de forma interactiva",tr2:"Material previo a clase y refuerzo conceptual",tr3:"Diagnóstico y repaso gamificado",tr4:"Cuestionarios y seguimiento del aprendizaje",tr5:"Ejercicios contextualizados y tutoría",tr6:"Organización, entregas y comunicación",tr7:"Análisis de datos y modelamiento con Python",tr8:"Exploración 3D del sistema solar",footer_sub:"Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez"},
-  en:{nav_about:"About",nav_projects:"Projects",nav_resources:"Resources",nav_methods:"Methods",nav_contact:"Contact",hero_drag:"Drag the black hole",hero_eyebrow:"Physics · UNMSM · Lima, Peru",hero_title:"Physics Teacher · Astrophysicist in training",hero_desc:"Researcher in compact object astrophysics, member of SPACE UNMSM and IEEE NPSS. Passionate about making physics accessible and exciting.",hero_btn1:"See projects →",hero_btn2:"About me",about_h2:"The teacher",about_p1:"I am an 8th-semester Physics student at the <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Peru. My focus is compact object astrophysics and high-energy physics.",about_p2:"Active member of <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, Peru's first professional astronomy group, and Vice-President of <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. I organize the <em>Viernes Astronómicos</em> and participate in the Natural History Museum UNMSM.",about_quote:'"Physics is not memorized — it is experienced, visualized and questioned. My goal is for every student to see the universe through new eyes."',proj_h2:"Research projects",proj_intro:"Research in observational astrophysics, computational astronomy and science outreach.",s_active:"● Active",s_pub:"✓ Published",s_prog:"◌ In preparation",p1t:"AGN disk-corona coupling",p1d:"Analysis of 2,530 Type 1 AGNs from SDSS DR16 × Chandra CSC 2.1. X-ray/UV correlations to characterize accretion disk geometry. Presented at DIA Peru — Cajamarca 2026.",p2t:"JWST/RUBIES photometry",p2d:"Photometry with James Webb Space Telescope data under MSc. Adrián Díaz. Analysis of high-redshift galaxies from the RUBIES program.",p3t:"Astronomical Calendar 2026",p3d:"Publication of the 2026 Astronomical Calendar through SPACE UNMSM, registered with the IAU and covered by Agencia Andina.",p4t:"Avian flight on exoplanets",p4d:"Manuscript on physical conditions allowing bird flight on habitable exoplanets. Target: Nature.",p5t:"Inca positional astronomy",p5d:"Research on Inca astronomical orientation systems and celestial event correspondence. Co-authored with an archaeologist.",p6t:"IASC/Pan-STARRS detection",p6d:"Asteroid detection in the IASC program using Pan-STARRS data.",rec_h2:"Tools to learn physics",rec_intro:"Digital resources to visualize, experiment and understand physical phenomena.",r1d:"Free simulations for mechanics, electricity, waves and thermodynamics.",r2d:"Virtual labs with structured guidance and unlimited repetition.",r3d:"Videos for pre-class study in Spanish and English.",r4d:"3D solar system visualization with real-time data.",r5d:"Interactive applets for motion, waves and optics.",r6d:"Physical modeling with Python in the browser.",met_h2:"How I teach",met_intro:"Three active methodologies placing the student at the center of learning.",m1t:"Flipped Classroom",m1d:"Students access theory at home. Class time is for practice and application.",m1s1:"Before class: Khan Academy video + Google Forms quiz.",m1s2:"In class: PhET simulation. Teacher guides, doesn't re-explain from scratch.",m1s3:"Class becomes real hands-on practice.",m2t:"CBL — Case-Based Learning",m2d:"A real scientific case as starting point for group investigation.",m2s1:"Case: 'What physics explains the first black hole photo?'",m2s2:"Group research: EM waves, interferometry, general relativity.",m2s3:"Presentation with digital resources and AI assistance.",m3t:"PBL — Project-Based Learning",m3d:"Full project: design, execution, analysis and communication of results.",m3s1:"Project: 'Model a satellite orbit with real NASA data.'",m3s2:"Stages: research → data → simulation → analysis → presentation.",m3s3:"3 weeks. Teams of 3–4 with defined roles.",tic_h2:"Technologies in the classroom",tic_intro:"Tools to visualize, evaluate and personalize physics learning.",th1:"Tool",th2:"Category",th3:"Pedagogical use",tr1:"Visualize physical phenomena interactively",tr2:"Pre-class material and conceptual reinforcement",tr3:"Diagnosis and gamified review",tr4:"Pre-class quizzes and learning tracking",tr5:"Contextualized exercises and AI tutoring",tr6:"Resources, assignments and communication",tr7:"Data analysis and physical modeling with Python",tr8:"3D solar system exploration with real data",footer_sub:"Physics Teaching Methodology · Dr. Silvia Marisel Espinoza Suárez"},
-  ru:{nav_about:"Обо мне",nav_projects:"Проекты",nav_resources:"Ресурсы",nav_methods:"Методики",nav_contact:"Контакт",hero_drag:"Перетащите чёрную дыру",hero_eyebrow:"Физика · UNMSM · Лима, Перу",hero_title:"Преподаватель физики · Астрофизик",hero_desc:"Исследователь астрофизики компактных объектов, член SPACE UNMSM и IEEE NPSS. Страстный сторонник доступной физики.",hero_btn1:"Проекты →",hero_btn2:"Обо мне",about_h2:"Преподаватель",about_p1:"Студент 8-го семестра физического факультета <strong style='color:var(--starlight)'>UNMSM</strong>, Лима, Перу. Специализация — астрофизика компактных объектов и физика высоких энергий.",about_p2:"Член <strong style='color:var(--pulsar)'>SPACE UNMSM</strong> и вице-президент <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Организую <em>Viernes Astronómicos</em> и участвую в Музее естественной истории UNMSM.",about_quote:'"Физику не запоминают — её переживают, визуализируют и ставят под сомнение. Моя цель — помочь каждому студенту увидеть вселенную иначе."',proj_h2:"Исследовательские проекты",proj_intro:"Исследования в наблюдательной астрофизике, вычислительной астрономии и популяризации науки.",s_active:"● Активный",s_pub:"✓ Опубликован",s_prog:"◌ В подготовке",p1t:"Связь диска-короны в АЯГ",p1d:"Анализ 2530 АЯГ Типа 1 из SDSS DR16 × Chandra CSC 2.1. Корреляции X/УФ для геометрии диска аккреции. Представлено на DIA Peru — Cajamarca 2026.",p2t:"Фотометрия JWST/RUBIES",p2d:"Фотометрия с данными JWST под руководством MSc. Адриана Диаса. Анализ галактик высокого красного смещения.",p3t:"Астрономический календарь 2026",p3d:"Публикация через SPACE UNMSM, зарегистрирована в МАС.",p4t:"Полёт птиц на экзопланетах",p4d:"Рукопись об условиях полёта птиц на обитаемых экзопланетах. Цель: Nature.",p5t:"Позиционная астрономия инков",p5d:"Системы ориентации инков и небесные события. Совместно с археологом.",p6t:"Обнаружение астероидов IASC",p6d:"Обнаружение астероидов по данным Pan-STARRS в программе IASC.",rec_h2:"Инструменты для изучения физики",rec_intro:"Цифровые ресурсы для понимания физических явлений.",r1d:"Бесплатные симуляции механики, электричества и термодинамики.",r2d:"Виртуальные лаборатории с пошаговым руководством.",r3d:"Видео для самостоятельной подготовки.",r4d:"3D-визуализация Солнечной системы.",r5d:"Интерактивные апплеты для волн и оптики.",r6d:"Физическое моделирование на Python.",met_h2:"Как я преподаю",met_intro:"Три активные методики, ставящие студента в центр обучения.",m1t:"Перевёрнутый класс",m1d:"Студенты изучают теорию дома, практикуются на занятии.",m1s1:"До занятия: видео + опрос Google Forms.",m1s2:"На занятии: PhET. Преподаватель направляет.",m1s3:"Занятие — пространство реальной практики.",m2t:"ОМС — Обучение на основе случаев",m2d:"Реальный случай как отправная точка для групповых исследований.",m2s1:"Случай: «Физика первой фотографии чёрной дыры?»",m2s2:"Групповое исследование: ЭМ волны, интерферометрия, ОТО.",m2s3:"Презентация с цифровыми ресурсами и ИИ.",m3t:"ПОО — Проектно-ориентированное обучение",m3d:"Полный проект: проектирование, выполнение, анализ.",m3s1:"Проект: «Траектория спутника на НОО по данным NASA.»",m3s2:"Этапы: исследование → данные → симуляция → анализ.",m3s3:"3 недели. Команды 3–4 человека.",tic_h2:"Технологии в аудитории",tic_intro:"Инструменты для визуализации, оценки и персонализации обучения.",th1:"Инструмент",th2:"Категория",th3:"Педагогическое применение",tr1:"Интерактивная визуализация физических явлений",tr2:"Материал перед занятием и закрепление",tr3:"Диагностика и геймифицированное повторение",tr4:"Опросники и отслеживание прогресса",tr5:"Контекстуализированные упражнения и ИИ",tr6:"Организация, задания и коммуникация",tr7:"Анализ данных и моделирование на Python",tr8:"3D-исследование Солнечной системы",footer_sub:"Методика преподавания физики · Д-р Сильвия Эспиноса Суарес"}
+  es:{nav_about:"Sobre mí",nav_projects:"Proyectos",nav_resources:"Recursos",nav_methods:"Metodologías",nav_contact:"Contacto",hero_drag:"Arrastra el agujero negro",hero_eyebrow:"Física · UNMSM · Lima, Perú",hero_title:"Docente de Física · Astrofísico en formación",hero_desc:"Investigador en astrofísica de objetos compactos, miembro de SPACE UNMSM e IEEE NPSS. Apasionado por hacer la física accesible y emocionante.",hero_btn1:"Ver proyectos →",hero_btn2:"Sobre mí",about_h2:"El docente",about_p1:"Soy estudiante de 8.° semestre de Física en la <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.",about_p2:"Soy miembro activo de <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.",about_p3:"Formo parte del comité del <strong style='color:var(--pulsar)'>Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.",about_quote:'"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre ver el universo con otros ojos."',proj_h2:"Proyectos de investigación",proj_intro:"Investigación en astrofísica observacional, astronomía computacional y divulgación científica.",s_active:"● En curso",s_pub:"✓ Publicado",s_prog:"◌ En preparación",p1t:"Acoplamiento disco-corona en AGN",p1d:"Análisis de 2,530 AGN Tipo 1 cruzando SDSS DR16 × Chandra CSC 2.1. Estudio de la relación UV óptica — rayos X en el contexto del acoplamiento disco-corona. Presentado en DIA Peru — Cajamarca 2026.",p2t:"Fotometría JWST/RUBIES",p2d:"Fotometría con datos del James Webb Space Telescope. Análisis de galaxias de alto redshift en el marco del programa RUBIES.",p3t:"Calendario Astronómico 2026",p3d:"Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.",p4t:"Vuelo aviar en exoplanetas",p4d:"Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.",p5t:"Astronomía posicional Inca",p5d:"Investigación sobre sistemas de orientación astronómica de los Incas y correspondencia con eventos celestes. Co-autoría con arqueólogo.",p6t:"Detección IASC/Pan-STARRS",p6d:"Detección de asteroides en el programa IASC usando datos de Pan-STARRS.",rec_h2:"Herramientas para aprender física",rec_intro:"Recursos digitales para visualizar, experimentar y comprender fenómenos físicos.",r1d:"Simulaciones gratuitas para mecánica, electricidad, ondas y termodinámica.",r2d:"Laboratorios virtuales con guía estructurada y repetición ilimitada.",r3d:"Videos en español para estudio previo a clase.",r4d:"Visualización 3D del sistema solar con datos reales.",r5d:"Applets interactivos para movimiento, ondas y óptica.",r6d:"Modelamiento físico con Python en el navegador.",met_h2:"Cómo enseño",met_intro:"Tres metodologías activas que ponen al estudiante en el centro.",m1t:"Flipped Classroom — Aula invertida",m1d:"El estudiante accede al contenido en casa. La clase se dedica a practicar con acompañamiento.",m1s1:"Antes de clase: video Khan Academy + formulario Google Forms.",m1s2:"En clase: PhET. El docente guía, no explica desde cero.",m1s3:"La clase se convierte en práctica real.",m2t:"ABC — Aprendizaje Basado en Casos",m2d:"Un caso real como punto de partida para investigar en equipo.",m2s1:"Caso: '¿Qué principios explican la primera foto de un agujero negro?'",m2s2:"Investigación grupal: ondas EM, interferometría, relatividad.",m2s3:"Presentación con recursos digitales e IA.",m3t:"AOP — Aprendizaje Orientado a Proyectos",m3d:"Proyecto completo: diseño, ejecución, análisis y comunicación.",m3s1:"Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'",m3s2:"Etapas: investigación → datos → simulación → análisis → presentación.",m3s3:"3 semanas. Equipos de 3–4 personas.",tic_h2:"Tecnologías en el aula",tic_intro:"Herramientas para visualizar, evaluar y personalizar el aprendizaje.",th1:"Herramienta",th2:"Categoría",th3:"Uso pedagógico",tr1:"Visualizar fenómenos físicos de forma interactiva",tr2:"Material previo a clase y refuerzo conceptual",tr3:"Diagnóstico y repaso gamificado",tr4:"Cuestionarios y seguimiento del aprendizaje",tr5:"Ejercicios contextualizados y tutoría",tr6:"Organización, entregas y comunicación",tr7:"Análisis de datos y modelamiento con Python",tr8:"Exploración 3D del sistema solar",footer_sub:"Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez",link_paper:"↗ Ver publicación",link_iau:"↗ Ver registro IAU"},
+  en:{nav_about:"About",nav_projects:"Projects",nav_resources:"Resources",nav_methods:"Methods",nav_contact:"Contact",hero_drag:"Drag the black hole",hero_eyebrow:"Physics · UNMSM · Lima, Peru",hero_title:"Physics Teacher · Astrophysicist in training",hero_desc:"Researcher in compact object astrophysics, member of SPACE UNMSM and IEEE NPSS. Passionate about making physics accessible and exciting.",hero_btn1:"See projects →",hero_btn2:"About me",about_h2:"The teacher",about_p1:"I am an 8th-semester Physics student at the <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Peru. My focus is compact object astrophysics and high-energy physics.",about_p2:"Active member of <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, Peru's first professional astronomy group, and Vice-President of <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. I organize the <em>Viernes Astronómicos</em> and serve as a collaborator at the Natural History Museum UNMSM.",about_p3:"I am part of the committee of the <strong style='color:var(--pulsar)'>National Olympic Committee of the Peruvian Olympiads on Astronomy and Astronautics</strong>, helping develop new talent in space sciences.",about_quote:'"Physics is not memorized — it is experienced, visualized and questioned. My goal is for every student to see the universe through new eyes."',proj_h2:"Research projects",proj_intro:"Research in observational astrophysics, computational astronomy and science outreach.",s_active:"● Active",s_pub:"✓ Published",s_prog:"◌ In preparation",p1t:"AGN disk-corona coupling",p1d:"Analysis of 2,530 Type 1 AGNs cross-matching SDSS DR16 × Chandra CSC 2.1. Study of the UV-optical to X-ray relationship in the context of disk-corona coupling. Presented at DIA Peru — Cajamarca 2026.",p2t:"JWST/RUBIES photometry",p2d:"Photometry with James Webb Space Telescope data. Analysis of high-redshift galaxies within the RUBIES program.",p3t:"Astronomical Calendar 2026",p3d:"Publication of the 2026 Astronomical Calendar through SPACE UNMSM, registered with the IAU and covered by Agencia Andina.",p4t:"Avian flight on exoplanets",p4d:"Manuscript on physical conditions allowing bird flight on habitable exoplanets. Target: Nature.",p5t:"Andean archaeoastronomy",p5d:"Research on astronomical practices in Andean civilization and their relationship with the celestial environment. Ongoing interdisciplinary project.",p6t:"IASC/Pan-STARRS detection",p6d:"Asteroid detection in the IASC program using Pan-STARRS data.",rec_h2:"Tools to learn physics",rec_intro:"Digital resources to visualize, experiment and understand physical phenomena.",r1d:"Free simulations for mechanics, electricity, waves and thermodynamics.",r2d:"Virtual labs with structured guidance and unlimited repetition.",r3d:"Videos for pre-class study in Spanish and English.",r4d:"3D solar system visualization with real-time data.",r5d:"Interactive applets for motion, waves and optics.",r6d:"Physical modeling with Python in the browser.",met_h2:"How I teach",met_intro:"Three active methodologies placing the student at the center of learning.",m1t:"Flipped Classroom",m1d:"Students access theory at home. Class time is for practice and application.",m1s1:"Before class: Khan Academy video + Google Forms quiz.",m1s2:"In class: PhET simulation. Teacher guides, doesn't re-explain from scratch.",m1s3:"Class becomes real hands-on practice.",m2t:"CBL — Case-Based Learning",m2d:"A real scientific case as starting point for group investigation.",m2s1:"Case: 'What physics explains the first black hole photo?'",m2s2:"Group research: EM waves, interferometry, general relativity.",m2s3:"Presentation with digital resources and AI assistance.",m3t:"PBL — Project-Based Learning",m3d:"Full project: design, execution, analysis and communication of results.",m3s1:"Project: 'Model a satellite orbit with real NASA data.'",m3s2:"Stages: research → data → simulation → analysis → presentation.",m3s3:"3 weeks. Teams of 3–4 with defined roles.",tic_h2:"Technologies in the classroom",tic_intro:"Tools to visualize, evaluate and personalize physics learning.",th1:"Tool",th2:"Category",th3:"Pedagogical use",tr1:"Visualize physical phenomena interactively",tr2:"Pre-class material and conceptual reinforcement",tr3:"Diagnosis and gamified review",tr4:"Pre-class quizzes and learning tracking",tr5:"Contextualized exercises and AI tutoring",tr6:"Resources, assignments and communication",tr7:"Data analysis and physical modeling with Python",tr8:"3D solar system exploration with real data",footer_sub:"Physics Teaching Methodology · Dr. Silvia Marisel Espinoza Suárez",link_paper:"↗ View publication",link_iau:"↗ View IAU registry"},
+  ru:{nav_about:"Обо мне",nav_projects:"Проекты",nav_resources:"Ресурсы",nav_methods:"Методики",nav_contact:"Контакт",hero_drag:"Перетащите чёрную дыру",hero_eyebrow:"Физика · UNMSM · Лима, Перу",hero_title:"Преподаватель физики · Астрофизик",hero_desc:"Исследователь астрофизики компактных объектов, член SPACE UNMSM и IEEE NPSS. Страстный сторонник доступной физики.",hero_btn1:"Проекты →",hero_btn2:"Обо мне",about_h2:"Преподаватель",about_p1:"Студент 8-го семестра физического факультета <strong style='color:var(--starlight)'>UNMSM</strong>, Лима, Перу. Специализация — астрофизика компактных объектов и физика высоких энергий.",about_p2:"Член <strong style='color:var(--pulsar)'>SPACE UNMSM</strong> и вице-президент <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Организую <em>Viernes Astronómicos</em> и являюсь сотрудником Музея естественной истории UNMSM.",about_p3:"Я являюсь членом комитета <strong style='color:var(--pulsar)'>Национального олимпийского комитета Перуанских олимпиад по астрономии и космонавтике</strong>, способствуя развитию новых талантов в космических науках.",about_quote:'"Физику не запоминают — её переживают, визуализируют и ставят под сомнение. Моя цель — помочь каждому студенту увидеть вселенную иначе."',proj_h2:"Исследовательские проекты",proj_intro:"Исследования в наблюдательной астрофизике, вычислительной астрономии и популяризации науки.",s_active:"● Активный",s_pub:"✓ Опубликован",s_prog:"◌ В подготовке",p1t:"Связь диска-короны в АЯГ",p1d:"Анализ 2530 АЯГ Типа 1 из SDSS DR16 × Chandra CSC 2.1. Изучение связи УФ/оптического и рентгеновского излучения в контексте взаимодействия диска и короны. Представлено на DIA Peru — Cajamarca 2026.",p2t:"Фотометрия JWST/RUBIES",p2d:"Фотометрия с данными JWST. Анализ галактик высокого красного смещения в рамках программы RUBIES.",p3t:"Астрономический календарь 2026",p3d:"Публикация через SPACE UNMSM, зарегистрирована в МАС.",p4t:"Полёт птиц на экзопланетах",p4d:"Рукопись об условиях полёта птиц на обитаемых экзопланетах. Цель: Nature.",p5t:"Андская археоастрономия",p5d:"Исследование астрономических практик андской цивилизации. Междисциплинарный проект.",p6t:"Обнаружение астероидов IASC",p6d:"Обнаружение астероидов по данным Pan-STARRS в программе IASC.",rec_h2:"Инструменты для изучения физики",rec_intro:"Цифровые ресурсы для понимания физических явлений.",r1d:"Бесплатные симуляции механики, электричества и термодинамики.",r2d:"Виртуальные лаборатории с пошаговым руководством.",r3d:"Видео для самостоятельной подготовки.",r4d:"3D-визуализация Солнечной системы.",r5d:"Интерактивные апплеты для волн и оптики.",r6d:"Физическое моделирование на Python.",met_h2:"Как я преподаю",met_intro:"Три активные методики, ставящие студента в центр обучения.",m1t:"Перевёрнутый класс",m1d:"Студенты изучают теорию дома, практикуются на занятии.",m1s1:"До занятия: видео + опрос Google Forms.",m1s2:"На занятии: PhET. Преподаватель направляет.",m1s3:"Занятие — пространство реальной практики.",m2t:"ОМС — Обучение на основе случаев",m2d:"Реальный случай как отправная точка для групповых исследований.",m2s1:"Случай: «Физика первой фотографии чёрной дыры?»",m2s2:"Групповое исследование: ЭМ волны, интерферометрия, ОТО.",m2s3:"Презентация с цифровыми ресурсами и ИИ.",m3t:"ПОО — Проектно-ориентированное обучение",m3d:"Полный проект: проектирование, выполнение, анализ.",m3s1:"Проект: «Траектория спутника на НОО по данным NASA.»",m3s2:"Этапы: исследование → данные → симуляция → анализ.",m3s3:"3 недели. Команды 3–4 человека.",tic_h2:"Технологии в аудитории",tic_intro:"Инструменты для визуализации, оценки и персонализации обучения.",th1:"Инструмент",th2:"Категория",th3:"Педагогическое применение",tr1:"Интерактивная визуализация физических явлений",tr2:"Материал перед занятием и закрепление",tr3:"Диагностика и геймифицированное повторение",tr4:"Опросники и отслеживание прогресса",tr5:"Контекстуализированные упражнения и ИИ",tr6:"Организация, задания и коммуникация",tr7:"Анализ данных и моделирование на Python",tr8:"3D-исследование Солнечной системы",footer_sub:"Методика преподавания физики · Д-р Сильвия Эспиноса Суарес",link_paper:"↗ Смотреть публикацию",link_iau:"↗ Реестр МАС"}
 };
 function setLang(l){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
@@ -388,12 +454,6 @@ function setLang(l){
   const t=T[l];
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});
 }
-function toggleTheme(){
-  const h=document.documentElement,dark=h.getAttribute('data-theme')==='dark';
-  h.setAttribute('data-theme',dark?'light':'dark');
-  document.getElementById('themeBtn').textContent=dark?'☀️':'🌙';
-}
-
 /* ══════════════════════════════════════════
    STARFIELD
 ══════════════════════════════════════════ */
@@ -414,6 +474,66 @@ const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
 },{threshold:.12});
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach(el=>obs.observe(el));
+
+/* ══ SUN CHARACTER INTERACTIONS ══ */
+(function(){
+  const svg = document.getElementById('bhSvg');
+  if(!svg) return;
+
+  const leftEye  = document.getElementById('eyeLeft');
+  const rightEye = document.getElementById('eyeRight');
+  const leftPupil  = document.getElementById('pupilL');
+  const rightPupil = document.getElementById('pupilR');
+  const LP = {x:128, y:148}, RP = {x:172, y:148};
+  const maxMove = 2.5;
+
+  document.addEventListener('mousemove', e => {
+    const rect = svg.getBoundingClientRect();
+    const vbW = 300, vbH = 300;
+    const mx = (e.clientX - rect.left) / rect.width  * vbW;
+    const my = (e.clientY - rect.top)  / rect.height * vbH;
+
+    function movePupil(el, base) {
+      const dx = mx - base.x, dy = my - base.y;
+      const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+      const move = Math.min(dist * 0.06, maxMove);
+      el.setAttribute('cx', (base.x + (dx/dist)*move).toFixed(2));
+      el.setAttribute('cy', (base.y + (dy/dist)*move).toFixed(2));
+    }
+    if(leftPupil)  movePupil(leftPupil,  LP);
+    if(rightPupil) movePupil(rightPupil, RP);
+  });
+
+  // Gentle blink
+  function blink(){
+    if(!leftEye || !rightEye) return;
+    [leftEye, rightEye].forEach(el => {
+      el.style.transition = 'transform 0.08s ease';
+      el.style.transformOrigin = '150px 148px';
+      el.style.transform = 'scaleY(0.1)';
+    });
+    setTimeout(()=>{
+      [leftEye, rightEye].forEach(el => { el.style.transform = 'scaleY(1)'; });
+    }, 120);
+    setTimeout(blink, 2800 + Math.random() * 3500);
+  }
+  setTimeout(blink, 2000);
+
+  // Gentle ray pulse
+  const rays = document.getElementById('sunRays');
+  if(rays){
+    let t = 0;
+    function pulseRays(){
+      t += 0.02;
+      const scale = 1 + Math.sin(t) * 0.04;
+      rays.style.transformOrigin = '150px 150px';
+      rays.style.transform = `scale(${scale})`;
+      requestAnimationFrame(pulseRays);
+    }
+    pulseRays();
+  }
+})();
+
 </script>
 </body>
 </html>
