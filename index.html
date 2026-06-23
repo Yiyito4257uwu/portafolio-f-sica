@@ -1,168 +1,258 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="dark">
+<html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jiro Martín Fabián Vásquez — Portafolio Docente</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-  <style>
-    :root{
-      --void:#05070F;--nebula:#0D1B3E;--pulsar:#4CC9F0;--starlight:#E8F4FD;
-      --dust:#7B8FA6;--corona:#F72585;--accretion:#1A2F5A;--surface:#0A1628;
-      --border:rgba(76,201,240,0.15);--card-bg:#0D1B3E;--nav-bg:rgba(5,7,15,0.88);
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{scroll-behavior:smooth;}
-    body{background:var(--void);color:var(--starlight);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;transition:background .4s,color .4s;}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jiro Martín Fabián Vásquez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;}
+body{font-family:'Inter',sans-serif;background:#030508;color:#E8F4FD;}
 
-    /* ── NAV ── */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem;height:60px;display:flex;align-items:center;justify-content:space-between;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:background .4s;}
-    .nav-logo{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--pulsar);letter-spacing:.06em;}
-    .nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center;}
-    .nav-links a{font-size:13px;color:var(--dust);text-decoration:none;transition:color .2s;}
-    .nav-links a:hover{color:var(--pulsar);}
-    .nav-controls{display:flex;gap:8px;align-items:center;}
-    .lang-btn{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;border:1px solid var(--border);color:var(--dust);background:transparent;border-radius:2px;cursor:pointer;transition:all .2s;}
-    .lang-btn.active,.lang-btn:hover{border-color:var(--pulsar);color:var(--pulsar);}
-    .theme-btn{width:32px;height:32px;border:1px solid var(--border);background:transparent;color:var(--dust);border-radius:2px;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-    .theme-btn:hover{border-color:var(--pulsar);color:var(--pulsar);}
-    .contact-btn{font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:500;padding:5px 14px;border:1px solid var(--pulsar);color:var(--pulsar);background:transparent;border-radius:2px;cursor:pointer;transition:all .2s;text-decoration:none;}
-    .contact-btn:hover{background:var(--pulsar);color:var(--void);}
+/* ── GALAXY BG ── */
+#galaxy-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+#particles-canvas{position:fixed;inset:0;z-index:1;pointer-events:none;}
 
-    /* ── HERO ── */
-    #hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
-        #starfield{position:absolute;inset:0;z-index:1;pointer-events:none;}
-    .hero-content{position:relative;z-index:2;max-width:760px;padding:2rem;display:flex;flex-direction:column;align-items:center;}
-    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
-    .hero-coords{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);letter-spacing:.14em;margin-bottom:1rem;opacity:.75;}
-    .hero-eyebrow{font-size:12px;color:var(--dust);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.75rem;}
-    .hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,7vw,5.8rem);font-weight:700;line-height:1.02;letter-spacing:-.025em;margin-bottom:.6rem;color:var(--starlight);}
-    .hero-name .accent{color:var(--pulsar);}
-    .hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(1rem,2.2vw,1.35rem);font-weight:300;color:var(--dust);margin-bottom:1.5rem;letter-spacing:.04em;text-align:center;}
-    .hero-desc{font-size:.95rem;color:var(--dust);max-width:500px;margin-bottom:2rem;line-height:1.7;text-align:center;}
-    .hero-line{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--pulsar),transparent);margin:.5rem auto 1.5rem;animation:lineGrow 1.2s ease forwards;}
-    @keyframes lineGrow{from{width:0;opacity:0}to{width:60px;opacity:1}}
-    .hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
-    .btn-primary{display:inline-flex;align-items:center;gap:6px;padding:.7rem 1.6rem;background:var(--pulsar);color:var(--void);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;border-radius:2px;transition:opacity .2s,transform .2s;}
-    .btn-primary:hover{opacity:.85;transform:translateY(-2px);}
-    .btn-secondary{display:inline-flex;align-items:center;gap:6px;padding:.7rem 1.6rem;border:1px solid var(--border);color:var(--dust);text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:13px;border-radius:2px;transition:all .2s;}
-    .btn-secondary:hover{border-color:var(--pulsar);color:var(--pulsar);}
-    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--dust);font-size:11px;letter-spacing:.1em;animation:bounce 2s infinite;}
-    .scroll-hint::after{content:'';display:block;width:1px;height:40px;background:linear-gradient(to bottom,var(--dust),transparent);}
-    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;transition:background .3s;}
+.nav-logo{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:#E8F4FD;letter-spacing:-.02em;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-size:13px;color:rgba(232,244,253,.55);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:#E8F4FD;}
+.nav-controls{display:flex;gap:8px;align-items:center;}
+.lang-btn{font-family:'JetBrains Mono',monospace;font-size:11px;padding:3px 8px;border:1px solid rgba(232,244,253,.15);color:rgba(232,244,253,.45);background:transparent;border-radius:2px;cursor:pointer;transition:all .2s;}
+.lang-btn.active,.lang-btn:hover{border-color:rgba(232,244,253,.6);color:#E8F4FD;}
+.contact-btn{font-size:12px;font-weight:500;padding:6px 16px;border:1px solid rgba(232,244,253,.25);color:#E8F4FD;background:transparent;border-radius:2px;cursor:pointer;transition:all .2s;text-decoration:none;font-family:'Space Grotesk',sans-serif;}
+.contact-btn:hover{background:rgba(232,244,253,.08);}
 
-    /* ── REVEAL ANIMATIONS ── */
-    .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease;}
-    .reveal.visible{opacity:1;transform:none;}
-    .reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s ease,transform .7s ease;}
-    .reveal-left.visible{opacity:1;transform:none;}
-    .reveal-right{opacity:0;transform:translateX(32px);transition:opacity .7s ease,transform .7s ease;}
-    .reveal-right.visible{opacity:1;transform:none;}
-    .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
-    .stagger.visible>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s;}
-    .stagger.visible>*:nth-child(2){opacity:1;transform:none;transition-delay:.15s;}
-    .stagger.visible>*:nth-child(3){opacity:1;transform:none;transition-delay:.25s;}
-    .stagger.visible>*:nth-child(4){opacity:1;transform:none;transition-delay:.35s;}
-    .stagger.visible>*:nth-child(5){opacity:1;transform:none;transition-delay:.45s;}
-    .stagger.visible>*:nth-child(6){opacity:1;transform:none;transition-delay:.55s;}
+/* ── HERO ── */
+#hero{position:relative;height:100vh;width:100%;display:flex;flex-direction:column;z-index:2;}
+.hero-gradient{position:absolute;inset:0;background:linear-gradient(to top,rgba(3,5,8,.9) 0%,rgba(3,5,8,.3) 50%,transparent 100%);pointer-events:none;}
+.hero-content{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 1.5rem 5.5rem;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.5);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:700;line-height:1.02;letter-spacing:-.025em;color:#E8F4FD;max-width:800px;margin-bottom:.8rem;}
+.hero-name .hl{position:relative;display:inline-block;}
+.hero-name .hl .underbar{position:absolute;bottom:.12em;left:0;width:100%;height:8px;background:rgba(76,201,240,.35);border-radius:2px;box-shadow:0 0 12px rgba(76,201,240,.4);}
+.hero-name .hl span{position:relative;}
+.hero-tagline{font-family:'Space Grotesk',sans-serif;font-size:clamp(.95rem,2vw,1.25rem);font-weight:300;color:rgba(232,244,253,.55);letter-spacing:.03em;margin-bottom:2.2rem;max-width:560px;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:.75rem 1.8rem;border:1px solid rgba(232,244,253,.25);color:#E8F4FD;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;border-radius:2px;transition:all .2s;background:rgba(232,244,253,.04);}
+.btn-ghost:hover{background:rgba(232,244,253,.1);border-color:rgba(232,244,253,.5);}
+.btn-solid{display:inline-flex;align-items:center;gap:6px;padding:.75rem 1.8rem;background:#E8F4FD;color:#030508;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;border-radius:2px;transition:all .2s;}
+.btn-solid:hover{background:rgba(232,244,253,.88);}
+.bounce-arrow{position:relative;z-index:3;display:flex;justify-content:center;padding-bottom:1.8rem;}
+.bounce-arrow svg{width:22px;height:22px;color:rgba(232,244,253,.35);animation:bounce 1.6s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 
-    /* ── SECTIONS ── */
-    .section-inner{padding:6rem 2rem;max-width:1100px;margin:0 auto;}
-    .full-section{padding:6rem 0;background:var(--surface);}
-    .section-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;}
-    h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;line-height:1.15;letter-spacing:-.01em;margin-bottom:1rem;color:var(--starlight);}
-    h3{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:500;color:var(--starlight);margin-bottom:.5rem;}
-    .section-intro{font-size:1rem;color:var(--dust);max-width:600px;margin-bottom:3rem;}
-    .star-divider{text-align:center;color:var(--border);font-size:20px;letter-spacing:.5rem;padding:1rem 0;user-select:none;}
+/* ── FIXED CARDS (Veldara style) ── */
+#fixed-cards{position:fixed;bottom:0;left:0;right:0;z-index:10;padding:2.5rem 2.5rem 3rem;opacity:0;pointer-events:none;transition:opacity .1s;}
+#fixed-cards .cards-grid{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.fcard{padding:1.6rem 1.8rem;}
+.fcard h3{font-family:'Space Grotesk',sans-serif;font-size:1.35rem;font-weight:600;color:#E8F4FD;margin-bottom:.75rem;letter-spacing:-.01em;}
+.fcard p{color:rgba(232,244,253,.55);font-size:.875rem;line-height:1.65;}
 
-    /* ── ABOUT ── */
-    .about-grid{display:grid;grid-template-columns:280px 1fr;gap:4rem;align-items:center;}
-    .avatar-wrap{max-width:260px;display:flex;align-items:center;justify-content:center;}
-    .avatar-placeholder{font-size:72px;opacity:.5;}
-    .avatar-label{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--dust);letter-spacing:.08em;}
-    .about-text p{color:var(--dust);margin-bottom:1rem;font-size:.95rem;}
-    .quote-block{border-left:2px solid var(--pulsar);padding:.75rem 1.25rem;margin:1.5rem 0;background:rgba(76,201,240,.04);}
-    .quote-block p{font-style:italic;color:var(--starlight)!important;font-size:1rem!important;}
-    .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem;}
-    .tag{font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;border:1px solid var(--border);color:var(--pulsar);border-radius:2px;letter-spacing:.05em;}
+/* ── SECTION 3 (Veldara big reveal) ── */
+#section-reveal{position:relative;min-height:100vh;display:flex;align-items:flex-end;justify-content:center;padding:0 2rem 8rem;z-index:2;}
+#section-reveal .inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0;transform:translateY(36px);filter:blur(10px);transition:opacity 1.1s ease,transform 1.1s ease,filter 1.1s ease;}
+#section-reveal .inner.visible{opacity:1;transform:none;filter:blur(0);}
+#section-reveal .inner .pre{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.45);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.9rem;}
+#section-reveal .inner h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,6vw,4.8rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;color:#E8F4FD;}
 
-    /* ── PROYECTOS ── */
-    .proyectos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;}
-    .proyecto-card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:1.5rem;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative;overflow:hidden;}
-    .proyecto-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--pulsar),var(--corona));opacity:0;transition:opacity .25s;}
-    .proyecto-card:hover{border-color:rgba(76,201,240,.5);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
-    .proyecto-card:hover::before{opacity:1;}
-    .proyecto-status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;border-radius:2px;margin-bottom:1rem;display:inline-block;}
-    .status-active{background:rgba(34,197,94,.1);color:#22C55E;border:1px solid rgba(34,197,94,.25);}
-    .status-pub{background:rgba(76,201,240,.1);color:var(--pulsar);border:1px solid var(--border);}
-    .status-prog{background:rgba(251,146,60,.1);color:#FB923C;border:1px solid rgba(251,146,60,.25);}
-    .proyecto-card p{font-size:.88rem;color:var(--dust);margin-bottom:1rem;line-height:1.6;}
-    .proyecto-tags{display:flex;flex-wrap:wrap;gap:5px;}
-    .ptag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;border:1px solid var(--border);color:var(--dust);border-radius:2px;}
-    .proyecto-links{display:flex;gap:14px;flex-wrap:wrap;margin-top:.75rem;}
-    .proyecto-paper-link{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
-    .proyecto-paper-link:hover{border-color:var(--pulsar);}
+/* ── CONTENT SECTIONS ── */
+#content{position:relative;z-index:2;}
+.section-wrap{padding:6rem 2rem;}
+.section-inner{max-width:1060px;margin:0 auto;}
+.full-dark{background:rgba(3,5,8,.55);}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(232,244,253,.4);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;}
+h2.sh{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;letter-spacing:-.015em;margin-bottom:1rem;color:#E8F4FD;}
+.section-intro{font-size:.95rem;color:rgba(232,244,253,.5);max-width:580px;margin-bottom:3rem;line-height:1.7;}
+.star-div{text-align:center;color:rgba(232,244,253,.08);font-size:16px;letter-spacing:.5rem;padding:.5rem 0;user-select:none;}
 
-    /* ── RECURSOS ── */
-    .recursos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
-    .recurso-card{background:var(--card-bg);border:1px solid var(--border);border-radius:4px;padding:1.5rem;transition:border-color .25s,transform .25s,box-shadow .25s;}
-    .recurso-card:hover{border-color:rgba(76,201,240,.4);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.35);}
-    .recurso-icon{font-size:1.8rem;margin-bottom:1rem;display:block;}
-    .recurso-card p{font-size:.88rem;color:var(--dust);margin-bottom:1rem;}
-    .recurso-link{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--pulsar);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s;}
-    .recurso-link:hover{border-color:var(--pulsar);}
+/* ── ABOUT ── */
+.about-grid{display:grid;grid-template-columns:260px 1fr;gap:4rem;align-items:center;}
+.about-text p{color:rgba(232,244,253,.6);margin-bottom:1rem;font-size:.94rem;line-height:1.75;}
+.about-text strong{color:#E8F4FD;}
+.quote-block{border-left:1px solid rgba(232,244,253,.2);padding:.75rem 1.25rem;margin:1.5rem 0;}
+.quote-block p{font-style:italic;color:rgba(232,244,253,.75)!important;font-size:.96rem!important;}
+.tag-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:1.5rem;}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid rgba(232,244,253,.12);color:rgba(232,244,253,.5);border-radius:2px;letter-spacing:.04em;}
 
-    /* ── METODOLOGÍAS ── */
-    .metod-item{border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:12px;transition:border-color .2s;}
-    .metod-item:hover{border-color:rgba(76,201,240,.3);}
-    .metod-header{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;cursor:pointer;background:var(--card-bg);transition:background .2s;list-style:none;}
-    .metod-header:hover{background:var(--accretion);}
-    .metod-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--corona);min-width:24px;}
-    .metod-title{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:500;flex:1;color:var(--starlight);}
-    .metod-badge{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);color:var(--dust);border-radius:2px;}
-    .metod-chevron{color:var(--dust);font-size:18px;transition:transform .3s;}
-    details[open] .metod-chevron{transform:rotate(180deg);}
-    .metod-body{padding:1.5rem;background:rgba(13,27,62,.5);border-top:1px solid var(--border);}
-    .metod-body p{font-size:.93rem;color:var(--dust);margin-bottom:1rem;}
-    .metod-steps{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem;}
-    .metod-steps li{font-size:.9rem;color:var(--dust);padding-left:1.25rem;position:relative;}
-    .metod-steps li::before{content:'→';position:absolute;left:0;color:var(--pulsar);}
-    .tic-used{display:flex;flex-wrap:wrap;gap:6px;margin-top:.5rem;}
-    .tic-chip{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 8px;background:rgba(76,201,240,.08);border:1px solid var(--border);color:var(--pulsar);border-radius:2px;}
+/* ── CARDS ── */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:rgba(232,244,253,.06);}
+.card{background:#030508;padding:1.8rem;transition:background .2s;}
+.card:hover{background:rgba(232,244,253,.03);}
+.card h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:500;color:#E8F4FD;margin-bottom:.5rem;}
+.card p{font-size:.87rem;color:rgba(232,244,253,.5);line-height:1.65;margin-bottom:1rem;}
+.status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;margin-bottom:.9rem;display:inline-block;}
+.sa{background:rgba(34,197,94,.08);color:#4ade80;border:1px solid rgba(34,197,94,.2);}
+.sp{background:rgba(232,244,253,.06);color:rgba(232,244,253,.6);border:1px solid rgba(232,244,253,.12);}
+.sg{background:rgba(251,146,60,.08);color:#fb923c;border:1px solid rgba(251,146,60,.2);}
+.ctags{display:flex;flex-wrap:wrap;gap:5px;}
+.ct{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid rgba(232,244,253,.08);color:rgba(232,244,253,.35);border-radius:2px;}
+.clink{display:inline-block;margin-top:.75rem;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.5);text-decoration:none;transition:color .2s;}
+.clink:hover{color:#E8F4FD;}
+.clinks{display:flex;gap:12px;flex-wrap:wrap;}
 
-    /* ── TIC TABLE ── */
-    .tic-table-wrap{overflow-x:auto;}
-    table{width:100%;border-collapse:collapse;font-size:.88rem;}
-    thead th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--pulsar);text-align:left;padding:.75rem 1rem;border-bottom:1px solid var(--border);}
-    tbody tr{border-bottom:1px solid rgba(76,201,240,.06);transition:background .15s;}
-    tbody tr:hover{background:rgba(76,201,240,.04);}
-    tbody td{padding:.9rem 1rem;color:var(--dust);vertical-align:top;}
-    tbody td:first-child{color:var(--starlight);font-weight:500;font-family:'Space Grotesk',sans-serif;}
-    .cat-pill{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;white-space:nowrap;}
-    .cat-sim{background:rgba(76,201,240,.12);color:#4CC9F0;border:1px solid rgba(76,201,240,.25);}
-    .cat-video{background:rgba(247,37,133,.10);color:#F72585;border:1px solid rgba(247,37,133,.25);}
-    .cat-eval{background:rgba(168,85,247,.10);color:#A855F7;border:1px solid rgba(168,85,247,.25);}
-    .cat-ia{background:rgba(34,197,94,.10);color:#22C55E;border:1px solid rgba(34,197,94,.25);}
-    .cat-lms{background:rgba(251,146,60,.10);color:#FB923C;border:1px solid rgba(251,146,60,.25);}
+/* ── METOD ── */
+.metod{border-bottom:1px solid rgba(232,244,253,.06);transition:all .2s;}
+.metod:first-child{border-top:1px solid rgba(232,244,253,.06);}
+.metod summary{display:flex;align-items:center;gap:1rem;padding:1.3rem .5rem;cursor:pointer;list-style:none;}
+.metod summary:hover .mt{color:#E8F4FD;}
+.mn{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.25);min-width:24px;}
+.mt{font-family:'Space Grotesk',sans-serif;font-size:.98rem;font-weight:500;flex:1;color:rgba(232,244,253,.8);transition:color .2s;}
+.mb2{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border:1px solid rgba(232,244,253,.1);color:rgba(232,244,253,.35);border-radius:2px;}
+.mc{color:rgba(232,244,253,.3);font-size:14px;transition:transform .3s;}
+details[open] .mc{transform:rotate(180deg);}
+.mbody{padding:1.2rem .5rem 1.8rem 2.5rem;}
+.mbody p{font-size:.88rem;color:rgba(232,244,253,.5);margin-bottom:.8rem;line-height:1.7;}
+.msteps{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:1rem;}
+.msteps li{font-size:.87rem;color:rgba(232,244,253,.45);padding-left:1.2rem;position:relative;}
+.msteps li::before{content:'→';position:absolute;left:0;color:rgba(232,244,253,.25);}
+.chips{display:flex;flex-wrap:wrap;gap:5px;}
+.chip{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;border:1px solid rgba(232,244,253,.1);color:rgba(232,244,253,.4);border-radius:2px;}
 
-    /* ── FOOTER ── */
-    footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;}
-    .footer-logo{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--pulsar);margin-bottom:.5rem;}
-    .footer-sub{font-size:12px;color:var(--dust);}
+/* ── TIC ── */
+.tic-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:.875rem;}
+thead th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,244,253,.35);text-align:left;padding:.75rem 1rem;border-bottom:1px solid rgba(232,244,253,.07);}
+tbody tr{border-bottom:1px solid rgba(232,244,253,.04);transition:background .15s;}
+tbody tr:hover{background:rgba(232,244,253,.02);}
+tbody td{padding:.85rem 1rem;color:rgba(232,244,253,.5);vertical-align:top;}
+tbody td:first-child{color:#E8F4FD;font-weight:500;font-family:'Space Grotesk',sans-serif;}
+.cp{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;white-space:nowrap;}
+.cs{background:rgba(76,201,240,.08);color:#4CC9F0;border:1px solid rgba(76,201,240,.2);}
+.cv{background:rgba(247,37,133,.07);color:#F72585;border:1px solid rgba(247,37,133,.2);}
+.ce{background:rgba(168,85,247,.07);color:#A855F7;border:1px solid rgba(168,85,247,.2);}
+.ci{background:rgba(34,197,94,.07);color:#22C55E;border:1px solid rgba(34,197,94,.2);}
+.cl{background:rgba(251,146,60,.07);color:#FB923C;border:1px solid rgba(251,146,60,.2);}
 
-    @media(max-width:700px){
-      .about-grid{grid-template-columns:1fr;gap:2rem;}
-      .nav-links{display:none;}
-      .hero-content{padding:2rem 1.5rem;}
-    }
-  </style>
+/* ── SIMULATION EMBEDS ── */
+.sim-toggle{display:inline-flex;align-items:center;gap:5px;margin-top:.7rem;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.45);background:transparent;border:1px solid rgba(232,244,253,.1);padding:4px 10px;border-radius:2px;cursor:pointer;transition:all .2s;}
+.sim-toggle:hover{border-color:rgba(232,244,253,.35);color:rgba(232,244,253,.8);}
+.sim-frame-wrap{display:none;margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(232,244,253,.08);}
+.sim-frame-wrap.open{display:block;}
+.sim-frame-wrap iframe{width:100%;height:380px;border:none;display:block;background:#000;}
+
+
+/* ── PRELOADER ── */
+#preloader{position:fixed;inset:0;z-index:9999;background:#010109;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease;}
+#preloader.done{opacity:0;visibility:hidden;}
+.pre-orbit{width:80px;height:80px;position:relative;margin-bottom:1.5rem;}
+.pre-orbit .core{position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px;background:#E8F4FD;border-radius:50%;box-shadow:0 0 16px #4CC9F0;}
+.pre-orbit .ring{position:absolute;inset:0;border:1px solid rgba(76,201,240,.25);border-radius:50%;border-top-color:#4CC9F0;animation:preSpin 1s linear infinite;}
+.pre-orbit .ring:nth-child(2){inset:14px;border-top-color:#F72585;animation-duration:1.4s;animation-direction:reverse;}
+@keyframes preSpin{to{transform:rotate(360deg);}}
+.pre-text{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.5);letter-spacing:.25em;text-transform:uppercase;}
+.pre-pct{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#4CC9F0;margin-top:.5rem;}
+
+/* ── SCROLL PROGRESS ── */
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#4CC9F0,#F72585);z-index:200;transition:width .1s ease;box-shadow:0 0 8px rgba(76,201,240,.6);}
+
+/* ── NAV SCROLLED ── */
+nav.scrolled{background:rgba(3,5,8,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(76,201,240,.12);}
+
+/* ── BACK TO TOP ── */
+#back-to-top{position:fixed;bottom:1.8rem;right:1.8rem;z-index:90;width:44px;height:44px;border-radius:50%;background:rgba(13,27,62,.85);border:1px solid rgba(76,201,240,.25);color:#4CC9F0;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transform:translateY(10px);transition:all .3s ease;backdrop-filter:blur(8px);}
+#back-to-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+#back-to-top:hover{background:#4CC9F0;color:#030508;transform:translateY(-3px);}
+
+/* ── STAT COUNTERS ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin:3rem 0 0;padding-top:2.5rem;border-top:1px solid rgba(232,244,253,.07);}
+.stat{text-align:center;}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#E8F4FD;line-height:1;letter-spacing:-.02em;}
+.stat-num .suffix{color:#4CC9F0;}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(232,244,253,.45);letter-spacing:.1em;text-transform:uppercase;margin-top:.6rem;}
+@media(max-width:700px){.stats-row{grid-template-columns:repeat(2,1fr);gap:1.5rem 1rem;}}
+
+/* ── CARD GLOW HOVER ── */
+.card{position:relative;}
+.card-glow{position:fixed;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(76,201,240,.06),transparent 70%);pointer-events:none;z-index:1;opacity:0;transition:opacity .3s;}
+
+/* ── SECTION NUMBER ANIMATION ── */
+.section-label{position:relative;display:inline-block;}
+
+/* ── HERO HIGHLIGHT SHIMMER (only the key phrase) ── */
+.hero-name .hl span:last-child{background:linear-gradient(110deg,#4CC9F0 20%,#a8e8ff 50%,#4CC9F0 80%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 5s linear infinite;}
+@keyframes shimmer{to{background-position:200% center;}}
+
+/* ── REDUCED MOTION ── */
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);padding:2.5rem 2rem;text-align:center;}
+.footer-name{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;color:rgba(232,244,253,.7);margin-bottom:.4rem;}
+.footer-sub{font-size:12px;color:rgba(232,244,253,.3);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-l.visible{opacity:1;transform:none;}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal-r.visible{opacity:1;transform:none;}
+.stagger>*{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.stagger.visible>*:nth-child(1){opacity:1;transform:none;transition-delay:.04s;}
+.stagger.visible>*:nth-child(2){opacity:1;transform:none;transition-delay:.12s;}
+.stagger.visible>*:nth-child(3){opacity:1;transform:none;transition-delay:.2s;}
+.stagger.visible>*:nth-child(4){opacity:1;transform:none;transition-delay:.28s;}
+.stagger.visible>*:nth-child(5){opacity:1;transform:none;transition-delay:.36s;}
+
+@media(max-width:700px){
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .nav-links{display:none;}
+  nav{padding:1rem 1.5rem;}
+  #fixed-cards .cards-grid{grid-template-columns:1fr;gap:1px;}
+}
+#trabajos .cards-grid{grid-template-columns:repeat(2,1fr);} #trabajos .card{min-height:120px;}
+@media(max-width:700px){#trabajos .cards-grid{grid-template-columns:1fr;}[style*="grid-column:span 2"]{grid-column:span 1!important;}}
+</style>
 </head>
 <body>
 
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pre-orbit">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="core"></div>
+  </div>
+  <div class="pre-text">Iniciando</div>
+  <div class="pre-pct" id="pre-pct">0%</div>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- CARD GLOW (follows cursor over cards) -->
+<div class="card-glow" id="card-glow"></div>
+
+
+<canvas id="galaxy-canvas"></canvas>
+<canvas id="particles-canvas"></canvas>
+
+<!-- FIXED CARDS (Veldara scroll reveal) -->
+<div id="fixed-cards">
+  <div class="cards-grid">
+    <div class="fcard">
+      <h3 data-i18n="fc1h">Diseña experiencias de aprendizaje</h3>
+      <p data-i18n="fc1p">Creo sesiones donde los estudiantes formulan hipótesis, diseñan experimentos y evalúan resultados — operando siempre en los niveles superiores del pensamiento crítico.</p>
+    </div>
+    <div class="fcard">
+      <h3 data-i18n="fc2h">Investiga el cosmos</h3>
+      <p data-i18n="fc2p">Desde AGN con datos de Chandra y SDSS hasta calendarios astronómicos registrados ante la IAU — la misma metodología científica que aplico en investigación, la transfiero al aula.</p>
+    </div>
+    <div class="fcard">
+      <h3 data-i18n="fc3h">Construye el futuro científico</h3>
+      <p data-i18n="fc3p">Como miembro del comité de las Olimpiadas Peruanas de Astronomía y Astronáutica, contribuyo a evaluar y formar a la próxima generación de científicos del espacio en el Perú.</p>
+    </div>
+  </div>
+</div>
+
 <!-- NAV -->
-<nav>
+<nav id="main-nav">
   <span class="nav-logo">Jiro Fabián</span>
   <ul class="nav-links">
     <li><a href="#sobre-mi" data-i18n="nav_about">Sobre mí</a></li>
@@ -170,6 +260,7 @@
     <li><a href="#recursos" data-i18n="nav_resources">Recursos</a></li>
     <li><a href="#metodologias" data-i18n="nav_methods">Metodologías</a></li>
     <li><a href="#tic">TIC</a></li>
+    <li><a href="#trabajos" data-i18n="nav_works">Trabajos</a></li>
   </ul>
   <div class="nav-controls">
     <button class="lang-btn active" onclick="setLang('es')">ES</button>
@@ -179,274 +270,358 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<div id="content">
+
+<!-- ══ HERO ══ -->
 <section id="hero">
-  
-  <canvas id="starfield"></canvas>
+  <div class="hero-gradient"></div>
   <div class="hero-content">
-      <p class="hero-coords">12° 03′ S &nbsp;·&nbsp; 77° 02′ W &nbsp;·&nbsp; 154 m.s.n.m.</p>
-    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Física · UNMSM · Lima, Perú</p>
-    <h1 class="hero-name">Jiro Martín Fabián Vásquez</h1>
-    <div class="hero-line"></div>
-    <p class="hero-title" data-i18n="hero_title">Docente de Física · Astrofísico en formación</p>
-    <p class="hero-desc" data-i18n="hero_desc">Investigador en astrofísica de objetos compactos, miembro de SPACE UNMSM e IEEE NPSS. Apasionado por hacer la física accesible y emocionante.</p>
-    <div class="hero-btns">
-      <a href="#proyectos" class="btn-primary" data-i18n="hero_btn1">Ver proyectos →</a>
-      <a href="#sobre-mi" class="btn-secondary" data-i18n="hero_btn2">Sobre mí</a>
+    <p class="hero-eyebrow">12° 03′ S · 77° 02′ W · 154 m.s.n.m.</p>
+    <h1 class="hero-name">
+      <span data-i18n="hero_pre">Investigador que</span><br/>
+      <span class="hl"><span class="underbar"></span><span data-i18n="hero_hl">evalúa, crea y transforma</span></span><br/>
+      <span data-i18n="hero_post">desde la astrofísica</span>
+    </h1>
+    <p class="hero-tagline" data-i18n="hero_tagline">Jiro Martín Fabián Vásquez · Física UNMSM · SPACE UNMSM · IEEE NPSS</p>
+    <div class="hero-ctas">
+      <a href="#proyectos" class="btn-solid" data-i18n="hero_btn1">Ver proyectos →</a>
+      <a href="#sobre-mi" class="btn-ghost" data-i18n="hero_btn2">Sobre mí</a>
     </div>
   </div>
-  <div class="scroll-hint">scroll</div>
+  <div class="bounce-arrow">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+  </div>
 </section>
 
-<!-- SOBRE MÍ -->
-<div id="sobre-mi" class="section-inner">
-  <div class="reveal"><p class="section-label">// 01 · <span data-i18n="nav_about">Presentación</span></p></div>
-  <div class="reveal"><h2 data-i18n="about_h2">El docente</h2></div>
-  <div class="about-grid">
-    <div class="reveal-left">
-      <div class="avatar-wrap" id="bhWrap">
-        <svg id="bhSvg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="display:block;overflow:visible;">
+<!-- Spacer for cards trigger -->
+<div style="height:140vh;"></div>
+<div id="cards-trigger" style="height:180vh;"></div>
+<div style="height:80vh;"></div>
+
+<!-- Big reveal section -->
+<section id="section-reveal">
+  <div class="inner" id="reveal-inner">
+    <p class="pre" data-i18n="reveal_pre">Física · UNMSM · 2026</p>
+    <h2 data-i18n="reveal_h2">Jiro Martín<br/>Fabián Vásquez</h2>
+  </div>
+</section>
+
+<!-- ══ SOBRE MÍ ══ -->
+<div id="sobre-mi" class="section-wrap">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">01 · <span data-i18n="nav_about">Presentación</span></p></div>
+    <div class="reveal"><h2 class="sh" data-i18n="about_h2">Perfil académico</h2></div>
+    <div class="about-grid">
+      <div class="reveal-l">
+        <div id="bhWrap">
+          <svg id="bhSvg" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg" width="280" height="320" style="display:block;overflow:visible;">
           <defs>
-            <radialGradient id="bgG" cx="50%" cy="55%" r="60%">
-              <stop offset="0%"   stop-color="#1a0e00"/>
-              <stop offset="55%"  stop-color="#0a0500"/>
-              <stop offset="100%" stop-color="#020100"/>
+            <radialGradient id="spaceB" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#0a0818"/><stop offset="100%" stop-color="#020106"/>
             </radialGradient>
-            <radialGradient id="sunCore" cx="40%" cy="36%" r="65%">
-              <stop offset="0%"   stop-color="#fffceb"/>
-              <stop offset="40%"  stop-color="#ffe680"/>
-              <stop offset="70%"  stop-color="#ffc150"/>
-              <stop offset="100%" stop-color="#ffa320"/>
+            <radialGradient id="helmetG" cx="40%" cy="35%" r="62%">
+              <stop offset="0%" stop-color="#e8f4fd" stop-opacity="0.95"/>
+              <stop offset="55%" stop-color="#b0cce8" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#6090c0" stop-opacity="0.7"/>
             </radialGradient>
-            <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"   stop-color="#ffcc4488"/>
-              <stop offset="60%"  stop-color="#ff882022"/>
-              <stop offset="100%" stop-color="transparent"/>
+            <radialGradient id="helmetGlass" cx="38%" cy="32%" r="60%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+              <stop offset="40%" stop-color="#cce4ff" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#4488bb" stop-opacity="0.1"/>
             </radialGradient>
-            <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
-            <filter id="blur12"><feGaussianBlur stdDeviation="12"/></filter>
+            <radialGradient id="visorG" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="#ffcc44" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#ff8800" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#cc4400" stop-opacity="0.6"/>
+            </radialGradient>
+            <filter id="softglow" x="-25%" y="-25%" width="150%" height="150%">
+              <feGaussianBlur stdDeviation="4" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
+            <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
           </defs>
 
-          <rect width="300" height="300" fill="url(#bgG)" rx="10"/>
+          <!-- Background -->
+          <rect width="280" height="320" fill="url(#spaceB)" rx="10"/>
 
           <!-- Stars -->
           <g fill="white">
-            <circle cx="20"  cy="25"  r="1.3" opacity="0.85"/><circle cx="50"  cy="14"  r="0.9" opacity="0.7"/>
-            <circle cx="260" cy="20"  r="1.2" opacity="0.8"/><circle cx="282" cy="40"  r="1"   opacity="0.75"/>
-            <circle cx="18"  cy="260" r="1.1" opacity="0.8"/><circle cx="36"  cy="280" r="0.9" opacity="0.7"/>
-            <circle cx="270" cy="265" r="1.2" opacity="0.8"/><circle cx="150" cy="14"  r="0.8" opacity="0.65"/>
-            <circle cx="14"  cy="150" r="0.9" opacity="0.6"/><circle cx="286" cy="150" r="1"   opacity="0.65"/>
-            <circle cx="60"  cy="282" r="1"   opacity="0.75"/><circle cx="230" cy="285" r="0.9" opacity="0.7"/>
+            <circle cx="18" cy="22" r="1.1" opacity="0.8"/><circle cx="48" cy="12" r="0.7" opacity="0.6"/>
+            <circle cx="240" cy="18" r="1" opacity="0.75"/><circle cx="262" cy="35" r="0.8" opacity="0.7"/>
+            <circle cx="14" cy="280" r="0.9" opacity="0.7"/><circle cx="260" cy="270" r="1.1" opacity="0.75"/>
+            <circle cx="12" cy="160" r="0.7" opacity="0.5"/><circle cx="268" cy="150" r="0.8" opacity="0.55"/>
+            <circle cx="140" cy="12" r="0.6" opacity="0.65"/><circle cx="50" cy="295" r="0.9" opacity="0.6"/>
+            <circle cx="230" cy="300" r="0.8" opacity="0.65"/>
+          </g>
+          <!-- A few colored stars -->
+          <circle cx="42" cy="45" r="1.5" fill="#ffddaa" opacity="0.8" filter="url(#blur3)"/>
+          <circle cx="42" cy="45" r="0.7" fill="#ffeecc" opacity="0.95"/>
+          <circle cx="245" cy="55" r="1.4" fill="#aaccff" opacity="0.75" filter="url(#blur3)"/>
+          <circle cx="245" cy="55" r="0.6" fill="#ccdeff"/>
+          <circle cx="22" cy="200" r="1.2" fill="#ffccaa" opacity="0.7" filter="url(#blur3)"/>
+
+          <!-- Distant tiny planet hint (top right) -->
+          <circle cx="235" cy="60" r="18" fill="#1a3060" opacity="0.6"/>
+          <circle cx="235" cy="60" r="18" fill="none" stroke="#2a5090" stroke-width="1" opacity="0.4"/>
+          <ellipse cx="235" cy="60" rx="28" ry="7" fill="none" stroke="#3a6090" stroke-width="1.5" opacity="0.35"/>
+
+          <!-- Tethered rope floating up from astronaut -->
+          <path d="M 140 148 C 155 130 130 115 148 95 C 162 78 138 62 152 45" fill="none" stroke="#aabbcc" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.45"/>
+
+          <!-- ── ASTRONAUT BODY ── -->
+          <!-- Main suit body — puffy, rounded -->
+          <g id="astronaut">
+            <!-- Gentle float animation -->
+            <animateTransform attributeName="transform" type="translate" values="0,0;0,-6;0,0" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
+
+            <!-- Left arm -->
+            <ellipse cx="100" cy="195" rx="14" ry="22" fill="#dce8f0" transform="rotate(-20 100 195)"/>
+            <ellipse cx="93" cy="215" rx="10" ry="8" fill="#c8d8e8"/>
+            <!-- Left glove -->
+            <ellipse cx="90" cy="222" rx="9" ry="7" fill="#e8f0f8"/>
+
+            <!-- Right arm -->
+            <ellipse cx="180" cy="195" rx="14" ry="22" fill="#dce8f0" transform="rotate(15 180 195)"/>
+            <ellipse cx="186" cy="216" rx="10" ry="8" fill="#c8d8e8"/>
+            <!-- Right glove — holding something? -->
+            <ellipse cx="189" cy="223" rx="9" ry="7" fill="#e8f0f8"/>
+
+            <!-- Suit body -->
+            <rect x="106" y="170" width="68" height="72" rx="22" fill="#dce8f0"/>
+            <!-- Suit chest detail / mission patch area -->
+            <rect x="118" y="182" width="44" height="28" rx="6" fill="#c0d4e8" opacity="0.8"/>
+            <!-- Small emblem -->
+            <circle cx="140" cy="196" r="8" fill="#1a3060" opacity="0.7"/>
+            <text x="140" y="199.5" text-anchor="middle" font-size="7" fill="#4CC9F0" font-family="monospace" font-weight="bold">★</text>
+
+            <!-- Suit collar / neck ring -->
+            <ellipse cx="140" cy="170" rx="28" ry="10" fill="#b0c8de"/>
+            <ellipse cx="140" cy="170" rx="28" ry="10" fill="none" stroke="#90b0cc" stroke-width="1.5"/>
+
+            <!-- Helmet -->
+            <circle cx="140" cy="140" r="46" fill="url(#helmetG)" filter="url(#softglow)"/>
+            <!-- Helmet outer ring -->
+            <circle cx="140" cy="140" r="46" fill="none" stroke="#90b8d8" stroke-width="2.5" opacity="0.7"/>
+            <!-- Helmet highlight -->
+            <circle cx="140" cy="140" r="46" fill="url(#helmetGlass)"/>
+
+            <!-- Visor (golden, reflective) -->
+            <ellipse cx="140" cy="142" rx="30" ry="25" fill="url(#visorG)"/>
+            <!-- Visor reflection shine -->
+            <ellipse cx="128" cy="133" rx="8" ry="5" fill="white" opacity="0.35" transform="rotate(-20 128 133)"/>
+            <!-- Visor rim -->
+            <ellipse cx="140" cy="142" rx="30" ry="25" fill="none" stroke="#cc7700" stroke-width="1.5" opacity="0.6"/>
+
+            <!-- Inside visor: cute tiny face visible through gold tint -->
+            <g opacity="0.65">
+              <!-- Eyes (small, dark, friendly) -->
+              <circle id="pupilL" cx="131" cy="140" r="4" fill="#2a1500"/>
+              <circle id="pupilR" cx="149" cy="140" r="4" fill="#2a1500"/>
+              <!-- Eye shines -->
+              <circle cx="129.5" cy="138.5" r="1.3" fill="white" opacity="0.9"/>
+              <circle cx="147.5" cy="138.5" r="1.3" fill="white" opacity="0.9"/>
+              <!-- Tiny smile -->
+              <path d="M 133 148 Q 140 154 147 148" fill="none" stroke="#3a1800" stroke-width="1.8" stroke-linecap="round"/>
+            </g>
+
+            <!-- Helmet side details -->
+            <circle cx="100" cy="140" r="6" fill="#90b0cc" opacity="0.7"/>
+            <circle cx="180" cy="140" r="6" fill="#90b0cc" opacity="0.7"/>
+
+            <!-- Backpack / PLSS -->
+            <rect x="113" y="172" width="54" height="38" rx="8" fill="#c0d0e0" opacity="0.6"/>
+
+            <!-- Legs -->
+            <rect x="112" y="238" width="24" height="38" rx="10" fill="#dce8f0"/>
+            <rect x="144" y="238" width="24" height="38" rx="10" fill="#dce8f0"/>
+            <!-- Boots -->
+            <ellipse cx="124" cy="277" rx="14" ry="9" fill="#b0c4d8"/>
+            <ellipse cx="156" cy="277" rx="14" ry="9" fill="#b0c4d8"/>
           </g>
 
-          <!-- Outer glow halo -->
-          <circle cx="150" cy="150" r="135" fill="url(#sunGlow)" filter="url(#blur12)"/>
-          <circle cx="150" cy="150" r="100" fill="#ffaa3322" filter="url(#blur6)"/>
-
-          <!-- Sun rays (simple, friendly) -->
-          <g id="sunRays" stroke="#ffcc55" stroke-linecap="round" opacity="0.7">
-            <line x1="150" y1="28"  x2="150" y2="14"  stroke-width="5"/>
-            <line x1="150" y1="272" x2="150" y2="286" stroke-width="5"/>
-            <line x1="28"  y1="150" x2="14"  y2="150" stroke-width="5"/>
-            <line x1="272" y1="150" x2="286" y2="150" stroke-width="5"/>
-            <line x1="65"  y1="65"  x2="54"  y2="54"  stroke-width="4.5"/>
-            <line x1="235" y1="65"  x2="246" y2="54"  stroke-width="4.5"/>
-            <line x1="65"  y1="235" x2="54"  y2="246" stroke-width="4.5"/>
-            <line x1="235" y1="235" x2="246" y2="246" stroke-width="4.5"/>
-          </g>
-
-          <!-- Sun body -->
-          <circle cx="150" cy="150" r="90" fill="url(#sunCore)"/>
-          <!-- Soft surface highlight only (top-left, no dark spots near face) -->
-          <circle cx="115" cy="110" r="22" fill="#fff5d0" opacity="0.4" filter="url(#blur12)"/>
-
-          <!-- ══ CUTE SIMPLE FACE (kawaii style: small dot eyes, no eyebrows) ══ -->
-          <!-- Eyes: small simple round dots, friendly not staring -->
-          <g id="eyeLeft">
-            <circle id="pupilL" cx="128" cy="148" r="6" fill="#7a3a00"/>
-          </g>
-          <g id="eyeRight">
-            <circle id="pupilR" cx="172" cy="148" r="6" fill="#7a3a00"/>
-          </g>
-
-          <!-- Blush cheeks: soft, low opacity -->
-          <ellipse cx="112" cy="168" rx="11" ry="6" fill="#ff7733" opacity="0.35" filter="url(#blur6)"/>
-          <ellipse cx="188" cy="168" rx="11" ry="6" fill="#ff7733" opacity="0.35" filter="url(#blur6)"/>
-
-          <!-- Simple curved smile line, no teeth/open mouth -->
-          <path d="M 130 170 Q 150 184 170 170" fill="none" stroke="#7a3a00" stroke-width="5" stroke-linecap="round"/>
+          <!-- Label -->
+          <text x="140" y="312" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(232,244,253,0.4)" letter-spacing="2">UNMSM · SPACE</text>
         </svg>
       </div>
+      </div>
+      <div class="about-text reveal-r">
+        <p data-i18n="about_p1">Soy estudiante de 8.° semestre de Física en la <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.</p>
+        <p data-i18n="about_p2">Miembro activo de <strong>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.</p>
+        <p data-i18n="about_p3">Formo parte del comité del <strong>Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.</p>
+        <div class="quote-block"><p data-i18n="about_quote">"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre crear sus propias explicaciones del universo."</p></div>
+        <div class="tag-list"><span class="tag">Astrofísica</span><span class="tag">AGN</span><span class="tag">SPACE UNMSM</span><span class="tag">IEEE NPSS</span><span class="tag">OPEAA</span><span class="tag">Lima, Perú</span></div>
+      </div>
     </div>
-    <div class="about-text reveal-right">
-      <p data-i18n="about_p1">Soy estudiante de 8.° semestre de Física en la <strong style="color:var(--starlight)">Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías: agujeros negros, estrellas de neutrones y fenómenos de acreción.</p>
-      <p data-i18n="about_p2">Soy miembro activo de <strong style="color:var(--pulsar)">SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style="color:var(--pulsar)">IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.</p>
-        <p data-i18n="about_p3">Formo parte del comité del <strong style="color:var(--pulsar)">Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.</p>
-      <div class="quote-block">
-        <p data-i18n="about_quote">"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre ver el universo con otros ojos."</p>
-      </div>
-      <div class="tag-list">
-        <span class="tag">Astrofísica</span><span class="tag">AGN</span><span class="tag">SPACE UNMSM</span>
-        <span class="tag">IEEE NPSS</span><span class="tag">Divulgación</span><span class="tag">Lima, Perú</span>
-      </div>
+    <div class="stats-row reveal">
+      <div class="stat"><div class="stat-num" data-target="2530"><span class="val">0</span></div><div class="stat-label" data-i18n="stat1">AGN analizados</div></div>
+      <div class="stat"><div class="stat-num" data-target="6"><span class="val">0</span></div><div class="stat-label" data-i18n="stat2">Proyectos activos</div></div>
+      <div class="stat"><div class="stat-num" data-target="3"><span class="val">0</span></div><div class="stat-label" data-i18n="stat3">Idiomas</div></div>
+      <div class="stat"><div class="stat-num" data-target="8"><span class="val">0</span><span class="suffix">°</span></div><div class="stat-label" data-i18n="stat4">Semestre</div></div>
     </div>
   </div>
 </div>
 
-<div class="star-divider">· · · ✦ · · ·</div>
+<div class="star-div">· · · ✦ · · ·</div>
 
-<!-- PROYECTOS -->
-<div id="proyectos" class="full-section">
-  <div class="section-inner" style="padding-top:0;padding-bottom:0;">
-    <div class="reveal"><p class="section-label">// 02 · <span data-i18n="nav_projects">Investigación</span></p></div>
-    <div class="reveal"><h2 data-i18n="proj_h2">Proyectos de investigación</h2></div>
-    <div class="reveal"><p class="section-intro" data-i18n="proj_intro">Investigación en astrofísica observacional, astronomía computacional y divulgación científica.</p></div>
-    <div class="proyectos-grid stagger">
-      <div class="proyecto-card">
-        <span class="proyecto-status status-active" data-i18n="s_active">● En curso</span>
-        <h3 data-i18n="p1t">Acoplamiento disco-corona en AGN</h3>
-        <p data-i18n="p1d">Análisis de 2,530 AGN Tipo 1 del catálogo SDSS DR16 × Chandra CSC 2.1. Correlaciones entre emisión en rayos X y UV/óptico para caracterizar la geometría del disco de acreción y corona. Presentado en DIA Peru — Cajamarca 2026.</p>
-        <div class="proyecto-tags"><span class="ptag">SDSS DR16</span><span class="ptag">Chandra CSC 2.1</span><span class="ptag">Rayos X</span><span class="ptag">Python</span></div>
+<!-- ══ PROYECTOS ══ -->
+<div id="proyectos" class="section-wrap full-dark">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">02 · <span data-i18n="nav_projects">Investigación</span></p></div>
+    <div class="reveal"><h2 class="sh" data-i18n="proj_h2">Proyectos de investigación</h2></div>
+    <div class="reveal"><p class="section-intro" data-i18n="proj_intro">Diseño y ejecuto investigación en astrofísica observacional, astronomía computacional y divulgación científica.</p></div>
+    <div class="cards-grid stagger">
+      <div class="card"><span class="status sa" data-i18n="sa">● En curso</span><h3 data-i18n="p1t">Acoplamiento disco-corona en AGN</h3><p data-i18n="p1d">Análisis de 2,530 AGN Tipo 1 cruzando SDSS DR16 × Chandra CSC 2.1. Estudio de la relación UV óptica — rayos X en el contexto del acoplamiento disco-corona. Presentado en DIA Peru — Cajamarca 2026.</p><div class="ctags"><span class="ct">SDSS DR16</span><span class="ct">Chandra CSC 2.1</span><span class="ct">Rayos X</span><span class="ct">Python</span></div></div>
+      <div class="card"><span class="status sp" data-i18n="sp">✓ Publicado</span><h3 data-i18n="p3t">Calendario Astronómico 2026</h3><p data-i18n="p3d">Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.</p><div class="ctags"><span class="ct">SPACE UNMSM</span><span class="ct">IAU</span><span class="ct">Divulgación</span></div><div class="clinks"><a class="clink" href="https://revistasinvestigacion.unmsm.edu.pe/index.php/fisica/article/view/31971" target="_blank" data-i18n="link_paper">↗ Ver publicación</a><a class="clink" href="https://iauoutreach.org/astronomy-outreach/map" target="_blank" data-i18n="link_iau">↗ Ver registro IAU</a></div></div>
+      <div class="card"><span class="status sg" data-i18n="sg">◌ En preparación</span><h3 data-i18n="p4t">Vuelo aviar en exoplanetas</h3><p data-i18n="p4d">Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.</p><div class="ctags"><span class="ct">Exoplanetas</span><span class="ct">Biofísica</span><span class="ct">Manuscript</span></div></div>
+      <div class="card"><span class="status sg" data-i18n="sg">◌ En preparación</span><h3 data-i18n="p5t">Arqueoastronomía andina</h3><p data-i18n="p5d">Investigación sobre prácticas astronómicas en la civilización andina y su relación con el entorno celeste. Proyecto interdisciplinario en curso.</p><div class="ctags"><span class="ct">Arqueoastronomía</span><span class="ct">Andes</span><span class="ct">Manuscript</span></div></div>
+      <div class="card"><span class="status sp" data-i18n="sp">✓ Presentado</span><h3 data-i18n="p6t">Detección IASC/Pan-STARRS</h3><p data-i18n="p6d">Detección de asteroides en el programa IASC usando datos de Pan-STARRS.</p><div class="ctags"><span class="ct">IASC</span><span class="ct">Pan-STARRS</span><span class="ct">Asteroides</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="star-div">· · · ✦ · · ·</div>
+
+<!-- ══ RECURSOS ══ -->
+<div id="recursos" class="section-wrap">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">03 · <span data-i18n="nav_resources">Recursos</span></p></div>
+    <div class="reveal"><h2 class="sh" data-i18n="rec_h2">Recursos educativos</h2></div>
+    <div class="reveal"><p class="section-intro" data-i18n="rec_intro">Herramientas seleccionadas para que los estudiantes experimenten, analicen y creen — no solo memoricen.</p></div>
+    <div class="cards-grid stagger">
+      <div class="card"><h3>⚛️ PhET Simulations</h3><p data-i18n="r1d">Simulaciones para mecánica, electricidad, ondas y termodinámica. Los estudiantes manipulan variables y evalúan resultados en tiempo real.</p><a class="clink" href="https://phet.colorado.edu/es/" target="_blank">→ phet.colorado.edu</a><br/>
+<button class="sim-toggle" onclick="toggleSim('sim-phet',this)">▶ Ver simulación: Movimiento de Proyectiles</button>
+<div class="sim-frame-wrap" id="sim-phet"><iframe src="https://phet.colorado.edu/sims/html/projectile-motion/latest/projectile-motion_es.html" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="card"><h3>🧪 Physics Aviary</h3><p data-i18n="r2d">Laboratorios virtuales con guía estructurada. Permiten diseñar variaciones del experimento y analizar diferencias.</p><a class="clink" href="https://www.physicsaviary.com/" target="_blank">→ physicsaviary.com</a></div>
+      <div class="card"><h3>▶️ Khan Academy</h3><p data-i18n="r3d">Videos conceptuales para estudio previo. Libera el tiempo de clase para aplicar y crear, no escuchar.</p><a class="clink" href="https://es.khanacademy.org/science/physics" target="_blank">→ es.khanacademy.org</a><br/>
+<button class="sim-toggle" onclick="toggleSim('sim-gravity',this)">▶ Ver simulación: Gravedad y órbitas</button>
+<div class="sim-frame-wrap" id="sim-gravity"><iframe src="https://phet.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits_es.html" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="card"><h3>🌌 NASA Eyes</h3><p data-i18n="r4d">Visualización 3D del sistema solar con datos reales. Ideal para que los estudiantes formulen hipótesis sobre dinámica orbital.</p><a class="clink" href="https://eyes.nasa.gov/" target="_blank">→ eyes.nasa.gov</a></div>
+      <div class="card"><h3>📊 oPhysics</h3><p data-i18n="r5d">Applets interactivos para movimiento, ondas y óptica. Perfectos para la fase de exploración y análisis.</p><a class="clink" href="https://ophysics.com/" target="_blank">→ ophysics.com</a><br/>
+<button class="sim-toggle" onclick="toggleSim('sim-wave',this)">▶ Ver simulación: Ondas en una cuerda</button>
+<div class="sim-frame-wrap" id="sim-wave"><iframe src="https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_es.html" allowfullscreen loading="lazy"></iframe></div></div>
+      <div class="card"><h3>🐍 Google Colab</h3><p data-i18n="r6d">Modelamiento físico con Python. Los estudiantes construyen sus propios modelos computacionales desde cero.</p><a class="clink" href="https://colab.research.google.com/" target="_blank">→ colab.research.google.com</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="star-div">· · · ✦ · · ·</div>
+
+<!-- ══ METODOLOGÍAS ══ -->
+<div id="metodologias" class="section-wrap full-dark">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">04 · <span data-i18n="nav_methods">Metodologías</span></p></div>
+    <div class="reveal"><h2 class="sh" data-i18n="met_h2">Cómo enseño</h2></div>
+    <div class="reveal"><p class="section-intro" data-i18n="met_intro">Tres estrategias donde el estudiante diseña, evalúa y produce conocimiento propio — no solo lo recibe.</p></div>
+    <div class="reveal">
+      <details class="metod" open><summary><span class="mn">01</span><span class="mt" data-i18n="m1t">Flipped Classroom — Aula invertida</span><span class="mb2">Flipped</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m1d">El estudiante accede al contenido teórico en casa y llega al aula listo para analizar, aplicar y crear — no solo escuchar.</p><ul class="msteps"><li data-i18n="m1s1">Antes de clase: video Khan Academy + formulario Google Forms.</li><li data-i18n="m1s2">En clase: PhET + diseño de experimentos propios.</li><li data-i18n="m1s3">El estudiante produce resultados originales, no copia del pizarrón.</li></ul><div class="chips"><span class="chip">YouTube</span><span class="chip">Google Forms</span><span class="chip">PhET</span><span class="chip">Moodle</span></div></div></details>
+      <details class="metod"><summary><span class="mn">02</span><span class="mt" data-i18n="m2t">ABC — Aprendizaje Basado en Casos</span><span class="mb2">ABC</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m2d">Un caso científico real como punto de partida. Los estudiantes investigan, formulan hipótesis y argumentan sus conclusiones.</p><ul class="msteps"><li data-i18n="m2s1">Caso: "¿Qué principios explican la primera foto de un agujero negro?"</li><li data-i18n="m2s2">Investigación grupal: ondas EM, interferometría, relatividad general.</li><li data-i18n="m2s3">Cada equipo construye y defiende su propia explicación.</li></ul><div class="chips"><span class="chip">ChatGPT</span><span class="chip">YouTube</span><span class="chip">Google Slides</span><span class="chip">Kahoot</span></div></div></details>
+      <details class="metod"><summary><span class="mn">03</span><span class="mt" data-i18n="m3t">AOP — Aprendizaje Orientado a Proyectos</span><span class="mb2">AOP</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m3d">Los estudiantes diseñan y ejecutan un proyecto completo — alcanzando el nivel más alto del pensamiento científico.</p><ul class="msteps"><li data-i18n="m3s1">Proyecto: "Modela la trayectoria de un satélite con datos NASA."</li><li data-i18n="m3s2">Etapas: investigación → datos → simulación → análisis → presentación.</li><li data-i18n="m3s3">3 semanas. Equipos de 3–4 personas. Producto final original.</li></ul><div class="chips"><span class="chip">PhET</span><span class="chip">NASA Eyes</span><span class="chip">Google Colab</span><span class="chip">Canva</span></div></div></details>
+    </div>
+  </div>
+</div>
+
+<div class="star-div">· · · ✦ · · ·</div>
+
+<!-- ══ TIC ══ -->
+<div id="tic" class="section-wrap">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">05 · TIC</p></div>
+    <div class="reveal"><h2 class="sh" data-i18n="tic_h2">Tecnologías en el aula</h2></div>
+    <div class="reveal"><p class="section-intro" data-i18n="tic_intro">Herramientas para visualizar, evaluar y personalizar el aprendizaje de la física.</p></div>
+    <div class="reveal tic-wrap">
+      <table>
+        <thead><tr><th data-i18n="th1">Herramienta</th><th data-i18n="th2">Categoría</th><th data-i18n="th3">Uso pedagógico</th></tr></thead>
+        <tbody>
+          <tr><td>PhET Simulations</td><td><span class="cp cs">Simulador</span></td><td data-i18n="tr1">Diseñar y evaluar experimentos virtuales interactivos</td></tr>
+          <tr><td>YouTube / Khan Academy</td><td><span class="cp cv">Video</span></td><td data-i18n="tr2">Material previo que libera la clase para crear y aplicar</td></tr>
+          <tr><td>Kahoot</td><td><span class="cp ce">Evaluación</span></td><td data-i18n="tr3">Diagnóstico formativo y retroalimentación inmediata</td></tr>
+          <tr><td>Google Forms</td><td><span class="cp ce">Evaluación</span></td><td data-i18n="tr4">Seguimiento del aprendizaje y cuestionarios previos</td></tr>
+          <tr><td>ChatGPT / Gemini</td><td><span class="cp ci">IA Educativa</span></td><td data-i18n="tr5">Generar casos, ejercicios y retroalimentación personalizada</td></tr>
+          <tr><td>Moodle / Classroom</td><td><span class="cp cl">LMS</span></td><td data-i18n="tr6">Organizar recursos, entregas y comunicación</td></tr>
+          <tr><td>Google Colab</td><td><span class="cp cs">Modelamiento</span></td><td data-i18n="tr7">Construir modelos físicos computacionales con Python</td></tr>
+          <tr><td>NASA Eyes</td><td><span class="cp cs">Visualización</span></td><td data-i18n="tr8">Explorar y formular hipótesis sobre el sistema solar en 3D</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div><!-- end #content -->
+
+<div style="min-height:40px;"></div><div class="star-div">· · · ✦ · · ·</div>
+
+<!-- ══ TRABAJOS DE CLASE ══ -->
+<divid="trabajos" class="section-wrap full-dark" style="position:relative;z-index:20;">
+  <div class="section-inner">
+    <div class="reveal"><p class="section-label">06 · <span data-i18n="nav_works">Trabajos de clase</span></p></div>
+    <div class="reveal"><h2 class="sh" data-i18n="works_h2">Trabajos de clase</h2></div>
+    <div class="reveal"><p class="section-intro" data-i18n="works_intro">Producciones académicas de la asignatura Metodología de la Enseñanza en Física.</p></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;" class="stagger">
+
+      <!-- 1. Portafolio -->
+      <div class="card">
+        <span class="status sa">● En curso</span>
+        <h3 data-i18n="w1t">Portafolio docente digital</h3>
+        <p data-i18n="w1d">Este sitio web — diseñado y desarrollado como portafolio de presentación. Construido con HTML, CSS y JavaScript y publicado en GitHub Pages.</p>
+        <div class="ctags"><span class="ct">HTML/CSS</span><span class="ct">JavaScript</span><span class="ct">GitHub Pages</span></div>
+        <a class="clink" href="#" target="_blank" data-i18n="w_visit">↗ Estás aquí</a>
       </div>
-      
-      <div class="proyecto-card">
-        <span class="proyecto-status status-pub" data-i18n="s_pub">✓ Publicado</span>
-        <h3 data-i18n="p3t">Calendario Astronómico 2026</h3>
-        <p data-i18n="p3d">Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.</p>
-        <div class="proyecto-tags"><span class="ptag">SPACE UNMSM</span><span class="ptag">IAU</span><span class="ptag">Divulgación</span></div>
-        <div class="proyecto-links">
-          <a class="proyecto-paper-link" href="https://revistasinvestigacion.unmsm.edu.pe/index.php/fisica/article/view/31971" target="_blank" data-i18n="link_paper">↗ Ver publicación</a>
-          <a class="proyecto-paper-link" href="https://iauoutreach.org/astronomy-outreach/map" target="_blank" data-i18n="link_iau">↗ Ver registro IAU</a>
+
+      <!-- 2. Análisis Perfil Docente — con PDF inline -->
+      <div class="card" style="grid-column:1/-1;">
+        <span class="status sp">✓ Completado</span>
+        <h3>Análisis del Perfil del Docente Universitario</h3>
+        <p>Análisis crítico de los modelos del perfil docente: tradicional, por competencias y crítico-reflexivo (Freire). Se evalúa cuál perfil responde mejor a los desafíos éticos y humanistas del siglo XXI.</p>
+        <div class="ctags" style="margin-bottom:.9rem;"><span class="ct">Perfil docente</span><span class="ct">Freire</span><span class="ct">Humanismo</span><span class="ct">Reflexión crítica</span></div>
+        <!-- PDF embedded inline via base64 -->
+        <div style="width:100%;height:520px;border-radius:4px;overflow:hidden;border:1px solid rgba(232,244,253,.1);background:#0a0a12;">
+          <iframe
+            src="data:application/pdf;base64,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"
+            style="width:100%;height:100%;border:none;"
+            title="Análisis del Perfil del Docente Universitario">
+          </iframe>
+        </div>
+        <p style="font-size:11px;color:rgba(232,244,253,.3);margin-top:.5rem;font-family:monospace;letter-spacing:.04em;">↓ Usa el scroll dentro del documento para leerlo completo</p>
+      </div>
+
+      <!-- 3. Programa tu clase -->
+      <div class="card">
+        <span class="status sg">◌ Próximamente</span>
+        <h3 data-i18n="w3t">Programa tu clase</h3>
+        <p data-i18n="w3d">Planificación didáctica de una sesión de física aplicando metodologías activas y TIC. En desarrollo.</p>
+        <div class="ctags"><span class="ct">Planificación</span><span class="ct">Metodologías activas</span><span class="ct">TIC</span></div>
+        <div style="margin-top:1rem;padding:.9rem;background:rgba(232,244,253,.03);border:1px dashed rgba(232,244,253,.1);border-radius:4px;text-align:center;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.25);letter-spacing:.08em;">[ próximamente ]</p>
         </div>
       </div>
-      <div class="proyecto-card">
-        <span class="proyecto-status status-prog" data-i18n="s_prog">◌ En preparación</span>
-        <h3 data-i18n="p4t">Vuelo aviar en exoplanetas</h3>
-        <p data-i18n="p4d">Manuscrito sobre condiciones físicas (densidad atmosférica, gravedad, presión) que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.</p>
-        <div class="proyecto-tags"><span class="ptag">Exoplanetas</span><span class="ptag">Biofísica</span><span class="ptag">Manuscript</span></div>
+
+      <!-- 4. Crea tu caso -->
+      <div class="card">
+        <span class="status sg">◌ Próximamente</span>
+        <h3 data-i18n="w4t">Crea tu caso</h3>
+        <p data-i18n="w4d">Diseño de un caso de estudio para aprendizaje basado en problemas aplicado a física universitaria. En desarrollo.</p>
+        <div class="ctags"><span class="ct">ABP</span><span class="ct">Caso de estudio</span><span class="ct">Física</span></div>
+        <div style="margin-top:1rem;padding:.9rem;background:rgba(232,244,253,.03);border:1px dashed rgba(232,244,253,.1);border-radius:4px;text-align:center;">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.25);letter-spacing:.08em;">[ próximamente ]</p>
+        </div>
       </div>
-      <div class="proyecto-card">
-        <span class="proyecto-status status-prog" data-i18n="s_prog">◌ En preparación</span>
-        <h3 data-i18n="p5t">Arqueoastronomía andina</h3>
-        <p data-i18n="p5d">Investigación sobre prácticas astronómicas en la civilización andina y su relación con el entorno celeste. Proyecto interdisciplinario en curso.</p>
-        <div class="proyecto-tags"><span class="ptag">Arqueoastronomía</span><span class="ptag">Incas</span><span class="ptag">Manuscript</span></div>
-      </div>
-      <div class="proyecto-card">
-        <span class="proyecto-status status-pub" data-i18n="s_pub">✓ Presentado</span>
-        <h3 data-i18n="p6t">Detección IASC/Pan-STARRS</h3>
-        <p data-i18n="p6d">Detección de asteroides en el programa IASC usando datos de Pan-STARRS. Análisis de imágenes y reporte de candidatos.</p>
-        <div class="proyecto-tags"><span class="ptag">IASC</span><span class="ptag">Pan-STARRS</span><span class="ptag">Asteroides</span></div>
-      </div>
+
     </div>
   </div>
 </div>
 
-<div class="star-divider">· · · ✦ · · ·</div>
-
-<!-- RECURSOS -->
-<div id="recursos" class="section-inner">
-  <div class="reveal"><p class="section-label">// 03 · <span data-i18n="nav_resources">Recursos</span></p></div>
-  <div class="reveal"><h2 data-i18n="rec_h2">Herramientas para aprender física</h2></div>
-  <div class="reveal"><p class="section-intro" data-i18n="rec_intro">Recursos digitales para visualizar, experimentar y comprender fenómenos físicos.</p></div>
-  <div class="recursos-grid stagger">
-    <div class="recurso-card"><span class="recurso-icon">⚛️</span><h3>PhET Simulations</h3><p data-i18n="r1d">Simulaciones gratuitas para mecánica, electricidad, ondas y termodinámica.</p><a class="recurso-link" href="https://phet.colorado.edu/es/" target="_blank">→ phet.colorado.edu</a></div>
-    <div class="recurso-card"><span class="recurso-icon">🧪</span><h3>Physics Aviary</h3><p data-i18n="r2d">Laboratorios virtuales con guía estructurada y repetición ilimitada.</p><a class="recurso-link" href="https://www.physicsaviary.com/" target="_blank">→ physicsaviary.com</a></div>
-    <div class="recurso-card"><span class="recurso-icon">▶️</span><h3>Khan Academy</h3><p data-i18n="r3d">Videos en español para estudio previo a clase. Desde cinemática hasta física cuántica.</p><a class="recurso-link" href="https://es.khanacademy.org/science/physics" target="_blank">→ es.khanacademy.org</a></div>
-    <div class="recurso-card"><span class="recurso-icon">🌌</span><h3>NASA Eyes</h3><p data-i18n="r4d">Visualización 3D del sistema solar con datos reales en tiempo real.</p><a class="recurso-link" href="https://eyes.nasa.gov/" target="_blank">→ eyes.nasa.gov</a></div>
-    <div class="recurso-card"><span class="recurso-icon">📊</span><h3>oPhysics</h3><p data-i18n="r5d">Applets interactivos para movimiento, ondas y óptica.</p><a class="recurso-link" href="https://ophysics.com/" target="_blank">→ ophysics.com</a></div>
-    <div class="recurso-card"><span class="recurso-icon">🐍</span><h3>Google Colab</h3><p data-i18n="r6d">Modelamiento físico con Python directamente en el navegador.</p><a class="recurso-link" href="https://colab.research.google.com/" target="_blank">→ colab.research.google.com</a></div>
-  </div>
-</div>
-
-<div class="star-divider">· · · ✦ · · ·</div>
-
-<!-- METODOLOGÍAS -->
-<div id="metodologias" class="full-section">
-  <div class="section-inner" style="padding-top:0;padding-bottom:0;">
-    <div class="reveal"><p class="section-label">// 04 · <span data-i18n="nav_methods">Metodologías</span></p></div>
-    <div class="reveal"><h2 data-i18n="met_h2">Cómo enseño</h2></div>
-    <div class="reveal"><p class="section-intro" data-i18n="met_intro">Tres metodologías activas que ponen al estudiante en el centro del aprendizaje.</p></div>
-    <div class="reveal">
-    <details class="metod-item" open>
-      <summary class="metod-header"><span class="metod-num">01</span><span class="metod-title" data-i18n="m1t">Flipped Classroom — Aula invertida</span><span class="metod-badge">Flipped</span><span class="metod-chevron">⌄</span></summary>
-      <div class="metod-body">
-        <p data-i18n="m1d">El estudiante accede al contenido teórico en casa. La clase se dedica a resolver problemas y aplicar con acompañamiento docente.</p>
-        <ul class="metod-steps">
-          <li data-i18n="m1s1">Antes de clase: video Khan Academy + formulario Google Forms.</li>
-          <li data-i18n="m1s2">En clase: trabajo con PhET. El docente guía, no explica desde cero.</li>
-          <li data-i18n="m1s3">La clase se convierte en espacio de práctica real.</li>
-        </ul>
-        <div class="tic-used"><span class="tic-chip">YouTube</span><span class="tic-chip">Google Forms</span><span class="tic-chip">PhET</span><span class="tic-chip">Moodle</span></div>
-      </div>
-    </details>
-    <details class="metod-item">
-      <summary class="metod-header"><span class="metod-num">02</span><span class="metod-title" data-i18n="m2t">ABC — Aprendizaje Basado en Casos</span><span class="metod-badge">ABC</span><span class="metod-chevron">⌄</span></summary>
-      <div class="metod-body">
-        <p data-i18n="m2d">Un caso real como punto de partida para investigar y proponer soluciones en equipo.</p>
-        <ul class="metod-steps">
-          <li data-i18n="m2s1">Caso: "¿Qué principios físicos explican la primera foto de un agujero negro?"</li>
-          <li data-i18n="m2s2">Investigación grupal: ondas EM, interferometría, relatividad general.</li>
-          <li data-i18n="m2s3">Presentación con recursos digitales e IA como apoyo.</li>
-        </ul>
-        <div class="tic-used"><span class="tic-chip">ChatGPT</span><span class="tic-chip">YouTube</span><span class="tic-chip">Google Slides</span><span class="tic-chip">Kahoot</span></div>
-      </div>
-    </details>
-    <details class="metod-item">
-      <summary class="metod-header"><span class="metod-num">03</span><span class="metod-title" data-i18n="m3t">AOP — Aprendizaje Orientado a Proyectos</span><span class="metod-badge">AOP</span><span class="metod-chevron">⌄</span></summary>
-      <div class="metod-body">
-        <p data-i18n="m3d">Proyecto completo: diseño, ejecución, análisis y comunicación de resultados.</p>
-        <ul class="metod-steps">
-          <li data-i18n="m3s1">Proyecto: "Modela la trayectoria de un satélite en órbita baja con datos NASA."</li>
-          <li data-i18n="m3s2">Etapas: investigación → datos → simulación → análisis → presentación.</li>
-          <li data-i18n="m3s3">3 semanas. Equipos de 3–4 personas con roles definidos.</li>
-        </ul>
-        <div class="tic-used"><span class="tic-chip">PhET</span><span class="tic-chip">NASA Eyes</span><span class="tic-chip">Google Colab</span><span class="tic-chip">Canva</span></div>
-      </div>
-    </details>
-    </div>
-  </div>
-</div>
-
-<div class="star-divider">· · · ✦ · · ·</div>
-
-<!-- TIC -->
-<div id="tic" class="section-inner">
-  <div class="reveal"><p class="section-label">// 05 · TIC</p></div>
-  <div class="reveal"><h2 data-i18n="tic_h2">Tecnologías en el aula</h2></div>
-  <div class="reveal"><p class="section-intro" data-i18n="tic_intro">Herramientas para visualizar, evaluar y personalizar el aprendizaje de la física.</p></div>
-  <div class="reveal">
-  <div class="tic-table-wrap">
-    <table>
-      <thead><tr><th data-i18n="th1">Herramienta</th><th data-i18n="th2">Categoría</th><th data-i18n="th3">Uso pedagógico</th></tr></thead>
-      <tbody>
-        <tr><td>PhET Simulations</td><td><span class="cat-pill cat-sim">Simulador</span></td><td data-i18n="tr1">Visualizar fenómenos físicos de forma interactiva</td></tr>
-        <tr><td>YouTube / Khan Academy</td><td><span class="cat-pill cat-video">Video</span></td><td data-i18n="tr2">Material previo a clase y refuerzo conceptual</td></tr>
-        <tr><td>Kahoot</td><td><span class="cat-pill cat-eval">Evaluación</span></td><td data-i18n="tr3">Diagnóstico y repaso gamificado</td></tr>
-        <tr><td>Google Forms</td><td><span class="cat-pill cat-eval">Evaluación</span></td><td data-i18n="tr4">Cuestionarios y seguimiento del aprendizaje</td></tr>
-        <tr><td>ChatGPT / Gemini</td><td><span class="cat-pill cat-ia">IA Educativa</span></td><td data-i18n="tr5">Ejercicios contextualizados y tutoría</td></tr>
-        <tr><td>Moodle / Classroom</td><td><span class="cat-pill cat-lms">LMS</span></td><td data-i18n="tr6">Organización, entregas y comunicación</td></tr>
-        <tr><td>Google Colab</td><td><span class="cat-pill cat-sim">Modelamiento</span></td><td data-i18n="tr7">Análisis de datos y modelamiento con Python</td></tr>
-        <tr><td>NASA Eyes</td><td><span class="cat-pill cat-sim">Visualización</span></td><td data-i18n="tr8">Exploración 3D del sistema solar con datos reales</td></tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <p class="footer-logo">🔭 Jiro Martín Fabián Vásquez · Física UNMSM · 2026</p>
-  <p class="footer-sub" data-i18n="footer_sub">Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez</p>
+  <p class="footer-name">Jiro Martín Fabián Vásquez</p>
+  <p class="footer-sub" data-i18n="footer_sub">Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez · UNMSM 2026</p>
 </footer>
 
 <script>
-/* ══════════════════════════════════════════
-   TRANSLATIONS
-══════════════════════════════════════════ */
+/* ══ TRANSLATIONS ══ */
 const T={
-  es:{nav_about:"Sobre mí",nav_projects:"Proyectos",nav_resources:"Recursos",nav_methods:"Metodologías",nav_contact:"Contacto",hero_drag:"Arrastra el agujero negro",hero_eyebrow:"Física · UNMSM · Lima, Perú",hero_title:"Docente de Física · Astrofísico en formación",hero_desc:"Investigador en astrofísica de objetos compactos, miembro de SPACE UNMSM e IEEE NPSS. Apasionado por hacer la física accesible y emocionante.",hero_btn1:"Ver proyectos →",hero_btn2:"Sobre mí",about_h2:"El docente",about_p1:"Soy estudiante de 8.° semestre de Física en la <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.",about_p2:"Soy miembro activo de <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.",about_p3:"Formo parte del comité del <strong style='color:var(--pulsar)'>Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.",about_quote:'"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre ver el universo con otros ojos."',proj_h2:"Proyectos de investigación",proj_intro:"Investigación en astrofísica observacional, astronomía computacional y divulgación científica.",s_active:"● En curso",s_pub:"✓ Publicado",s_prog:"◌ En preparación",p1t:"Acoplamiento disco-corona en AGN",p1d:"Análisis de 2,530 AGN Tipo 1 cruzando SDSS DR16 × Chandra CSC 2.1. Estudio de la relación UV óptica — rayos X en el contexto del acoplamiento disco-corona. Presentado en DIA Peru — Cajamarca 2026.",p2t:"Fotometría JWST/RUBIES",p2d:"Fotometría con datos del James Webb Space Telescope. Análisis de galaxias de alto redshift en el marco del programa RUBIES.",p3t:"Calendario Astronómico 2026",p3d:"Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.",p4t:"Vuelo aviar en exoplanetas",p4d:"Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.",p5t:"Astronomía posicional Inca",p5d:"Investigación sobre sistemas de orientación astronómica de los Incas y correspondencia con eventos celestes. Co-autoría con arqueólogo.",p6t:"Detección IASC/Pan-STARRS",p6d:"Detección de asteroides en el programa IASC usando datos de Pan-STARRS.",rec_h2:"Herramientas para aprender física",rec_intro:"Recursos digitales para visualizar, experimentar y comprender fenómenos físicos.",r1d:"Simulaciones gratuitas para mecánica, electricidad, ondas y termodinámica.",r2d:"Laboratorios virtuales con guía estructurada y repetición ilimitada.",r3d:"Videos en español para estudio previo a clase.",r4d:"Visualización 3D del sistema solar con datos reales.",r5d:"Applets interactivos para movimiento, ondas y óptica.",r6d:"Modelamiento físico con Python en el navegador.",met_h2:"Cómo enseño",met_intro:"Tres metodologías activas que ponen al estudiante en el centro.",m1t:"Flipped Classroom — Aula invertida",m1d:"El estudiante accede al contenido en casa. La clase se dedica a practicar con acompañamiento.",m1s1:"Antes de clase: video Khan Academy + formulario Google Forms.",m1s2:"En clase: PhET. El docente guía, no explica desde cero.",m1s3:"La clase se convierte en práctica real.",m2t:"ABC — Aprendizaje Basado en Casos",m2d:"Un caso real como punto de partida para investigar en equipo.",m2s1:"Caso: '¿Qué principios explican la primera foto de un agujero negro?'",m2s2:"Investigación grupal: ondas EM, interferometría, relatividad.",m2s3:"Presentación con recursos digitales e IA.",m3t:"AOP — Aprendizaje Orientado a Proyectos",m3d:"Proyecto completo: diseño, ejecución, análisis y comunicación.",m3s1:"Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'",m3s2:"Etapas: investigación → datos → simulación → análisis → presentación.",m3s3:"3 semanas. Equipos de 3–4 personas.",tic_h2:"Tecnologías en el aula",tic_intro:"Herramientas para visualizar, evaluar y personalizar el aprendizaje.",th1:"Herramienta",th2:"Categoría",th3:"Uso pedagógico",tr1:"Visualizar fenómenos físicos de forma interactiva",tr2:"Material previo a clase y refuerzo conceptual",tr3:"Diagnóstico y repaso gamificado",tr4:"Cuestionarios y seguimiento del aprendizaje",tr5:"Ejercicios contextualizados y tutoría",tr6:"Organización, entregas y comunicación",tr7:"Análisis de datos y modelamiento con Python",tr8:"Exploración 3D del sistema solar",footer_sub:"Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez",link_paper:"↗ Ver publicación",link_iau:"↗ Ver registro IAU"},
-  en:{nav_about:"About",nav_projects:"Projects",nav_resources:"Resources",nav_methods:"Methods",nav_contact:"Contact",hero_drag:"Drag the black hole",hero_eyebrow:"Physics · UNMSM · Lima, Peru",hero_title:"Physics Teacher · Astrophysicist in training",hero_desc:"Researcher in compact object astrophysics, member of SPACE UNMSM and IEEE NPSS. Passionate about making physics accessible and exciting.",hero_btn1:"See projects →",hero_btn2:"About me",about_h2:"The teacher",about_p1:"I am an 8th-semester Physics student at the <strong style='color:var(--starlight)'>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Peru. My focus is compact object astrophysics and high-energy physics.",about_p2:"Active member of <strong style='color:var(--pulsar)'>SPACE UNMSM</strong>, Peru's first professional astronomy group, and Vice-President of <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. I organize the <em>Viernes Astronómicos</em> and serve as a collaborator at the Natural History Museum UNMSM.",about_p3:"I am part of the committee of the <strong style='color:var(--pulsar)'>National Olympic Committee of the Peruvian Olympiads on Astronomy and Astronautics</strong>, helping develop new talent in space sciences.",about_quote:'"Physics is not memorized — it is experienced, visualized and questioned. My goal is for every student to see the universe through new eyes."',proj_h2:"Research projects",proj_intro:"Research in observational astrophysics, computational astronomy and science outreach.",s_active:"● Active",s_pub:"✓ Published",s_prog:"◌ In preparation",p1t:"AGN disk-corona coupling",p1d:"Analysis of 2,530 Type 1 AGNs cross-matching SDSS DR16 × Chandra CSC 2.1. Study of the UV-optical to X-ray relationship in the context of disk-corona coupling. Presented at DIA Peru — Cajamarca 2026.",p2t:"JWST/RUBIES photometry",p2d:"Photometry with James Webb Space Telescope data. Analysis of high-redshift galaxies within the RUBIES program.",p3t:"Astronomical Calendar 2026",p3d:"Publication of the 2026 Astronomical Calendar through SPACE UNMSM, registered with the IAU and covered by Agencia Andina.",p4t:"Avian flight on exoplanets",p4d:"Manuscript on physical conditions allowing bird flight on habitable exoplanets. Target: Nature.",p5t:"Andean archaeoastronomy",p5d:"Research on astronomical practices in Andean civilization and their relationship with the celestial environment. Ongoing interdisciplinary project.",p6t:"IASC/Pan-STARRS detection",p6d:"Asteroid detection in the IASC program using Pan-STARRS data.",rec_h2:"Tools to learn physics",rec_intro:"Digital resources to visualize, experiment and understand physical phenomena.",r1d:"Free simulations for mechanics, electricity, waves and thermodynamics.",r2d:"Virtual labs with structured guidance and unlimited repetition.",r3d:"Videos for pre-class study in Spanish and English.",r4d:"3D solar system visualization with real-time data.",r5d:"Interactive applets for motion, waves and optics.",r6d:"Physical modeling with Python in the browser.",met_h2:"How I teach",met_intro:"Three active methodologies placing the student at the center of learning.",m1t:"Flipped Classroom",m1d:"Students access theory at home. Class time is for practice and application.",m1s1:"Before class: Khan Academy video + Google Forms quiz.",m1s2:"In class: PhET simulation. Teacher guides, doesn't re-explain from scratch.",m1s3:"Class becomes real hands-on practice.",m2t:"CBL — Case-Based Learning",m2d:"A real scientific case as starting point for group investigation.",m2s1:"Case: 'What physics explains the first black hole photo?'",m2s2:"Group research: EM waves, interferometry, general relativity.",m2s3:"Presentation with digital resources and AI assistance.",m3t:"PBL — Project-Based Learning",m3d:"Full project: design, execution, analysis and communication of results.",m3s1:"Project: 'Model a satellite orbit with real NASA data.'",m3s2:"Stages: research → data → simulation → analysis → presentation.",m3s3:"3 weeks. Teams of 3–4 with defined roles.",tic_h2:"Technologies in the classroom",tic_intro:"Tools to visualize, evaluate and personalize physics learning.",th1:"Tool",th2:"Category",th3:"Pedagogical use",tr1:"Visualize physical phenomena interactively",tr2:"Pre-class material and conceptual reinforcement",tr3:"Diagnosis and gamified review",tr4:"Pre-class quizzes and learning tracking",tr5:"Contextualized exercises and AI tutoring",tr6:"Resources, assignments and communication",tr7:"Data analysis and physical modeling with Python",tr8:"3D solar system exploration with real data",footer_sub:"Physics Teaching Methodology · Dr. Silvia Marisel Espinoza Suárez",link_paper:"↗ View publication",link_iau:"↗ View IAU registry"},
-  ru:{nav_about:"Обо мне",nav_projects:"Проекты",nav_resources:"Ресурсы",nav_methods:"Методики",nav_contact:"Контакт",hero_drag:"Перетащите чёрную дыру",hero_eyebrow:"Физика · UNMSM · Лима, Перу",hero_title:"Преподаватель физики · Астрофизик",hero_desc:"Исследователь астрофизики компактных объектов, член SPACE UNMSM и IEEE NPSS. Страстный сторонник доступной физики.",hero_btn1:"Проекты →",hero_btn2:"Обо мне",about_h2:"Преподаватель",about_p1:"Студент 8-го семестра физического факультета <strong style='color:var(--starlight)'>UNMSM</strong>, Лима, Перу. Специализация — астрофизика компактных объектов и физика высоких энергий.",about_p2:"Член <strong style='color:var(--pulsar)'>SPACE UNMSM</strong> и вице-президент <strong style='color:var(--pulsar)'>IEEE NPSS UNMSM</strong>. Организую <em>Viernes Astronómicos</em> и являюсь сотрудником Музея естественной истории UNMSM.",about_p3:"Я являюсь членом комитета <strong style='color:var(--pulsar)'>Национального олимпийского комитета Перуанских олимпиад по астрономии и космонавтике</strong>, способствуя развитию новых талантов в космических науках.",about_quote:'"Физику не запоминают — её переживают, визуализируют и ставят под сомнение. Моя цель — помочь каждому студенту увидеть вселенную иначе."',proj_h2:"Исследовательские проекты",proj_intro:"Исследования в наблюдательной астрофизике, вычислительной астрономии и популяризации науки.",s_active:"● Активный",s_pub:"✓ Опубликован",s_prog:"◌ В подготовке",p1t:"Связь диска-короны в АЯГ",p1d:"Анализ 2530 АЯГ Типа 1 из SDSS DR16 × Chandra CSC 2.1. Изучение связи УФ/оптического и рентгеновского излучения в контексте взаимодействия диска и короны. Представлено на DIA Peru — Cajamarca 2026.",p2t:"Фотометрия JWST/RUBIES",p2d:"Фотометрия с данными JWST. Анализ галактик высокого красного смещения в рамках программы RUBIES.",p3t:"Астрономический календарь 2026",p3d:"Публикация через SPACE UNMSM, зарегистрирована в МАС.",p4t:"Полёт птиц на экзопланетах",p4d:"Рукопись об условиях полёта птиц на обитаемых экзопланетах. Цель: Nature.",p5t:"Андская археоастрономия",p5d:"Исследование астрономических практик андской цивилизации. Междисциплинарный проект.",p6t:"Обнаружение астероидов IASC",p6d:"Обнаружение астероидов по данным Pan-STARRS в программе IASC.",rec_h2:"Инструменты для изучения физики",rec_intro:"Цифровые ресурсы для понимания физических явлений.",r1d:"Бесплатные симуляции механики, электричества и термодинамики.",r2d:"Виртуальные лаборатории с пошаговым руководством.",r3d:"Видео для самостоятельной подготовки.",r4d:"3D-визуализация Солнечной системы.",r5d:"Интерактивные апплеты для волн и оптики.",r6d:"Физическое моделирование на Python.",met_h2:"Как я преподаю",met_intro:"Три активные методики, ставящие студента в центр обучения.",m1t:"Перевёрнутый класс",m1d:"Студенты изучают теорию дома, практикуются на занятии.",m1s1:"До занятия: видео + опрос Google Forms.",m1s2:"На занятии: PhET. Преподаватель направляет.",m1s3:"Занятие — пространство реальной практики.",m2t:"ОМС — Обучение на основе случаев",m2d:"Реальный случай как отправная точка для групповых исследований.",m2s1:"Случай: «Физика первой фотографии чёрной дыры?»",m2s2:"Групповое исследование: ЭМ волны, интерферометрия, ОТО.",m2s3:"Презентация с цифровыми ресурсами и ИИ.",m3t:"ПОО — Проектно-ориентированное обучение",m3d:"Полный проект: проектирование, выполнение, анализ.",m3s1:"Проект: «Траектория спутника на НОО по данным NASA.»",m3s2:"Этапы: исследование → данные → симуляция → анализ.",m3s3:"3 недели. Команды 3–4 человека.",tic_h2:"Технологии в аудитории",tic_intro:"Инструменты для визуализации, оценки и персонализации обучения.",th1:"Инструмент",th2:"Категория",th3:"Педагогическое применение",tr1:"Интерактивная визуализация физических явлений",tr2:"Материал перед занятием и закрепление",tr3:"Диагностика и геймифицированное повторение",tr4:"Опросники и отслеживание прогресса",tr5:"Контекстуализированные упражнения и ИИ",tr6:"Организация, задания и коммуникация",tr7:"Анализ данных и моделирование на Python",tr8:"3D-исследование Солнечной системы",footer_sub:"Методика преподавания физики · Д-р Сильвия Эспиноса Суарес",link_paper:"↗ Смотреть публикацию",link_iau:"↗ Реестр МАС"}
+  es:{nav_about:"Sobre mí",nav_projects:"Proyectos",nav_resources:"Recursos",nav_methods:"Metodologías",nav_contact:"Contacto",fc1h:"Diseña experiencias de aprendizaje",fc1p:"Creo sesiones donde los estudiantes formulan hipótesis, diseñan experimentos y evalúan resultados — operando en los niveles superiores del pensamiento crítico.",fc2h:"Investiga el cosmos",fc2p:"Desde AGN con datos de Chandra y SDSS hasta calendarios registrados ante la IAU — la misma metodología científica que aplico en investigación, la transfiero al aula.",fc3h:"Construye el futuro científico",fc3p:"Como miembro del comité de las Olimpiadas Peruanas de Astronomía y Astronáutica, evalúo y formo a la próxima generación de científicos del espacio en el Perú.",hero_pre:"Investigador que",hero_hl:"evalúa, crea y transforma",hero_post:"desde la astrofísica",hero_tagline:"Jiro Martín Fabián Vásquez · Física UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"Ver proyectos →",hero_btn2:"Sobre mí",reveal_pre:"Física · UNMSM · 2026",reveal_h2:"Jiro Martín<br/>Fabián Vásquez",about_h2:"Perfil académico",about_p1:"Soy estudiante de 8.° semestre de Física en la <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.",about_p2:"Miembro activo de <strong>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.",about_p3:"Formo parte del comité del <strong>Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.",about_quote:'"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre crear sus propias explicaciones del universo."',proj_h2:"Proyectos de investigación",proj_intro:"Diseño y ejecuto investigación en astrofísica observacional, astronomía computacional y divulgación científica.",sa:"● En curso",sp:"✓ Publicado",sg:"◌ En preparación",p1t:"Acoplamiento disco-corona en AGN",p1d:"Análisis de 2,530 AGN Tipo 1 cruzando SDSS DR16 × Chandra CSC 2.1. Estudio de la relación UV óptica — rayos X en el contexto del acoplamiento disco-corona. Presentado en DIA Peru — Cajamarca 2026.",p3t:"Calendario Astronómico 2026",p3d:"Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.",p4t:"Vuelo aviar en exoplanetas",p4d:"Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.",p5t:"Arqueoastronomía andina",p5d:"Investigación sobre prácticas astronómicas en la civilización andina y su relación con el entorno celeste. Proyecto interdisciplinario en curso.",p6t:"Detección IASC/Pan-STARRS",p6d:"Detección de asteroides en el programa IASC usando datos de Pan-STARRS.",rec_h2:"Recursos educativos",rec_intro:"Herramientas seleccionadas para que los estudiantes experimenten, analicen y creen — no solo memoricen.",r1d:"Simulaciones para mecánica, electricidad, ondas y termodinámica. Los estudiantes manipulan variables y evalúan resultados.",r2d:"Laboratorios virtuales que permiten diseñar variaciones y analizar diferencias.",r3d:"Videos conceptuales para liberar el tiempo de clase para aplicar y crear.",r4d:"Visualización 3D del sistema solar ideal para formular hipótesis sobre dinámica orbital.",r5d:"Applets interactivos perfectos para la fase de exploración y análisis.",r6d:"Modelamiento físico con Python. Los estudiantes construyen modelos computacionales propios.",met_h2:"Cómo enseño",met_intro:"Tres estrategias donde el estudiante diseña, evalúa y produce conocimiento propio — no solo lo recibe.",m1t:"Flipped Classroom — Aula invertida",m1d:"El estudiante accede al contenido teórico en casa y llega listo para analizar, aplicar y crear.",m1s1:"Antes de clase: video Khan Academy + formulario Google Forms.",m1s2:"En clase: PhET + diseño de experimentos propios.",m1s3:"El estudiante produce resultados originales, no copia del pizarrón.",m2t:"ABC — Aprendizaje Basado en Casos",m2d:"Un caso científico real como punto de partida. Los estudiantes investigan, formulan hipótesis y argumentan sus conclusiones.",m2s1:"Caso: '¿Qué principios explican la primera foto de un agujero negro?'",m2s2:"Investigación grupal: ondas EM, interferometría, relatividad general.",m2s3:"Cada equipo construye y defiende su propia explicación.",m3t:"AOP — Aprendizaje Orientado a Proyectos",m3d:"Los estudiantes diseñan y ejecutan un proyecto completo — alcanzando el nivel más alto del pensamiento científico.",m3s1:"Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'",m3s2:"Etapas: investigación → datos → simulación → análisis → presentación.",m3s3:"3 semanas. Equipos de 3–4 personas. Producto final original.",tic_h2:"Tecnologías en el aula",tic_intro:"Herramientas para visualizar, evaluar y personalizar el aprendizaje de la física.",th1:"Herramienta",th2:"Categoría",th3:"Uso pedagógico",tr1:"Diseñar y evaluar experimentos virtuales interactivos",tr2:"Material previo que libera la clase para crear y aplicar",tr3:"Diagnóstico formativo y retroalimentación inmediata",tr4:"Seguimiento del aprendizaje y cuestionarios previos",tr5:"Generar casos, ejercicios y retroalimentación personalizada",tr6:"Organizar recursos, entregas y comunicación",tr7:"Construir modelos físicos computacionales con Python",tr8:"Explorar y formular hipótesis sobre el sistema solar en 3D",footer_sub:"Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez · UNMSM 2026",link_paper:"↗ Ver publicación",nav_works:"Trabajos",works_h2:"Trabajos de clase",works_intro:"Producciones académicas de la asignatura Metodología de la Enseñanza en Física.",w_visit:"↗ Estás aquí",stat1:"AGN analizados",stat2:"Proyectos activos",stat3:"Idiomas",stat4:"Semestre",w3t:"Programa tu clase",w3d:"Lesson plan applying active methodologies and ICT. Coming soon.",w4t:"Crea tu caso",w4d:"Case study design for problem-based learning in university physics. Coming soon.",w1t:"Portafolio docente digital",w1d:"Este mismo sitio — diseñado y desarrollado como portafolio para la asignatura de Metodología de la Enseñanza en Física. Construido con HTML, CSS y JavaScript.",w2t:"Planificación con Flipped Classroom",w2d:"Diseño de secuencia didáctica para cinemática: video previo + simulación PhET + cierre colaborativo.",w3t:"Caso: primera imagen de un agujero negro",w3d:"Actividad ABC donde los estudiantes reconstruyen y evalúan los principios físicos detrás de la imagen del EHT en 2019.",w4t:"Proyecto: modelamiento orbital con Python",w4d:"Propuesta AOP donde equipos modelan trayectorias orbitales con datos NASA y producen un informe científico propio.",w5t:"Análisis de TIC en física universitaria",w5d:"Análisis crítico de tecnologías educativas efectivas para física universitaria, evaluando impacto en aprendizaje profundo."},
+  en:{nav_about:"About",nav_projects:"Projects",nav_resources:"Resources",nav_methods:"Methods",nav_contact:"Contact",fc1h:"Design learning experiences",fc1p:"I create sessions where students formulate hypotheses, design experiments and evaluate results — always operating at the highest levels of critical thinking.",fc2h:"Research the cosmos",fc2p:"From AGN with Chandra and SDSS data to IAU-registered calendars — the same scientific methodology I apply in research, I transfer to the classroom.",fc3h:"Build the scientific future",fc3p:"As a committee member of the Peruvian Olympiads on Astronomy and Astronautics, I evaluate and mentor Peru's next generation of space scientists.",hero_pre:"A researcher who",hero_hl:"evaluates, creates, transforms",hero_post:"from astrophysics",hero_tagline:"Jiro Martín Fabián Vásquez · Physics UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"See projects →",hero_btn2:"About me",reveal_pre:"Physics · UNMSM · 2026",reveal_h2:"Jiro Martín<br/>Fabián Vásquez",about_h2:"Academic profile",about_p1:"I am an 8th-semester Physics student at the <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Peru. My focus is compact object astrophysics and high-energy physics.",about_p2:"Active member of <strong>SPACE UNMSM</strong>, Peru's first professional astronomy group, and Vice-President of <strong>IEEE NPSS UNMSM</strong>. I organize the <em>Viernes Astronómicos</em> and serve as a collaborator at the Natural History Museum UNMSM.",about_p3:"I am part of the committee of the <strong>National Olympic Committee of the Peruvian Olympiads on Astronomy and Astronautics</strong>, helping develop new talent in space sciences.",about_quote:'"Physics is not memorized — it is experienced, visualized and questioned. My goal is for every student to create their own explanations of the universe."',proj_h2:"Research projects",proj_intro:"I design and execute research in observational astrophysics, computational astronomy and science outreach.",sa:"● Active",sp:"✓ Published",sg:"◌ In preparation",p1t:"AGN disk-corona coupling",p1d:"Analysis of 2,530 Type 1 AGNs cross-matching SDSS DR16 × Chandra CSC 2.1. Study of UV-optical to X-ray relationship in disk-corona coupling context. Presented at DIA Peru — Cajamarca 2026.",p3t:"Astronomical Calendar 2026",p3d:"Publication of the 2026 Astronomical Calendar through SPACE UNMSM, registered with the IAU and covered by Agencia Andina.",p4t:"Avian flight on exoplanets",p4d:"Manuscript on physical conditions allowing bird flight on habitable exoplanets. Target: Nature.",p5t:"Andean archaeoastronomy",p5d:"Research on astronomical practices in Andean civilization. Ongoing interdisciplinary project.",p6t:"IASC/Pan-STARRS detection",p6d:"Asteroid detection in the IASC program using Pan-STARRS data.",rec_h2:"Educational resources",rec_intro:"Tools selected so students can experiment, analyze and create — not just memorize.",r1d:"Simulations for mechanics, electricity, waves and thermodynamics. Students manipulate variables and evaluate results.",r2d:"Virtual labs that allow designing variations and analyzing differences.",r3d:"Conceptual videos to free class time for applying and creating.",r4d:"3D solar system visualization ideal for formulating orbital dynamics hypotheses.",r5d:"Interactive applets perfect for exploration and analysis phases.",r6d:"Physical modeling with Python. Students build their own computational models.",met_h2:"How I teach",met_intro:"Three strategies where students design, evaluate and produce their own knowledge.",m1t:"Flipped Classroom",m1d:"Students access theory at home and arrive ready to analyze, apply and create.",m1s1:"Before class: Khan Academy video + Google Forms quiz.",m1s2:"In class: PhET + designing their own experiments.",m1s3:"Students produce original results, not copies from the board.",m2t:"CBL — Case-Based Learning",m2d:"A real scientific case as starting point. Students investigate, formulate hypotheses and argue conclusions.",m2s1:"Case: 'What physics explains the first black hole photo?'",m2s2:"Group research: EM waves, interferometry, general relativity.",m2s3:"Each team builds and defends their own explanation.",m3t:"PBL — Project-Based Learning",m3d:"Students design and execute a full project — reaching the highest level of scientific thinking.",m3s1:"Project: 'Model a satellite trajectory with real NASA data.'",m3s2:"Stages: research → data → simulation → analysis → presentation.",m3s3:"3 weeks. Teams of 3–4. Original final product.",tic_h2:"Technologies in the classroom",tic_intro:"Tools to visualize, evaluate and personalize physics learning.",th1:"Tool",th2:"Category",th3:"Pedagogical use",tr1:"Design and evaluate interactive virtual experiments",tr2:"Pre-class material that frees class time to create and apply",tr3:"Formative diagnosis and immediate feedback",tr4:"Learning tracking and pre-class quizzes",tr5:"Generate cases, exercises and personalized feedback",tr6:"Organize resources, assignments and communication",tr7:"Build computational physical models with Python",tr8:"Explore and formulate hypotheses about the 3D solar system",footer_sub:"Physics Teaching Methodology · Dr. Silvia Marisel Espinoza Suárez · UNMSM 2026",link_paper:"↗ View publication",nav_works:"Works",works_h2:"Class works",works_intro:"Academic productions from the Physics Teaching Methodology course.",w_visit:"↗ You are here",stat1:"AGNs analyzed",stat2:"Active projects",stat3:"Languages",stat4:"Semester",w3t:"Design your lesson",w3d:"Didactic planning of a physics session applying active methodologies. Coming soon.",w4t:"Create your case",w4d:"Case study design for problem-based learning in university physics. Coming soon.",w1t:"Digital teaching portfolio",w1d:"This very site — designed and developed as a presentation portfolio for the Physics Teaching Methodology course. Built with HTML, CSS and JavaScript.",w2t:"Flipped Classroom lesson plan",w2d:"Design of a didactic sequence for kinematics using the flipped classroom model: pre-class video + PhET simulation + collaborative closure.",w3t:"Case study: first image of a black hole",w3d:"Case-based activity where students reconstruct and evaluate the physical principles behind the EHT image in 2019.",w4t:"Project: orbital modeling with Python",w4d:"PBL proposal where student teams model orbital trajectories with Python and real NASA data, producing an original scientific report.",w5t:"ICT analysis in university physics",w5d:"Critical analysis of the most effective educational technologies for university physics, evaluating impact on deep learning and motivation.",link_iau:"↗ View IAU registry"},
+  ru:{nav_about:"Обо мне",nav_projects:"Проекты",nav_resources:"Ресурсы",nav_methods:"Методики",nav_contact:"Контакт",fc1h:"Проектирует учебный опыт",fc1p:"Создаю занятия, где студенты формулируют гипотезы, разрабатывают эксперименты и оценивают результаты — на высших уровнях критического мышления.",fc2h:"Исследует космос",fc2p:"От АЯГ с данными Chandra и SDSS до календарей МАС — та же научная методология, что в исследованиях, применяется в аудитории.",fc3h:"Строит научное будущее",fc3p:"Как член комитета Перуанских олимпиад по астрономии — оцениваю и воспитываю следующее поколение учёных.",hero_pre:"Исследователь, который",hero_hl:"оценивает, создаёт, преобразует",hero_post:"из астрофизики",hero_tagline:"Хиро Мартин Фабиан Васкес · Физика UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"Проекты →",hero_btn2:"Обо мне",reveal_pre:"Физика · UNMSM · 2026",reveal_h2:"Хиро Мартин<br/>Фабиан Васкес",about_h2:"Академический профиль",about_p1:"Студент 8-го семестра физического факультета <strong>UNMSM</strong>, Лима, Перу. Специализация — астрофизика компактных объектов.",about_p2:"Член <strong>SPACE UNMSM</strong> и вице-президент <strong>IEEE NPSS UNMSM</strong>. Организую <em>Viernes Astronómicos</em> и сотрудничаю с Музеем естественной истории.",about_p3:"Член комитета <strong>Национального олимпийского комитета по астрономии и космонавтике</strong>.",about_quote:'"Физику не запоминают — её создают. Моя цель — научить студентов строить собственные объяснения вселенной."',proj_h2:"Исследовательские проекты",proj_intro:"Проектирую и выполняю исследования в области наблюдательной астрофизики и популяризации науки.",sa:"● Активный",sp:"✓ Опубликован",sg:"◌ В подготовке",p1t:"Связь диска-короны в АЯГ",p1d:"Анализ 2530 АЯГ из SDSS DR16 × Chandra CSC 2.1. Связь УФ — рентгеновского излучения. DIA Peru 2026.",p3t:"Астрономический календарь 2026",p3d:"Публикация через SPACE UNMSM, зарегистрирована в МАС.",p4t:"Полёт птиц на экзопланетах",p4d:"Условия полёта птиц на обитаемых экзопланетах. Цель: Nature.",p5t:"Андская археоастрономия",p5d:"Астрономические практики андской цивилизации. Междисциплинарный проект.",p6t:"Обнаружение IASC/Pan-STARRS",p6d:"Обнаружение астероидов по данным Pan-STARRS.",rec_h2:"Образовательные ресурсы",rec_intro:"Инструменты для экспериментов, анализа и создания — не только запоминания.",r1d:"Симуляции механики и электричества. Студенты оценивают результаты в реальном времени.",r2d:"Лаборатории для проектирования вариаций эксперимента.",r3d:"Видео для подготовки, освобождающее занятие для создания.",r4d:"3D-визуализация для гипотез об орбитальной динамике.",r5d:"Апплеты для фазы исследования и анализа.",r6d:"Моделирование на Python. Студенты создают собственные модели.",met_h2:"Как я преподаю",met_intro:"Три стратегии, где студент проектирует, оценивает и производит знание.",m1t:"Перевёрнутый класс",m1d:"Теория дома — занятие для анализа, применения и создания.",m1s1:"До занятия: видео + опрос Google Forms.",m1s2:"На занятии: PhET + проектирование экспериментов.",m1s3:"Студент производит оригинальные результаты.",m2t:"ОМС — Обучение на основе случаев",m2d:"Реальный научный случай. Студенты формулируют гипотезы и аргументируют выводы.",m2s1:"Случай: «Физика первой фотографии чёрной дыры?»",m2s2:"Групповое исследование: ЭМ волны, интерферометрия, ОТО.",m2s3:"Каждая команда строит и защищает собственное объяснение.",m3t:"ПОО — Проектно-ориентированное обучение",m3d:"Студенты проектируют и реализуют полный проект.",m3s1:"Проект: «Траектория спутника по данным NASA.»",m3s2:"Этапы: исследование → данные → симуляция → анализ.",m3s3:"3 недели. Команды 3–4 человека. Оригинальный продукт.",tic_h2:"Технологии в аудитории",tic_intro:"Инструменты для визуализации, оценки и персонализации обучения.",th1:"Инструмент",th2:"Категория",th3:"Педагогическое применение",tr1:"Проектировать и оценивать виртуальные эксперименты",tr2:"Материал для подготовки, освобождающий занятие для создания",tr3:"Формативная диагностика и обратная связь",tr4:"Отслеживание обучения и опросники",tr5:"Генерация задач и персональная обратная связь",tr6:"Организация ресурсов и коммуникация",tr7:"Создание вычислительных физических моделей",tr8:"Исследование и гипотезы о 3D Солнечной системе",footer_sub:"Методика преподавания физики · Д-р Сильвия Эспиноса Суарес · UNMSM 2026",link_paper:"↗ Публикация",nav_works:"Работы",works_h2:"Учебные работы",works_intro:"Академические работы курса методики преподавания физики.",w_visit:"↗ Вы здесь",stat1:"АЯГ проанализировано",stat2:"Активных проектов",stat3:"Языка",stat4:"Семестр",w3t:"Спланируй урок",w3d:"Дидактическое планирование занятия. Скоро.",w4t:"Создай кейс",w4d:"Разработка кейса для проблемного обучения. Скоро.",w1t:"Цифровое педагогическое портфолио",w1d:"Этот сайт — разработан как портфолио для курса методики преподавания физики.",w2t:"Планирование: перевёрнутый класс",w2d:"Дидактическая последовательность для кинематики: видео + PhET + совместное закрепление.",w3t:"Кейс: первое изображение чёрной дыры",w3d:"Занятие, где студенты реконструируют физические принципы изображения EHT 2019.",w4t:"Проект: орбитальное моделирование на Python",w4d:"ПОО-проект: команды моделируют орбиты с данными NASA и пишут научный отчёт.",w5t:"Анализ ИКТ в университетской физике",w5d:"Критический анализ образовательных технологий для физики вуза.",link_iau:"↗ Реестр МАС"}
 };
 function setLang(l){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
@@ -454,86 +629,376 @@ function setLang(l){
   const t=T[l];
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});
 }
-/* ══════════════════════════════════════════
-   STARFIELD
-══════════════════════════════════════════ */
-const sfC=document.getElementById('starfield'),sfX=sfC.getContext('2d');
-let stars=[];
-function rsf(){sfC.width=innerWidth;sfC.height=innerHeight;}
-function ist(){stars=[];for(let i=0;i<200;i++)stars.push({x:Math.random()*sfC.width,y:Math.random()*sfC.height,r:Math.random()*1.3+.2,a:Math.random()*.6+.15,tw:Math.random()*Math.PI*2});}
-function dsf(){sfX.clearRect(0,0,sfC.width,sfC.height);stars.forEach(s=>{s.tw+=.011;const a=s.a*(.55+.45*Math.sin(s.tw));sfX.beginPath();sfX.arc(s.x,s.y,s.r,0,Math.PI*2);sfX.fillStyle=`rgba(232,244,253,${a})`;sfX.fill();});requestAnimationFrame(dsf);}
-window.addEventListener('resize',()=>{rsf();ist();});rsf();ist();dsf();
-window.addEventListener('scroll',()=>{sfC.style.transform=`translateY(${scrollY*.1}px)`;});
 
-
-
-/* ══════════════════════════════════════════
-   SCROLL REVEAL
-══════════════════════════════════════════ */
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:.12});
-document.querySelectorAll('.reveal,.reveal-left,.reveal-right,.stagger').forEach(el=>obs.observe(el));
-
-/* ══ SUN CHARACTER INTERACTIONS ══ */
+/* ══ ANIMATED DEEP SPACE ══ */
 (function(){
-  const svg = document.getElementById('bhSvg');
-  if(!svg) return;
+  const c=document.getElementById('galaxy-canvas'),x=c.getContext('2d');
+  let W,H,stars=[],dustParticles=[],nebClouds=[],shootingStars=[];
+  let frame=0;
 
-  const leftEye  = document.getElementById('eyeLeft');
-  const rightEye = document.getElementById('eyeRight');
-  const leftPupil  = document.getElementById('pupilL');
-  const rightPupil = document.getElementById('pupilR');
-  const LP = {x:128, y:148}, RP = {x:172, y:148};
-  const maxMove = 2.5;
+  function rnd(a,b){return Math.random()*(b-a)+a;}
 
-  document.addEventListener('mousemove', e => {
-    const rect = svg.getBoundingClientRect();
-    const vbW = 300, vbH = 300;
-    const mx = (e.clientX - rect.left) / rect.width  * vbW;
-    const my = (e.clientY - rect.top)  / rect.height * vbH;
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;init();}
 
-    function movePupil(el, base) {
-      const dx = mx - base.x, dy = my - base.y;
-      const dist = Math.sqrt(dx*dx + dy*dy) || 1;
-      const move = Math.min(dist * 0.06, maxMove);
-      el.setAttribute('cx', (base.x + (dx/dist)*move).toFixed(2));
-      el.setAttribute('cy', (base.y + (dy/dist)*move).toFixed(2));
+  function init(){
+    // Stars — color by temperature
+    stars=[];
+    for(let i=0;i<480;i++){
+      const mag=Math.pow(Math.random(),2.5);
+      const t=Math.random();
+      const col=t<.08?[155,176,255]:t<.2?[200,215,255]:t<.42?[255,255,240]:t<.68?[255,240,190]:t<.85?[255,210,140]:[255,170,90];
+      stars.push({x:rnd(0,1),y:rnd(0,1),r:mag<.04?rnd(2,3.2):mag<.2?rnd(1,2):rnd(.2,.9),a:(.2+mag*.8)*(rnd(.65,1)),col,tw:rnd(0,6.28),spd:rnd(.003,.013)});
     }
-    if(leftPupil)  movePupil(leftPupil,  LP);
-    if(rightPupil) movePupil(rightPupil, RP);
-  });
 
-  // Gentle blink
-  function blink(){
-    if(!leftEye || !rightEye) return;
-    [leftEye, rightEye].forEach(el => {
-      el.style.transition = 'transform 0.08s ease';
-      el.style.transformOrigin = '150px 148px';
-      el.style.transform = 'scaleY(0.1)';
+    // Slow-moving dust/gas particles that drift across screen
+    dustParticles=[];
+    for(let i=0;i<120;i++){
+      const hue=Math.random();
+      const col=hue<.3?[180,100,255]:hue<.6?[80,160,255]:[255,100,80];
+      dustParticles.push({
+        x:rnd(0,W),y:rnd(0,H),
+        vx:rnd(-.04,.04),vy:rnd(-.02,.015),
+        r:rnd(1.5,5),
+        a:rnd(.02,.08),
+        col,tw:rnd(0,6.28),spd:rnd(.005,.015)
+      });
+    }
+
+    // Nebula clouds — animated, slow rotation/pulse
+    nebClouds=[
+      // Large emission nebula — hot pink/magenta (dominant, left)
+      {x:.15,y:.44,rx:.38,ry:.28,angle:-.12,
+       stops:[[255,60,120,.28],[200,20,80,.14],[100,5,40,.05],[0,0,0,0]],
+       core:[255,130,160,.18],dAngle:.00008,pulse:0,pspd:.0018,ph:0},
+      // Blue-violet reflection nebula (upper right)
+      {x:.72,y:.20,rx:.30,ry:.22,angle:.08,
+       stops:[[80,120,255,.22],[50,80,220,.11],[20,30,150,.04],[0,0,0,0]],
+       core:[130,180,255,.14],dAngle:-.00006,pulse:0,pspd:.0014,ph:2.1},
+      // Teal emission nebula (lower center)
+      {x:.50,y:.78,rx:.24,ry:.18,angle:.05,
+       stops:[[30,210,200,.20],[15,150,160,.10],[5,70,100,.04],[0,0,0,0]],
+       core:[60,240,220,.12],dAngle:.0001,pulse:0,pspd:.002,ph:4.2},
+      // Deep violet (right mid)
+      {x:.85,y:.55,rx:.20,ry:.15,angle:-.05,
+       stops:[[160,50,230,.18],[100,20,180,.08],[50,5,120,.03],[0,0,0,0]],
+       core:[200,90,255,.11],dAngle:.00007,pulse:0,pspd:.0016,ph:1.4},
+      // Faint warm glow (upper left — like a distant galaxy)
+      {x:.06,y:.18,rx:.14,ry:.10,angle:.2,
+       stops:[[255,180,80,.12],[200,120,40,.06],[100,50,10,.02],[0,0,0,0]],
+       core:[255,200,120,.08],dAngle:-.00005,pulse:0,pspd:.0012,ph:3.5},
+    ];
+
+    // Milky Way band star density
+    const mwStars=[];
+    for(let i=0;i<600;i++){
+      const t=rnd(0,1);
+      const bandY=.38+Math.sin(t*Math.PI*.9)*.10+rnd(-.22,.22);
+      mwStars.push({x:t*W,y:bandY*H,r:rnd(.15,.7),a:rnd(.03,.16)});
+    }
+    stars._mw=mwStars;
+
+    shootingStars=[];
+  }
+
+  function spawnShootingStar(){
+    if(Math.random()>.004) return;
+    shootingStars.push({
+      x:rnd(.1,.9)*W, y:rnd(.05,.4)*H,
+      vx:rnd(3,8)*( Math.random()>.5?1:-1 ),
+      vy:rnd(1,3),
+      len:rnd(60,140),
+      life:1, decay:rnd(.025,.05)
     });
-    setTimeout(()=>{
-      [leftEye, rightEye].forEach(el => { el.style.transform = 'scaleY(1)'; });
-    }, 120);
-    setTimeout(blink, 2800 + Math.random() * 3500);
   }
-  setTimeout(blink, 2000);
 
-  // Gentle ray pulse
-  const rays = document.getElementById('sunRays');
-  if(rays){
-    let t = 0;
-    function pulseRays(){
-      t += 0.02;
-      const scale = 1 + Math.sin(t) * 0.04;
-      rays.style.transformOrigin = '150px 150px';
-      rays.style.transform = `scale(${scale})`;
-      requestAnimationFrame(pulseRays);
-    }
-    pulseRays();
+  function drawDeepSpace(){
+    x.clearRect(0,0,W,H);
+
+    // True deep space background
+    const bg=x.createLinearGradient(0,0,W*.7,H);
+    bg.addColorStop(0,'#010109');
+    bg.addColorStop(.3,'#020212');
+    bg.addColorStop(.65,'#010209');
+    bg.addColorStop(1,'#000004');
+    x.fillStyle=bg;x.fillRect(0,0,W,H);
+
+    // Milky Way diffuse band
+    x.save();
+    x.translate(W*.35,H*.38);x.rotate(-.15);
+    const mwG=x.createRadialGradient(0,0,0,0,0,W*.48);
+    mwG.addColorStop(0,'rgba(160,155,210,0.045)');
+    mwG.addColorStop(.4,'rgba(120,110,180,0.025)');
+    mwG.addColorStop(1,'rgba(0,0,0,0)');
+    x.beginPath();x.ellipse(0,0,W*.48,H*.18,0,0,Math.PI*2);
+    x.fillStyle=mwG;x.fill();
+    x.restore();
+
+    // Milky Way band stars
+    if(stars._mw) stars._mw.forEach(s=>{
+      x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);
+      x.fillStyle=`rgba(232,240,255,${s.a})`;x.fill();
+    });
+
+    // Animated nebula clouds
+    nebClouds.forEach(n=>{
+      n.angle+=n.dAngle;
+      n.pulse+=n.pspd;
+      const scale=1+.06*Math.sin(n.pulse+n.ph);
+      const cx=n.x*W, cy=n.y*H;
+      const rx=n.rx*Math.min(W,H)*scale;
+      const ry=n.ry*Math.min(W,H)*scale;
+
+      x.save();
+      x.translate(cx,cy);x.rotate(n.angle);
+      x.scale(1,ry/rx);x.translate(-cx,-cy);
+      const gr=x.createRadialGradient(cx,cy,0,cx,cy,rx);
+      n.stops.forEach(([r,g,b,a],i)=>{gr.addColorStop(i/3,`rgba(${r},${g},${b},${a*(scale*.85+.15)})`);});
+      x.beginPath();x.arc(cx,cy,rx,0,Math.PI*2);
+      x.fillStyle=gr;x.fill();
+      x.restore();
+
+      // Bright core
+      x.save();
+      x.translate(cx,cy);x.rotate(n.angle);x.scale(1,ry/rx*.6);x.translate(-cx,-cy);
+      const [cr,cg,cb,ca]=n.core;
+      const gc=x.createRadialGradient(cx,cy,0,cx,cy,rx*.28);
+      gc.addColorStop(0,`rgba(${cr},${cg},${cb},${ca*scale})`);
+      gc.addColorStop(1,'rgba(0,0,0,0)');
+      x.beginPath();x.arc(cx,cy,rx*.28,0,Math.PI*2);
+      x.fillStyle=gc;x.fill();
+      x.restore();
+    });
+
+    // Drifting dust particles
+    dustParticles.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      p.tw+=p.spd;
+      if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20;
+      if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20;
+      const a=p.a*(.6+.4*Math.sin(p.tw));
+      const [r,g,b]=p.col;
+      x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);
+      x.fillStyle=`rgba(${r},${g},${b},${a})`;x.fill();
+    });
+
+    // Twinkling stars with diffraction on bright ones
+    stars.forEach(s=>{
+      s.tw+=s.spd;
+      const tw=.65+.35*Math.sin(s.tw);
+      const a=s.a*tw;
+      const [r,g,b]=s.col;
+      const sx=s.x*W, sy=s.y*H;
+      if(s.r>1.8){
+        x.save();x.strokeStyle=`rgba(${r},${g},${b},${a*.3})`;x.lineWidth=.6;
+        const sl=s.r*4;
+        x.beginPath();x.moveTo(sx-sl,sy);x.lineTo(sx+sl,sy);x.stroke();
+        x.beginPath();x.moveTo(sx,sy-sl);x.lineTo(sx,sy+sl);x.stroke();
+        x.restore();
+        // glow
+        const gg=x.createRadialGradient(sx,sy,0,sx,sy,s.r*3);
+        gg.addColorStop(0,`rgba(${r},${g},${b},${a*.4})`);
+        gg.addColorStop(1,'rgba(0,0,0,0)');
+        x.beginPath();x.arc(sx,sy,s.r*3,0,Math.PI*2);
+        x.fillStyle=gg;x.fill();
+      }
+      x.beginPath();x.arc(sx,sy,s.r,0,Math.PI*2);
+      x.fillStyle=`rgba(${r},${g},${b},${a})`;x.fill();
+    });
+
+    // Shooting stars
+    spawnShootingStar();
+    shootingStars=shootingStars.filter(s=>{
+      s.x+=s.vx; s.y+=s.vy; s.life-=s.decay;
+      if(s.life<=0) return false;
+      const ex=s.x-s.vx*(s.len/Math.hypot(s.vx,s.vy));
+      const ey=s.y-s.vy*(s.len/Math.hypot(s.vx,s.vy));
+      const grad=x.createLinearGradient(ex,ey,s.x,s.y);
+      grad.addColorStop(0,'rgba(255,255,255,0)');
+      grad.addColorStop(1,`rgba(255,255,255,${s.life*.7})`);
+      x.beginPath();x.moveTo(ex,ey);x.lineTo(s.x,s.y);
+      x.strokeStyle=grad;x.lineWidth=1.5;x.stroke();
+      return true;
+    });
+
+    frame++;
+    requestAnimationFrame(drawDeepSpace);
   }
+
+  window.addEventListener('resize',resize);
+  resize();
+  drawDeepSpace();
+})();
+
+/* ══ PARTICLES ══ */
+(function(){
+  const c=document.getElementById('particles-canvas'),x=c.getContext('2d');
+  let pts=[];
+  function resize(){c.width=innerWidth;c.height=innerHeight;build();}
+  function build(){pts=[];const n=Math.floor(c.width*c.height/13000);for(let i=0;i<n;i++)pts.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.1+.3,a:Math.random()*.3+.08});}
+  function draw(){x.clearRect(0,0,c.width,c.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=`rgba(232,244,253,${p.a})`;x.fill();});requestAnimationFrame(draw);}
+  window.addEventListener('resize',resize);resize();draw();
+})();
+
+/* ══ HERO FADE ══ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('hero').style.opacity=Math.max(0,1-scrollY/(innerHeight*.35));
+},{passive:true});
+
+/* ══ FIXED CARDS (Veldara style) ══ */
+(function(){
+  const fc=document.getElementById('fixed-cards');
+  const grid=fc.querySelector('.cards-grid');
+  function tick(){
+    const trigger=document.getElementById('cards-trigger');
+    if(!trigger){requestAnimationFrame(tick);return;}
+    const rect=trigger.getBoundingClientRect();
+    const trigTop=rect.top+scrollY, trigH=rect.height;
+    const vh=innerHeight;
+    const start=trigTop-vh*.5;
+    const end=trigTop+trigH-vh*.6; // end earlier so trabajos is visible
+
+    let prog=end>start?(scrollY-start)/(end-start):0;
+    prog=Math.max(0,Math.min(1,prog));
+
+    // Strict fade window — fully gone before trabajos appears
+    const fadeIn=Math.min(1,Math.max(0,(scrollY-(start-vh*.15))/(vh*.15)));
+    const fadeOut=Math.min(1,Math.max(0,(end-scrollY)/(vh*.25)));
+    const op=Math.min(fadeIn,fadeOut);
+
+    fc.style.opacity=op;
+    fc.style.pointerEvents=op>.05?'auto':'none';
+
+    const isMob=innerWidth<768;
+    const pct=prog*130;
+    const mask=isMob
+      ?`linear-gradient(to bottom,black ${pct}%,transparent ${pct+20}%)`
+      :`linear-gradient(to right,black ${pct}%,transparent ${pct+15}%)`;
+    grid.style.maskImage=mask;
+    grid.style.webkitMaskImage=mask;
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
+/* ══ SECTION REVEAL ══ */
+const obs2=new IntersectionObserver(([e])=>{if(e.isIntersecting){document.getElementById('reveal-inner').classList.add('visible');obs2.disconnect();}},{threshold:.15});
+obs2.observe(document.getElementById('reveal-inner'));
+
+/* ══ SCROLL REVEAL ══ */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.stagger').forEach(el=>obs.observe(el));
+
+/* ══ ASTRONAUT ══ */
+(function(){
+  const svg=document.getElementById('bhSvg');if(!svg)return;
+  const lp=document.getElementById('pupilL'),rp=document.getElementById('pupilR');
+  const LP={x:131,y:140},RP={x:149,y:140};
+  document.addEventListener('mousemove',e=>{
+    const rect=svg.getBoundingClientRect();
+    const mx=(e.clientX-rect.left)/rect.width*280,my=(e.clientY-rect.top)/rect.height*320;
+    function mv(el,b){const dx=mx-b.x,dy=my-b.y,d=Math.sqrt(dx*dx+dy*dy)||1,m=Math.min(d*.05,2);el.setAttribute('cx',(b.x+dx/d*m).toFixed(2));el.setAttribute('cy',(b.y+dy/d*m).toFixed(2));}
+    if(lp)mv(lp,LP);if(rp)mv(rp,RP);
+  });
+})();
+
+/* ══ SIMULATION TOGGLE ══ */
+function toggleSim(id, btn){
+  const wrap=document.getElementById(id);
+  const open=wrap.classList.toggle('open');
+  btn.textContent=open?'▼ Ocultar simulación':'▶ '+btn.textContent.slice(2);
+}
+
+
+/* ══ PRELOADER ══ */
+(function(){
+  const pre=document.getElementById('preloader');
+  const pct=document.getElementById('pre-pct');
+  if(!pre)return;
+  let p=0;
+  const iv=setInterval(()=>{
+    p+=Math.random()*18;
+    if(p>=100){p=100;clearInterval(iv);
+      setTimeout(()=>{pre.classList.add('done');},350);
+    }
+    if(pct)pct.textContent=Math.floor(p)+'%';
+  },120);
+  // Safety: force-hide after 3s
+  setTimeout(()=>{pre.classList.add('done');},3000);
+})();
+
+/* ══ SCROLL PROGRESS BAR ══ */
+(function(){
+  const bar=document.getElementById('scroll-progress');
+  if(!bar)return;
+  function update(){
+    const h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(h>0?(scrollY/h)*100:0)+'%';
+  }
+  window.addEventListener('scroll',update,{passive:true});update();
+})();
+
+/* ══ NAV SCROLL STATE ══ */
+(function(){
+  const nav=document.getElementById('main-nav');
+  if(!nav)return;
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',scrollY>60);
+  },{passive:true});
+})();
+
+/* ══ BACK TO TOP ══ */
+(function(){
+  const btn=document.getElementById('back-to-top');
+  if(!btn)return;
+  window.addEventListener('scroll',()=>{
+    btn.classList.toggle('show',scrollY>innerHeight);
+  },{passive:true});
+  btn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+})();
+
+/* ══ STAT COUNTERS ══ */
+(function(){
+  const stats=document.querySelectorAll('.stat-num');
+  let done=false;
+  function animate(){
+    if(done)return;done=true;
+    stats.forEach(s=>{
+      const target=+s.getAttribute('data-target');
+      const val=s.querySelector('.val');
+      const dur=1600,t0=performance.now();
+      function step(now){
+        const p=Math.min((now-t0)/dur,1);
+        const eased=1-Math.pow(1-p,3);
+        val.textContent=Math.floor(eased*target).toLocaleString('es');
+        if(p<1)requestAnimationFrame(step);
+        else val.textContent=target.toLocaleString('es');
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  const so=new IntersectionObserver(([e])=>{if(e.isIntersecting){animate();so.disconnect();}},{threshold:.4});
+  const row=document.querySelector('.stats-row');
+  if(row)so.observe(row);
+})();
+
+/* ══ CARD GLOW FOLLOW ══ */
+(function(){
+  const glow=document.getElementById('card-glow');
+  if(!glow)return;
+  const cards=document.querySelectorAll('.card');
+  cards.forEach(card=>{
+    card.addEventListener('mouseenter',()=>{glow.style.opacity='1';});
+    card.addEventListener('mouseleave',()=>{glow.style.opacity='0';});
+    card.addEventListener('mousemove',e=>{
+      glow.style.left=(e.clientX-200)+'px';
+      glow.style.top=(e.clientY-200)+'px';
+    });
+  });
 })();
 
 </script>
+<!-- BACK TO TOP -->
+<button id="back-to-top" aria-label="Volver arriba">↑</button>
+
 </body>
 </html>
