@@ -14,7 +14,7 @@ body{font-family:'Inter',sans-serif;background:#030508;color:#E8F4FD;}
 
 /* ── GALAXY BG ── */
 #galaxy-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
-#particles-canvas{position:fixed;inset:0;z-index:1;pointer-events:none;}
+
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;transition:background .3s;}
@@ -30,14 +30,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* ── HERO ── */
 #hero{position:relative;height:100vh;width:100%;display:flex;flex-direction:column;z-index:2;}
-.hero-gradient{position:absolute;inset:0;background:linear-gradient(to top,rgba(3,5,8,.9) 0%,rgba(3,5,8,.3) 50%,transparent 100%);pointer-events:none;}
+.hero-gradient{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 75%,rgba(2,4,10,.78) 0%,rgba(2,4,10,.45) 35%,transparent 65%),linear-gradient(to top,rgba(3,5,8,.92) 0%,rgba(3,5,8,.25) 55%,transparent 100%);pointer-events:none;}
 .hero-content{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 1.5rem 5.5rem;}
-.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.5);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;}
-.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,6.5vw,5.5rem);font-weight:700;line-height:1.02;letter-spacing:-.025em;color:#E8F4FD;max-width:800px;margin-bottom:.8rem;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.7);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;text-shadow:0 2px 12px rgba(0,0,0,.8);}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,7vw,6rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:#E8F4FD;max-width:860px;margin-bottom:1rem;filter:drop-shadow(0 4px 24px rgba(0,0,0,.7));}
 .hero-name .hl{position:relative;display:inline-block;}
 .hero-name .hl .underbar{position:absolute;bottom:.12em;left:0;width:100%;height:8px;background:rgba(76,201,240,.35);border-radius:2px;box-shadow:0 0 12px rgba(76,201,240,.4);}
 .hero-name .hl span{position:relative;}
-.hero-tagline{font-family:'Space Grotesk',sans-serif;font-size:clamp(.95rem,2vw,1.25rem);font-weight:300;color:rgba(232,244,253,.55);letter-spacing:.03em;margin-bottom:2.2rem;max-width:560px;}
+.hero-tagline{font-family:'Space Grotesk',sans-serif;font-size:clamp(.95rem,2vw,1.25rem);font-weight:300;color:rgba(232,244,253,.8);letter-spacing:.03em;margin-bottom:2.2rem;max-width:560px;text-shadow:0 2px 16px rgba(0,0,0,.85);}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
 .btn-ghost{display:inline-flex;align-items:center;gap:6px;padding:.75rem 1.8rem;border:1px solid rgba(232,244,253,.25);color:#E8F4FD;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:500;border-radius:2px;transition:all .2s;background:rgba(232,244,253,.04);}
 .btn-ghost:hover{background:rgba(232,244,253,.1);border-color:rgba(232,244,253,.5);}
@@ -56,24 +56,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 
 /* ── SECTION 3 (Veldara big reveal) ── */
 #section-reveal{position:relative;min-height:100vh;display:flex;align-items:flex-end;justify-content:center;padding:0 2rem 8rem;z-index:2;}
-#section-reveal .inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0;transform:translateY(36px);filter:blur(10px);transition:opacity 1.1s ease,transform 1.1s ease,filter 1.1s ease;}
+#section-reveal .inner{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;opacity:0;transform:translateY(36px);filter:blur(10px);transition:opacity 1.1s ease,transform 1.1s ease,filter 1.1s ease;padding:2.5rem 3rem;border-radius:12px;background:radial-gradient(ellipse at center,rgba(2,4,10,.6) 0%,transparent 75%);}
 #section-reveal .inner.visible{opacity:1;transform:none;filter:blur(0);}
-#section-reveal .inner .pre{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.45);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.9rem;}
-#section-reveal .inner h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,6vw,4.8rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;color:#E8F4FD;}
+#section-reveal .inner .pre{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.7);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.9rem;text-shadow:0 2px 12px rgba(0,0,0,.8);}
+#section-reveal .inner h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,6vw,4.8rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;color:#E8F4FD;text-shadow:0 4px 30px rgba(0,0,0,.8);}
 
 /* ── CONTENT SECTIONS ── */
 #content{position:relative;z-index:2;}
-.section-wrap{padding:6rem 2rem;}
+/* Readability scrim behind all content below hero */
+#content::before{content:"";position:absolute;top:100vh;left:0;right:0;bottom:0;background:linear-gradient(to bottom,transparent,rgba(2,4,10,.82) 4%,rgba(2,4,10,.88) 50%,rgba(2,4,10,.9));z-index:-1;pointer-events:none;}
+.section-wrap{padding:6rem 2rem;position:relative;}
 .section-inner{max-width:1060px;margin:0 auto;}
-.full-dark{background:rgba(3,5,8,.55);}
-.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(232,244,253,.4);letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;}
+.full-dark{background:rgba(3,5,8,.72);backdrop-filter:blur(2px);}
+.section-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:#4CC9F0;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.75rem;opacity:.85;}
 h2.sh{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;letter-spacing:-.015em;margin-bottom:1rem;color:#E8F4FD;}
-.section-intro{font-size:.95rem;color:rgba(232,244,253,.5);max-width:580px;margin-bottom:3rem;line-height:1.7;}
+.section-intro{font-size:.95rem;color:rgba(232,244,253,.72);max-width:580px;margin-bottom:3rem;line-height:1.7;}
 .star-div{text-align:center;color:rgba(232,244,253,.08);font-size:16px;letter-spacing:.5rem;padding:.5rem 0;user-select:none;}
 
 /* ── ABOUT ── */
 .about-grid{display:grid;grid-template-columns:260px 1fr;gap:4rem;align-items:center;}
-.about-text p{color:rgba(232,244,253,.6);margin-bottom:1rem;font-size:.94rem;line-height:1.75;}
+.about-text p{color:rgba(232,244,253,.78);margin-bottom:1rem;font-size:.94rem;line-height:1.75;}
 .about-text strong{color:#E8F4FD;}
 .quote-block{border-left:1px solid rgba(232,244,253,.2);padding:.75rem 1.25rem;margin:1.5rem 0;}
 .quote-block p{font-style:italic;color:rgba(232,244,253,.75)!important;font-size:.96rem!important;}
@@ -81,11 +83,11 @@ h2.sh{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);
 .tag{font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid rgba(232,244,253,.12);color:rgba(232,244,253,.5);border-radius:2px;letter-spacing:.04em;}
 
 /* ── CARDS ── */
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:rgba(232,244,253,.06);}
-.card{background:#030508;padding:1.8rem;transition:background .2s;}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:rgba(232,244,253,.06);}
+.card{background:#030508;padding:1.8rem;transition:background .2s;min-height:180px;}
 .card:hover{background:rgba(232,244,253,.03);}
 .card h3{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:500;color:#E8F4FD;margin-bottom:.5rem;}
-.card p{font-size:.87rem;color:rgba(232,244,253,.5);line-height:1.65;margin-bottom:1rem;}
+.card p{font-size:.87rem;color:rgba(232,244,253,.72);line-height:1.65;margin-bottom:1rem;}
 .status{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;margin-bottom:.9rem;display:inline-block;}
 .sa{background:rgba(34,197,94,.08);color:#4ade80;border:1px solid rgba(34,197,94,.2);}
 .sp{background:rgba(232,244,253,.06);color:rgba(232,244,253,.6);border:1px solid rgba(232,244,253,.12);}
@@ -107,9 +109,9 @@ h2.sh{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);
 .mc{color:rgba(232,244,253,.3);font-size:14px;transition:transform .3s;}
 details[open] .mc{transform:rotate(180deg);}
 .mbody{padding:1.2rem .5rem 1.8rem 2.5rem;}
-.mbody p{font-size:.88rem;color:rgba(232,244,253,.5);margin-bottom:.8rem;line-height:1.7;}
+.mbody p{font-size:.88rem;color:rgba(232,244,253,.72);margin-bottom:.8rem;line-height:1.7;}
 .msteps{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:1rem;}
-.msteps li{font-size:.87rem;color:rgba(232,244,253,.45);padding-left:1.2rem;position:relative;}
+.msteps li{font-size:.87rem;color:rgba(232,244,253,.68);padding-left:1.2rem;position:relative;}
 .msteps li::before{content:'→';position:absolute;left:0;color:rgba(232,244,253,.25);}
 .chips{display:flex;flex-wrap:wrap;gap:5px;}
 .chip{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 7px;border:1px solid rgba(232,244,253,.1);color:rgba(232,244,253,.4);border-radius:2px;}
@@ -117,10 +119,10 @@ details[open] .mc{transform:rotate(180deg);}
 /* ── TIC ── */
 .tic-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;font-size:.875rem;}
-thead th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,244,253,.35);text-align:left;padding:.75rem 1rem;border-bottom:1px solid rgba(232,244,253,.07);}
+thead th{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#4CC9F0;text-align:left;padding:.75rem 1rem;border-bottom:1px solid rgba(76,201,240,.15);}
 tbody tr{border-bottom:1px solid rgba(232,244,253,.04);transition:background .15s;}
 tbody tr:hover{background:rgba(232,244,253,.02);}
-tbody td{padding:.85rem 1rem;color:rgba(232,244,253,.5);vertical-align:top;}
+tbody td{padding:.85rem 1rem;color:rgba(232,244,253,.88);vertical-align:top;}
 tbody td:first-child{color:#E8F4FD;font-weight:500;font-family:'Space Grotesk',sans-serif;}
 .cp{font-family:'JetBrains Mono',monospace;font-size:10px;padding:2px 8px;border-radius:2px;white-space:nowrap;}
 .cs{background:rgba(76,201,240,.08);color:#4CC9F0;border:1px solid rgba(76,201,240,.2);}
@@ -129,15 +131,20 @@ tbody td:first-child{color:#E8F4FD;font-weight:500;font-family:'Space Grotesk',s
 .ci{background:rgba(34,197,94,.07);color:#22C55E;border:1px solid rgba(34,197,94,.2);}
 .cl{background:rgba(251,146,60,.07);color:#FB923C;border:1px solid rgba(251,146,60,.2);}
 
-/* ── SIMULATION EMBEDS ── */
-.sim-toggle{display:inline-flex;align-items:center;gap:5px;margin-top:.7rem;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(232,244,253,.45);background:transparent;border:1px solid rgba(232,244,253,.1);padding:4px 10px;border-radius:2px;cursor:pointer;transition:all .2s;}
-.sim-toggle:hover{border-color:rgba(232,244,253,.35);color:rgba(232,244,253,.8);}
+
 .sim-frame-wrap{display:none;margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(232,244,253,.08);}
 .sim-frame-wrap.open{display:block;}
-.sim-frame-wrap iframe{width:100%;height:380px;border:none;display:block;background:#000;}
+.sim-frame-wrap iframe{width:100%;height:400px;border:none;display:block;background:#000;}
 
 
-/* ── PRELOADER ── */
+
+
+/* AI COPILOT NOTE */
+.ai-note{display:flex;align-items:flex-start;gap:14px;background:linear-gradient(135deg,rgba(76,201,240,.08),rgba(247,37,133,.05));border:1px solid rgba(76,201,240,.18);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1.8rem;}
+.ai-note-icon{font-size:1.6rem;flex-shrink:0;line-height:1;margin-top:2px;}
+.ai-note-text{font-size:.9rem;color:rgba(232,244,253,.78);line-height:1.65;}
+.ai-note-text strong{color:#4CC9F0;font-weight:600;}
+/* PRELOADER */
 #preloader{position:fixed;inset:0;z-index:9999;background:#010109;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease;}
 #preloader.done{opacity:0;visibility:hidden;}
 .pre-orbit{width:80px;height:80px;position:relative;margin-bottom:1.5rem;}
@@ -209,6 +216,7 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
 #trabajos .cards-grid{grid-template-columns:repeat(2,1fr);} #trabajos .card{min-height:120px;}
 @media(max-width:700px){#trabajos .cards-grid{grid-template-columns:1fr;}[style*="grid-column:span 2"]{grid-column:span 1!important;}}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -231,7 +239,6 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
 
 
 <canvas id="galaxy-canvas"></canvas>
-<canvas id="particles-canvas"></canvas>
 
 <!-- FIXED CARDS (Veldara scroll reveal) -->
 <div id="fixed-cards">
@@ -278,9 +285,8 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
   <div class="hero-content">
     <p class="hero-eyebrow">12° 03′ S · 77° 02′ W · 154 m.s.n.m.</p>
     <h1 class="hero-name">
-      <span data-i18n="hero_pre">Investigador que</span><br/>
-      <span class="hl"><span class="underbar"></span><span data-i18n="hero_hl">evalúa, crea y transforma</span></span><br/>
-      <span data-i18n="hero_post">desde la astrofísica</span>
+      <span data-i18n="hero_pre">Explorando el universo,</span><br/>
+      <span class="hl"><span class="underbar"></span><span data-i18n="hero_hl">una clase a la vez</span></span>
     </h1>
     <p class="hero-tagline" data-i18n="hero_tagline">Jiro Martín Fabián Vásquez · Física UNMSM · SPACE UNMSM · IEEE NPSS</p>
     <div class="hero-ctas">
@@ -313,137 +319,9 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
     <div class="reveal"><h2 class="sh" data-i18n="about_h2">Perfil académico</h2></div>
     <div class="about-grid">
       <div class="reveal-l">
-        <div id="bhWrap">
-          <svg id="bhSvg" viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg" width="280" height="320" style="display:block;overflow:visible;">
-          <defs>
-            <radialGradient id="spaceB" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#0a0818"/><stop offset="100%" stop-color="#020106"/>
-            </radialGradient>
-            <radialGradient id="helmetG" cx="40%" cy="35%" r="62%">
-              <stop offset="0%" stop-color="#e8f4fd" stop-opacity="0.95"/>
-              <stop offset="55%" stop-color="#b0cce8" stop-opacity="0.85"/>
-              <stop offset="100%" stop-color="#6090c0" stop-opacity="0.7"/>
-            </radialGradient>
-            <radialGradient id="helmetGlass" cx="38%" cy="32%" r="60%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
-              <stop offset="40%" stop-color="#cce4ff" stop-opacity="0.25"/>
-              <stop offset="100%" stop-color="#4488bb" stop-opacity="0.1"/>
-            </radialGradient>
-            <radialGradient id="visorG" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="#ffcc44" stop-opacity="0.9"/>
-              <stop offset="50%" stop-color="#ff8800" stop-opacity="0.75"/>
-              <stop offset="100%" stop-color="#cc4400" stop-opacity="0.6"/>
-            </radialGradient>
-            <filter id="softglow" x="-25%" y="-25%" width="150%" height="150%">
-              <feGaussianBlur stdDeviation="4" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="blur3"><feGaussianBlur stdDeviation="3"/></filter>
-            <filter id="blur8"><feGaussianBlur stdDeviation="8"/></filter>
-          </defs>
-
-          <!-- Background -->
-          <rect width="280" height="320" fill="url(#spaceB)" rx="10"/>
-
-          <!-- Stars -->
-          <g fill="white">
-            <circle cx="18" cy="22" r="1.1" opacity="0.8"/><circle cx="48" cy="12" r="0.7" opacity="0.6"/>
-            <circle cx="240" cy="18" r="1" opacity="0.75"/><circle cx="262" cy="35" r="0.8" opacity="0.7"/>
-            <circle cx="14" cy="280" r="0.9" opacity="0.7"/><circle cx="260" cy="270" r="1.1" opacity="0.75"/>
-            <circle cx="12" cy="160" r="0.7" opacity="0.5"/><circle cx="268" cy="150" r="0.8" opacity="0.55"/>
-            <circle cx="140" cy="12" r="0.6" opacity="0.65"/><circle cx="50" cy="295" r="0.9" opacity="0.6"/>
-            <circle cx="230" cy="300" r="0.8" opacity="0.65"/>
-          </g>
-          <!-- A few colored stars -->
-          <circle cx="42" cy="45" r="1.5" fill="#ffddaa" opacity="0.8" filter="url(#blur3)"/>
-          <circle cx="42" cy="45" r="0.7" fill="#ffeecc" opacity="0.95"/>
-          <circle cx="245" cy="55" r="1.4" fill="#aaccff" opacity="0.75" filter="url(#blur3)"/>
-          <circle cx="245" cy="55" r="0.6" fill="#ccdeff"/>
-          <circle cx="22" cy="200" r="1.2" fill="#ffccaa" opacity="0.7" filter="url(#blur3)"/>
-
-          <!-- Distant tiny planet hint (top right) -->
-          <circle cx="235" cy="60" r="18" fill="#1a3060" opacity="0.6"/>
-          <circle cx="235" cy="60" r="18" fill="none" stroke="#2a5090" stroke-width="1" opacity="0.4"/>
-          <ellipse cx="235" cy="60" rx="28" ry="7" fill="none" stroke="#3a6090" stroke-width="1.5" opacity="0.35"/>
-
-          <!-- Tethered rope floating up from astronaut -->
-          <path d="M 140 148 C 155 130 130 115 148 95 C 162 78 138 62 152 45" fill="none" stroke="#aabbcc" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.45"/>
-
-          <!-- ── ASTRONAUT BODY ── -->
-          <!-- Main suit body — puffy, rounded -->
-          <g id="astronaut">
-            <!-- Gentle float animation -->
-            <animateTransform attributeName="transform" type="translate" values="0,0;0,-6;0,0" dur="4s" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/>
-
-            <!-- Left arm -->
-            <ellipse cx="100" cy="195" rx="14" ry="22" fill="#dce8f0" transform="rotate(-20 100 195)"/>
-            <ellipse cx="93" cy="215" rx="10" ry="8" fill="#c8d8e8"/>
-            <!-- Left glove -->
-            <ellipse cx="90" cy="222" rx="9" ry="7" fill="#e8f0f8"/>
-
-            <!-- Right arm -->
-            <ellipse cx="180" cy="195" rx="14" ry="22" fill="#dce8f0" transform="rotate(15 180 195)"/>
-            <ellipse cx="186" cy="216" rx="10" ry="8" fill="#c8d8e8"/>
-            <!-- Right glove — holding something? -->
-            <ellipse cx="189" cy="223" rx="9" ry="7" fill="#e8f0f8"/>
-
-            <!-- Suit body -->
-            <rect x="106" y="170" width="68" height="72" rx="22" fill="#dce8f0"/>
-            <!-- Suit chest detail / mission patch area -->
-            <rect x="118" y="182" width="44" height="28" rx="6" fill="#c0d4e8" opacity="0.8"/>
-            <!-- Small emblem -->
-            <circle cx="140" cy="196" r="8" fill="#1a3060" opacity="0.7"/>
-            <text x="140" y="199.5" text-anchor="middle" font-size="7" fill="#4CC9F0" font-family="monospace" font-weight="bold">★</text>
-
-            <!-- Suit collar / neck ring -->
-            <ellipse cx="140" cy="170" rx="28" ry="10" fill="#b0c8de"/>
-            <ellipse cx="140" cy="170" rx="28" ry="10" fill="none" stroke="#90b0cc" stroke-width="1.5"/>
-
-            <!-- Helmet -->
-            <circle cx="140" cy="140" r="46" fill="url(#helmetG)" filter="url(#softglow)"/>
-            <!-- Helmet outer ring -->
-            <circle cx="140" cy="140" r="46" fill="none" stroke="#90b8d8" stroke-width="2.5" opacity="0.7"/>
-            <!-- Helmet highlight -->
-            <circle cx="140" cy="140" r="46" fill="url(#helmetGlass)"/>
-
-            <!-- Visor (golden, reflective) -->
-            <ellipse cx="140" cy="142" rx="30" ry="25" fill="url(#visorG)"/>
-            <!-- Visor reflection shine -->
-            <ellipse cx="128" cy="133" rx="8" ry="5" fill="white" opacity="0.35" transform="rotate(-20 128 133)"/>
-            <!-- Visor rim -->
-            <ellipse cx="140" cy="142" rx="30" ry="25" fill="none" stroke="#cc7700" stroke-width="1.5" opacity="0.6"/>
-
-            <!-- Inside visor: cute tiny face visible through gold tint -->
-            <g opacity="0.65">
-              <!-- Eyes (small, dark, friendly) -->
-              <circle id="pupilL" cx="131" cy="140" r="4" fill="#2a1500"/>
-              <circle id="pupilR" cx="149" cy="140" r="4" fill="#2a1500"/>
-              <!-- Eye shines -->
-              <circle cx="129.5" cy="138.5" r="1.3" fill="white" opacity="0.9"/>
-              <circle cx="147.5" cy="138.5" r="1.3" fill="white" opacity="0.9"/>
-              <!-- Tiny smile -->
-              <path d="M 133 148 Q 140 154 147 148" fill="none" stroke="#3a1800" stroke-width="1.8" stroke-linecap="round"/>
-            </g>
-
-            <!-- Helmet side details -->
-            <circle cx="100" cy="140" r="6" fill="#90b0cc" opacity="0.7"/>
-            <circle cx="180" cy="140" r="6" fill="#90b0cc" opacity="0.7"/>
-
-            <!-- Backpack / PLSS -->
-            <rect x="113" y="172" width="54" height="38" rx="8" fill="#c0d0e0" opacity="0.6"/>
-
-            <!-- Legs -->
-            <rect x="112" y="238" width="24" height="38" rx="10" fill="#dce8f0"/>
-            <rect x="144" y="238" width="24" height="38" rx="10" fill="#dce8f0"/>
-            <!-- Boots -->
-            <ellipse cx="124" cy="277" rx="14" ry="9" fill="#b0c4d8"/>
-            <ellipse cx="156" cy="277" rx="14" ry="9" fill="#b0c4d8"/>
-          </g>
-
-          <!-- Label -->
-          <text x="140" y="312" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="9" fill="rgba(232,244,253,0.4)" letter-spacing="2">UNMSM · SPACE</text>
-        </svg>
-      </div>
+        <div id="bhWrap" style="position:relative;width:100%;max-width:320px;aspect-ratio:1;margin:0 auto;">
+          <canvas id="planet-canvas" style="width:100%;height:100%;display:block;border-radius:8px;"></canvas>
+        </div>
       </div>
       <div class="about-text reveal-r">
         <p data-i18n="about_p1">Soy estudiante de 8.° semestre de Física en la <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.</p>
@@ -482,54 +360,146 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
 
 <div class="star-div">· · · ✦ · · ·</div>
 
+<div class="star-div">· · · ✦ · · ·</div>
+
 <!-- ══ RECURSOS ══ -->
 <div id="recursos" class="section-wrap">
   <div class="section-inner">
     <div class="reveal"><p class="section-label">03 · <span data-i18n="nav_resources">Recursos</span></p></div>
     <div class="reveal"><h2 class="sh" data-i18n="rec_h2">Recursos educativos</h2></div>
     <div class="reveal"><p class="section-intro" data-i18n="rec_intro">Herramientas seleccionadas para que los estudiantes experimenten, analicen y creen — no solo memoricen.</p></div>
-    <div class="cards-grid stagger">
-      <div class="card"><h3>⚛️ PhET Simulations</h3><p data-i18n="r1d">Simulaciones para mecánica, electricidad, ondas y termodinámica. Los estudiantes manipulan variables y evalúan resultados en tiempo real.</p><a class="clink" href="https://phet.colorado.edu/es/" target="_blank">→ phet.colorado.edu</a><br/>
-<button class="sim-toggle" onclick="toggleSim('sim-phet',this)">▶ Ver simulación: Movimiento de Proyectiles</button>
-<div class="sim-frame-wrap" id="sim-phet"><iframe src="https://phet.colorado.edu/sims/html/projectile-motion/latest/projectile-motion_es.html" allowfullscreen loading="lazy"></iframe></div></div>
-      <div class="card"><h3>🧪 Physics Aviary</h3><p data-i18n="r2d">Laboratorios virtuales con guía estructurada. Permiten diseñar variaciones del experimento y analizar diferencias.</p><a class="clink" href="https://www.physicsaviary.com/" target="_blank">→ physicsaviary.com</a></div>
-      <div class="card"><h3>▶️ Khan Academy</h3><p data-i18n="r3d">Videos conceptuales para estudio previo. Libera el tiempo de clase para aplicar y crear, no escuchar.</p><a class="clink" href="https://es.khanacademy.org/science/physics" target="_blank">→ es.khanacademy.org</a><br/>
-<button class="sim-toggle" onclick="toggleSim('sim-gravity',this)">▶ Ver simulación: Gravedad y órbitas</button>
-<div class="sim-frame-wrap" id="sim-gravity"><iframe src="https://phet.colorado.edu/sims/html/gravity-and-orbits/latest/gravity-and-orbits_es.html" allowfullscreen loading="lazy"></iframe></div></div>
-      <div class="card"><h3>🌌 NASA Eyes</h3><p data-i18n="r4d">Visualización 3D del sistema solar con datos reales. Ideal para que los estudiantes formulen hipótesis sobre dinámica orbital.</p><a class="clink" href="https://eyes.nasa.gov/" target="_blank">→ eyes.nasa.gov</a></div>
-      <div class="card"><h3>📊 oPhysics</h3><p data-i18n="r5d">Applets interactivos para movimiento, ondas y óptica. Perfectos para la fase de exploración y análisis.</p><a class="clink" href="https://ophysics.com/" target="_blank">→ ophysics.com</a><br/>
-<button class="sim-toggle" onclick="toggleSim('sim-wave',this)">▶ Ver simulación: Ondas en una cuerda</button>
-<div class="sim-frame-wrap" id="sim-wave"><iframe src="https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_es.html" allowfullscreen loading="lazy"></iframe></div></div>
-      <div class="card"><h3>🐍 Google Colab</h3><p data-i18n="r6d">Modelamiento físico con Python. Los estudiantes construyen sus propios modelos computacionales desde cero.</p><a class="clink" href="https://colab.research.google.com/" target="_blank">→ colab.research.google.com</a></div>
+    <div class="cards-grid stagger" style="grid-template-columns:repeat(3,1fr);">
+
+      <!-- ── 1. GRAVEDAD Y ÓRBITAS (3D) ── -->
+      <div class="card">
+        <h3>🌍 Gravedad y Órbitas</h3>
+        <p data-i18n="r1d">Simula la atracción gravitacional entre el Sol, la Tierra y la Luna. Modifica masas y distancias para ver cómo cambian las órbitas.</p>
+        <a class="clink" href="https://phet.colorado.edu/es/simulations/gravity-and-orbits" target="_blank">→ phet.colorado.edu</a>
+        <div style="margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(76,201,240,.1);">
+          <div style="width:100%;height:360px;background:#02040a;"><canvas id="orbit-canvas-3d" style="width:100%;height:100%;display:block;"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ── 2. INTERFERENCIA DE ONDAS (3D) ── -->
+      <div class="card">
+        <h3>〰️ Interferencia de ondas</h3>
+        <p data-i18n="r3d">Dos fuentes generan patrones de interferencia constructiva y destructiva — fundamento de la interferometría y del experimento de Young.</p>
+        <a class="clink" href="https://phet.colorado.edu/es/simulations/wave-interference" target="_blank">→ phet.colorado.edu</a>
+        <div style="margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(76,201,240,.1);">
+          <div style="width:100%;height:360px;background:#02040a;"><canvas id="wave-canvas-3d" style="width:100%;height:100%;display:block;"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ── 3. LEYES DE KEPLER (3D) ── -->
+      <div class="card">
+        <h3>🪐 Leyes de Kepler</h3>
+        <p data-i18n="r4d">Las tres leyes de Kepler en tiempo real: órbitas elípticas con distintas excentricidades donde la velocidad varía según la Ley de Áreas.</p>
+        <a class="clink" href="https://phet.colorado.edu/es/simulations/keplers-laws" target="_blank">→ phet.colorado.edu</a>
+        <div style="margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(76,201,240,.1);">
+          <div style="width:100%;height:360px;background:#02040a;"><canvas id="kepler-canvas-3d" style="width:100%;height:100%;display:block;"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ── 4. DISTORSIÓN ESPACIO-TIEMPO (3D) ── -->
+      <div class="card">
+        <h3>🌀 Distorsión espacio-tiempo</h3>
+        <p data-i18n="r7d">Visualización 3D de cómo las masas curvan el espacio-tiempo según la Relatividad General. La malla se deforma con objetos masivos orbitando.</p>
+        <a class="clink" href="https://www.geogebra.org/m/HajApPdy" target="_blank">→ geogebra.org</a>
+        <div style="margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(76,201,240,.1);">
+          <div id="spacetime-canvas-wrap" style="width:100%;height:360px;background:#02040a;">
+            <canvas id="spacetime-canvas" style="width:100%;height:100%;display:block;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 5. ESPECTRO CUERPO NEGRO (PhET iframe) ── -->
+      <div class="card">
+        <h3>⭐ Espectro de cuerpo negro</h3>
+        <p data-i18n="r5d">Cambia la temperatura de una estrella y observa cómo cambia su espectro de emisión — Ley de Planck. Clave para clasificar estrellas.</p>
+        <a class="clink" href="https://phet.colorado.edu/es/simulations/blackbody-spectrum" target="_blank">→ phet.colorado.edu</a>
+        <div style="margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(76,201,240,.1);">
+          <iframe src="https://phet.colorado.edu/sims/html/blackbody-spectrum/latest/blackbody-spectrum_es.html" style="width:100%;height:360px;border:none;display:block;background:#000;" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- ── 6. CURVATURA DE LA LUZ (PhET iframe) ── -->
+      <div class="card">
+        <h3>💡 Curvatura de la luz</h3>
+        <p data-i18n="r2d">Explora refracción y reflexión total interna. Cambia el ángulo y el medio óptico para analizar cómo se dobla la luz.</p>
+        <a class="clink" href="https://phet.colorado.edu/es/simulations/bending-light" target="_blank">→ phet.colorado.edu</a>
+        <div style="margin-top:1rem;border-radius:4px;overflow:hidden;border:1px solid rgba(76,201,240,.1);">
+          <iframe src="https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_es.html" style="width:100%;height:360px;border:none;display:block;background:#000;" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- ── 7. GOOGLE COLAB ── -->
+      <div class="card">
+        <h3>🐍 Google Colab</h3>
+        <p data-i18n="r13d">Modelamiento físico con Python en el navegador. Los estudiantes construyen modelos computacionales — desde mecánica newtoniana hasta análisis de datos astronómicos.</p>
+        <a class="clink" href="https://colab.research.google.com/" target="_blank">→ colab.research.google.com</a>
+        <div style="margin-top:1rem;padding:.9rem;background:rgba(76,201,240,.04);border-radius:4px;border-left:2px solid rgba(76,201,240,.3);">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#4CC9F0;letter-spacing:.06em;margin-bottom:.4rem;">EJEMPLO DE USO</p>
+          <p style="font-size:.83rem;color:rgba(232,244,253,.65);line-height:1.6;">Simular órbitas · Analizar datos de AGN · Graficar curvas de luz estelares · Ajuste de espectros</p>
+        </div>
+      </div>
+
+      <!-- ── 8. STELLARIUM WEB ── -->
+      <div class="card">
+        <h3>🔭 Stellarium Web</h3>
+        <p data-i18n="r9d">Planetario virtual en el navegador. Observa el cielo nocturno desde Lima, identifica constelaciones, planetas y eventos astronómicos en tiempo real.</p>
+        <a class="clink" href="https://stellarium-web.org/" target="_blank">→ stellarium-web.org</a>
+        <div style="margin-top:1rem;padding:.9rem;background:rgba(76,201,240,.04);border-radius:4px;border-left:2px solid rgba(76,201,240,.3);">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#4CC9F0;letter-spacing:.06em;margin-bottom:.4rem;">CÓMO USARLO EN CLASE</p>
+          <p style="font-size:.83rem;color:rgba(232,244,253,.65);line-height:1.6;">Ubicar planetas visibles esta noche · Identificar constelaciones del hemisferio sur · Simular eclipses</p>
+        </div>
+      </div>
+
+      <!-- ── 9. CLAUDE ── -->
+      <div class="card">
+        <h3>🤖 Claude</h3>
+        <p data-i18n="r20d">Mi compañero de IA para co-diseñar clases, generar casos de estudio, crear material didáctico y resolver dudas pedagógicas en tiempo real.</p>
+        <a class="clink" href="https://claude.ai/" target="_blank">→ claude.ai</a>
+        <div style="margin-top:1rem;padding:.9rem;background:rgba(247,37,133,.05);border-radius:4px;border-left:2px solid rgba(247,37,133,.3);">
+          <p style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#F72585;letter-spacing:.06em;margin-bottom:.4rem;">COPILOTO PEDAGÓGICO</p>
+          <p style="font-size:.83rem;color:rgba(232,244,253,.65);line-height:1.6;">Diseñar rúbricas · Crear variantes de problemas · Generar casos ABC · Retroalimentación instantánea</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
+
+<div class="star-div">· · · ✦ · · ·</div>
 
 <div class="star-div">· · · ✦ · · ·</div>
 
 <!-- ══ METODOLOGÍAS ══ -->
 <div id="metodologias" class="section-wrap full-dark">
   <div class="section-inner">
-    <div class="reveal"><p class="section-label">04 · <span data-i18n="nav_methods">Metodologías</span></p></div>
+    <div class="reveal"><p class="section-label" data-i18n="label_04">04 · <span data-i18n="nav_methods">Metodologías</span></p></div>
     <div class="reveal"><h2 class="sh" data-i18n="met_h2">Cómo enseño</h2></div>
     <div class="reveal"><p class="section-intro" data-i18n="met_intro">Tres estrategias donde el estudiante diseña, evalúa y produce conocimiento propio — no solo lo recibe.</p></div>
     <div class="reveal">
-      <details class="metod" open><summary><span class="mn">01</span><span class="mt" data-i18n="m1t">Flipped Classroom — Aula invertida</span><span class="mb2">Flipped</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m1d">El estudiante accede al contenido teórico en casa y llega al aula listo para analizar, aplicar y crear — no solo escuchar.</p><ul class="msteps"><li data-i18n="m1s1">Antes de clase: video Khan Academy + formulario Google Forms.</li><li data-i18n="m1s2">En clase: PhET + diseño de experimentos propios.</li><li data-i18n="m1s3">El estudiante produce resultados originales, no copia del pizarrón.</li></ul><div class="chips"><span class="chip">YouTube</span><span class="chip">Google Forms</span><span class="chip">PhET</span><span class="chip">Moodle</span></div></div></details>
-      <details class="metod"><summary><span class="mn">02</span><span class="mt" data-i18n="m2t">ABC — Aprendizaje Basado en Casos</span><span class="mb2">ABC</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m2d">Un caso científico real como punto de partida. Los estudiantes investigan, formulan hipótesis y argumentan sus conclusiones.</p><ul class="msteps"><li data-i18n="m2s1">Caso: "¿Qué principios explican la primera foto de un agujero negro?"</li><li data-i18n="m2s2">Investigación grupal: ondas EM, interferometría, relatividad general.</li><li data-i18n="m2s3">Cada equipo construye y defiende su propia explicación.</li></ul><div class="chips"><span class="chip">ChatGPT</span><span class="chip">YouTube</span><span class="chip">Google Slides</span><span class="chip">Kahoot</span></div></div></details>
-      <details class="metod"><summary><span class="mn">03</span><span class="mt" data-i18n="m3t">AOP — Aprendizaje Orientado a Proyectos</span><span class="mb2">AOP</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m3d">Los estudiantes diseñan y ejecutan un proyecto completo — alcanzando el nivel más alto del pensamiento científico.</p><ul class="msteps"><li data-i18n="m3s1">Proyecto: "Modela la trayectoria de un satélite con datos NASA."</li><li data-i18n="m3s2">Etapas: investigación → datos → simulación → análisis → presentación.</li><li data-i18n="m3s3">3 semanas. Equipos de 3–4 personas. Producto final original.</li></ul><div class="chips"><span class="chip">PhET</span><span class="chip">NASA Eyes</span><span class="chip">Google Colab</span><span class="chip">Canva</span></div></div></details>
+      <div class="ai-note">
+        <span class="ai-note-icon">🤖</span>
+        <p class="ai-note-text" data-i18n="ai_note"><strong>IA como copiloto pedagógico:</strong> Diseño cada una de estas metodologías junto a <strong>Claude</strong>, mi compañero de IA, para crear casos, generar variantes de problemas y refinar la secuencia didáctica. La tecnología no reemplaza al docente, amplifica su creatividad.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <details class="metod" open><summary><span class="mn">01</span><span class="mt" data-i18n="m1t">Flipped Classroom — Aula invertida</span><span class="mb2">Flipped</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m1d">El estudiante accede al contenido teórico en casa y llega listo para analizar, aplicar y crear.</p><ul class="msteps"><li data-i18n="m1s1">Antes de clase: video Khan Academy + formulario Google Forms.</li><li data-i18n="m1s2">En clase: PhET + diseño de experimentos propios.</li><li data-i18n="m1s3">El estudiante produce resultados originales, no copia del pizarrón.</li></ul><div class="chips"><span class="chip">YouTube</span><span class="chip">Google Forms</span><span class="chip">PhET</span><span class="chip">Moodle</span><span class="chip">Claude</span></div></div></details>
+      <details class="metod"><summary><span class="mn">02</span><span class="mt" data-i18n="m2t">ABC — Aprendizaje Basado en Casos</span><span class="mb2">ABC</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m2d">Un caso científico real como punto de partida. Los estudiantes investigan, formulan hipótesis y argumentan sus conclusiones.</p><ul class="msteps"><li data-i18n="m2s1">Caso: '¿Qué principios explican la primera foto de un agujero negro?'</li><li data-i18n="m2s2">Investigación grupal: ondas EM, interferometría, relatividad general.</li><li data-i18n="m2s3">Cada equipo construye y defiende su propia explicación.</li></ul><div class="chips"><span class="chip">Claude</span><span class="chip">YouTube</span><span class="chip">Google Slides</span><span class="chip">Kahoot</span><span class="chip">Stellarium</span></div></div></details>
+      <details class="metod"><summary><span class="mn">03</span><span class="mt" data-i18n="m3t">AOP — Aprendizaje Orientado a Proyectos</span><span class="mb2">AOP</span><span class="mc">⌄</span></summary><div class="mbody"><p data-i18n="m3d">Los estudiantes diseñan y ejecutan un proyecto completo — alcanzando el nivel más alto del pensamiento científico.</p><ul class="msteps"><li data-i18n="m3s1">Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'</li><li data-i18n="m3s2">Etapas: investigación → datos → simulación → análisis → presentación.</li><li data-i18n="m3s3">3 semanas. Equipos de 3–4 personas. Producto final original.</li></ul><div class="chips"><span class="chip">PhET</span><span class="chip">NASA Eyes</span><span class="chip">Google Colab</span><span class="chip">Canva</span><span class="chip">Claude</span></div></div></details>
     </div>
   </div>
 </div>
 
-<div class="star-div">· · · ✦ · · ·</div>
-
 <!-- ══ TIC ══ -->
-<div id="tic" class="section-wrap">
+<div id="tic" class="section-wrap" style="background:rgba(3,6,14,.94);backdrop-filter:blur(6px);position:relative;z-index:3;">
   <div class="section-inner">
     <div class="reveal"><p class="section-label">05 · TIC</p></div>
     <div class="reveal"><h2 class="sh" data-i18n="tic_h2">Tecnologías en el aula</h2></div>
     <div class="reveal"><p class="section-intro" data-i18n="tic_intro">Herramientas para visualizar, evaluar y personalizar el aprendizaje de la física.</p></div>
-    <div class="reveal tic-wrap">
+    <div class="reveal tic-wrap" style="background:rgba(3,6,14,.88);border-radius:6px;padding:1rem;border:1px solid rgba(76,201,240,.1);">
       <table>
         <thead><tr><th data-i18n="th1">Herramienta</th><th data-i18n="th2">Categoría</th><th data-i18n="th3">Uso pedagógico</th></tr></thead>
         <tbody>
@@ -537,17 +507,23 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
           <tr><td>YouTube / Khan Academy</td><td><span class="cp cv">Video</span></td><td data-i18n="tr2">Material previo que libera la clase para crear y aplicar</td></tr>
           <tr><td>Kahoot</td><td><span class="cp ce">Evaluación</span></td><td data-i18n="tr3">Diagnóstico formativo y retroalimentación inmediata</td></tr>
           <tr><td>Google Forms</td><td><span class="cp ce">Evaluación</span></td><td data-i18n="tr4">Seguimiento del aprendizaje y cuestionarios previos</td></tr>
-          <tr><td>ChatGPT / Gemini</td><td><span class="cp ci">IA Educativa</span></td><td data-i18n="tr5">Generar casos, ejercicios y retroalimentación personalizada</td></tr>
+          <tr><td>Claude (Anthropic)</td><td><span class="cp ci">IA Educativa</span></td><td data-i18n="tr5">Co-diseño de clases, casos y material — mi compañero de planificación pedagógica</td></tr>
+          <tr><td>ChatGPT / Gemini</td><td><span class="cp ci">IA Educativa</span></td><td data-i18n="tr5b">Generar ejercicios contextualizados y retroalimentación rápida</td></tr>
+          <tr><td>NotebookLM</td><td><span class="cp ci">IA Educativa</span></td><td data-i18n="tr5c">Resumir papers y crear guías de estudio a partir de fuentes</td></tr>
           <tr><td>Moodle / Classroom</td><td><span class="cp cl">LMS</span></td><td data-i18n="tr6">Organizar recursos, entregas y comunicación</td></tr>
           <tr><td>Google Colab</td><td><span class="cp cs">Modelamiento</span></td><td data-i18n="tr7">Construir modelos físicos computacionales con Python</td></tr>
           <tr><td>NASA Eyes</td><td><span class="cp cs">Visualización</span></td><td data-i18n="tr8">Explorar y formular hipótesis sobre el sistema solar en 3D</td></tr>
+          <tr><td>Desmos / GeoGebra</td><td><span class="cp cs">Matemática</span></td><td data-i18n="tr9">Graficar funciones y visualizar conceptos físico-matemáticos</td></tr>
+          <tr><td>Stellarium</td><td><span class="cp cs">Astronomía</span></td><td data-i18n="tr10">Planetario virtual para enseñar el cielo nocturno en tiempo real</td></tr>
+          <tr><td>Mentimeter</td><td><span class="cp ce">Evaluación</span></td><td data-i18n="tr11">Encuestas y nubes de palabras en vivo durante la clase</td></tr>
+          <tr><td>Canva</td><td><span class="cp cv">Diseño</span></td><td data-i18n="tr12">Crear infografías y presentaciones visuales atractivas</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-</div><!-- end #content -->
+<!-- end #content -->
 
 <div style="min-height:40px;"></div><div class="star-div">· · · ✦ · · ·</div>
 
@@ -612,6 +588,7 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
     </div>
   </div>
 </div>
+</div>
 
 <footer>
   <p class="footer-name">Jiro Martín Fabián Vásquez</p>
@@ -621,9 +598,9 @@ footer{position:relative;z-index:2;border-top:1px solid rgba(232,244,253,.06);pa
 <script>
 /* ══ TRANSLATIONS ══ */
 const T={
-  es:{nav_about:"Sobre mí",nav_projects:"Proyectos",nav_resources:"Recursos",nav_methods:"Metodologías",nav_contact:"Contacto",fc1h:"Diseña experiencias de aprendizaje",fc1p:"Creo sesiones donde los estudiantes formulan hipótesis, diseñan experimentos y evalúan resultados — operando en los niveles superiores del pensamiento crítico.",fc2h:"Investiga el cosmos",fc2p:"Desde AGN con datos de Chandra y SDSS hasta calendarios registrados ante la IAU — la misma metodología científica que aplico en investigación, la transfiero al aula.",fc3h:"Construye el futuro científico",fc3p:"Como miembro del comité de las Olimpiadas Peruanas de Astronomía y Astronáutica, evalúo y formo a la próxima generación de científicos del espacio en el Perú.",hero_pre:"Investigador que",hero_hl:"evalúa, crea y transforma",hero_post:"desde la astrofísica",hero_tagline:"Jiro Martín Fabián Vásquez · Física UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"Ver proyectos →",hero_btn2:"Sobre mí",reveal_pre:"Física · UNMSM · 2026",reveal_h2:"Jiro Martín<br/>Fabián Vásquez",about_h2:"Perfil académico",about_p1:"Soy estudiante de 8.° semestre de Física en la <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.",about_p2:"Miembro activo de <strong>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.",about_p3:"Formo parte del comité del <strong>Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.",about_quote:'"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre crear sus propias explicaciones del universo."',proj_h2:"Proyectos de investigación",proj_intro:"Diseño y ejecuto investigación en astrofísica observacional, astronomía computacional y divulgación científica.",sa:"● En curso",sp:"✓ Publicado",sg:"◌ En preparación",p1t:"Acoplamiento disco-corona en AGN",p1d:"Análisis de 2,530 AGN Tipo 1 cruzando SDSS DR16 × Chandra CSC 2.1. Estudio de la relación UV óptica — rayos X en el contexto del acoplamiento disco-corona. Presentado en DIA Peru — Cajamarca 2026.",p3t:"Calendario Astronómico 2026",p3d:"Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.",p4t:"Vuelo aviar en exoplanetas",p4d:"Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.",p5t:"Arqueoastronomía andina",p5d:"Investigación sobre prácticas astronómicas en la civilización andina y su relación con el entorno celeste. Proyecto interdisciplinario en curso.",p6t:"Detección IASC/Pan-STARRS",p6d:"Detección de asteroides en el programa IASC usando datos de Pan-STARRS.",rec_h2:"Recursos educativos",rec_intro:"Herramientas seleccionadas para que los estudiantes experimenten, analicen y creen — no solo memoricen.",r1d:"Simulaciones para mecánica, electricidad, ondas y termodinámica. Los estudiantes manipulan variables y evalúan resultados.",r2d:"Laboratorios virtuales que permiten diseñar variaciones y analizar diferencias.",r3d:"Videos conceptuales para liberar el tiempo de clase para aplicar y crear.",r4d:"Visualización 3D del sistema solar ideal para formular hipótesis sobre dinámica orbital.",r5d:"Applets interactivos perfectos para la fase de exploración y análisis.",r6d:"Modelamiento físico con Python. Los estudiantes construyen modelos computacionales propios.",met_h2:"Cómo enseño",met_intro:"Tres estrategias donde el estudiante diseña, evalúa y produce conocimiento propio — no solo lo recibe.",m1t:"Flipped Classroom — Aula invertida",m1d:"El estudiante accede al contenido teórico en casa y llega listo para analizar, aplicar y crear.",m1s1:"Antes de clase: video Khan Academy + formulario Google Forms.",m1s2:"En clase: PhET + diseño de experimentos propios.",m1s3:"El estudiante produce resultados originales, no copia del pizarrón.",m2t:"ABC — Aprendizaje Basado en Casos",m2d:"Un caso científico real como punto de partida. Los estudiantes investigan, formulan hipótesis y argumentan sus conclusiones.",m2s1:"Caso: '¿Qué principios explican la primera foto de un agujero negro?'",m2s2:"Investigación grupal: ondas EM, interferometría, relatividad general.",m2s3:"Cada equipo construye y defiende su propia explicación.",m3t:"AOP — Aprendizaje Orientado a Proyectos",m3d:"Los estudiantes diseñan y ejecutan un proyecto completo — alcanzando el nivel más alto del pensamiento científico.",m3s1:"Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'",m3s2:"Etapas: investigación → datos → simulación → análisis → presentación.",m3s3:"3 semanas. Equipos de 3–4 personas. Producto final original.",tic_h2:"Tecnologías en el aula",tic_intro:"Herramientas para visualizar, evaluar y personalizar el aprendizaje de la física.",th1:"Herramienta",th2:"Categoría",th3:"Uso pedagógico",tr1:"Diseñar y evaluar experimentos virtuales interactivos",tr2:"Material previo que libera la clase para crear y aplicar",tr3:"Diagnóstico formativo y retroalimentación inmediata",tr4:"Seguimiento del aprendizaje y cuestionarios previos",tr5:"Generar casos, ejercicios y retroalimentación personalizada",tr6:"Organizar recursos, entregas y comunicación",tr7:"Construir modelos físicos computacionales con Python",tr8:"Explorar y formular hipótesis sobre el sistema solar en 3D",footer_sub:"Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez · UNMSM 2026",link_paper:"↗ Ver publicación",nav_works:"Trabajos",works_h2:"Trabajos de clase",works_intro:"Producciones académicas de la asignatura Metodología de la Enseñanza en Física.",w_visit:"↗ Estás aquí",stat1:"AGN analizados",stat2:"Proyectos activos",stat3:"Idiomas",stat4:"Semestre",w3t:"Programa tu clase — Aula invertida",w3d:"Diseño de una clase con el modelo Flipped Classroom para electrostática. Estructura ANTES–DURANTE–DESPUÉS con experimentos, simulador PhET y evaluación creativa.",w4t:"Crea tu caso — El misterio de la torre de caída",w4d:"Caso ABC sobre frenado magnético. Los estudiantes resuelven un problema de ingeniería usando la Ley de Faraday, corrientes inducidas y la Ley de Ohm.",w1t:"Portafolio docente digital",w1d:"Este mismo sitio — diseñado y desarrollado como portafolio para la asignatura de Metodología de la Enseñanza en Física. Construido con HTML, CSS y JavaScript.",w2t:"Planificación con Flipped Classroom",w2d:"Diseño de secuencia didáctica para cinemática: video previo + simulación PhET + cierre colaborativo.",w3t:"Caso: primera imagen de un agujero negro",w3d:"Actividad ABC donde los estudiantes reconstruyen y evalúan los principios físicos detrás de la imagen del EHT en 2019.",w4t:"Proyecto: modelamiento orbital con Python",w4d:"Propuesta AOP donde equipos modelan trayectorias orbitales con datos NASA y producen un informe científico propio.",w5t:"Análisis de TIC en física universitaria",w5d:"Análisis crítico de tecnologías educativas efectivas para física universitaria, evaluando impacto en aprendizaje profundo."},
-  en:{nav_about:"About",nav_projects:"Projects",nav_resources:"Resources",nav_methods:"Methods",nav_contact:"Contact",fc1h:"Design learning experiences",fc1p:"I create sessions where students formulate hypotheses, design experiments and evaluate results — always operating at the highest levels of critical thinking.",fc2h:"Research the cosmos",fc2p:"From AGN with Chandra and SDSS data to IAU-registered calendars — the same scientific methodology I apply in research, I transfer to the classroom.",fc3h:"Build the scientific future",fc3p:"As a committee member of the Peruvian Olympiads on Astronomy and Astronautics, I evaluate and mentor Peru's next generation of space scientists.",hero_pre:"A researcher who",hero_hl:"evaluates, creates, transforms",hero_post:"from astrophysics",hero_tagline:"Jiro Martín Fabián Vásquez · Physics UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"See projects →",hero_btn2:"About me",reveal_pre:"Physics · UNMSM · 2026",reveal_h2:"Jiro Martín<br/>Fabián Vásquez",about_h2:"Academic profile",about_p1:"I am an 8th-semester Physics student at the <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Peru. My focus is compact object astrophysics and high-energy physics.",about_p2:"Active member of <strong>SPACE UNMSM</strong>, Peru's first professional astronomy group, and Vice-President of <strong>IEEE NPSS UNMSM</strong>. I organize the <em>Viernes Astronómicos</em> and serve as a collaborator at the Natural History Museum UNMSM.",about_p3:"I am part of the committee of the <strong>National Olympic Committee of the Peruvian Olympiads on Astronomy and Astronautics</strong>, helping develop new talent in space sciences.",about_quote:'"Physics is not memorized — it is experienced, visualized and questioned. My goal is for every student to create their own explanations of the universe."',proj_h2:"Research projects",proj_intro:"I design and execute research in observational astrophysics, computational astronomy and science outreach.",sa:"● Active",sp:"✓ Published",sg:"◌ In preparation",p1t:"AGN disk-corona coupling",p1d:"Analysis of 2,530 Type 1 AGNs cross-matching SDSS DR16 × Chandra CSC 2.1. Study of UV-optical to X-ray relationship in disk-corona coupling context. Presented at DIA Peru — Cajamarca 2026.",p3t:"Astronomical Calendar 2026",p3d:"Publication of the 2026 Astronomical Calendar through SPACE UNMSM, registered with the IAU and covered by Agencia Andina.",p4t:"Avian flight on exoplanets",p4d:"Manuscript on physical conditions allowing bird flight on habitable exoplanets. Target: Nature.",p5t:"Andean archaeoastronomy",p5d:"Research on astronomical practices in Andean civilization. Ongoing interdisciplinary project.",p6t:"IASC/Pan-STARRS detection",p6d:"Asteroid detection in the IASC program using Pan-STARRS data.",rec_h2:"Educational resources",rec_intro:"Tools selected so students can experiment, analyze and create — not just memorize.",r1d:"Simulations for mechanics, electricity, waves and thermodynamics. Students manipulate variables and evaluate results.",r2d:"Virtual labs that allow designing variations and analyzing differences.",r3d:"Conceptual videos to free class time for applying and creating.",r4d:"3D solar system visualization ideal for formulating orbital dynamics hypotheses.",r5d:"Interactive applets perfect for exploration and analysis phases.",r6d:"Physical modeling with Python. Students build their own computational models.",met_h2:"How I teach",met_intro:"Three strategies where students design, evaluate and produce their own knowledge.",m1t:"Flipped Classroom",m1d:"Students access theory at home and arrive ready to analyze, apply and create.",m1s1:"Before class: Khan Academy video + Google Forms quiz.",m1s2:"In class: PhET + designing their own experiments.",m1s3:"Students produce original results, not copies from the board.",m2t:"CBL — Case-Based Learning",m2d:"A real scientific case as starting point. Students investigate, formulate hypotheses and argue conclusions.",m2s1:"Case: 'What physics explains the first black hole photo?'",m2s2:"Group research: EM waves, interferometry, general relativity.",m2s3:"Each team builds and defends their own explanation.",m3t:"PBL — Project-Based Learning",m3d:"Students design and execute a full project — reaching the highest level of scientific thinking.",m3s1:"Project: 'Model a satellite trajectory with real NASA data.'",m3s2:"Stages: research → data → simulation → analysis → presentation.",m3s3:"3 weeks. Teams of 3–4. Original final product.",tic_h2:"Technologies in the classroom",tic_intro:"Tools to visualize, evaluate and personalize physics learning.",th1:"Tool",th2:"Category",th3:"Pedagogical use",tr1:"Design and evaluate interactive virtual experiments",tr2:"Pre-class material that frees class time to create and apply",tr3:"Formative diagnosis and immediate feedback",tr4:"Learning tracking and pre-class quizzes",tr5:"Generate cases, exercises and personalized feedback",tr6:"Organize resources, assignments and communication",tr7:"Build computational physical models with Python",tr8:"Explore and formulate hypotheses about the 3D solar system",footer_sub:"Physics Teaching Methodology · Dr. Silvia Marisel Espinoza Suárez · UNMSM 2026",link_paper:"↗ View publication",nav_works:"Works",works_h2:"Class works",works_intro:"Academic productions from the Physics Teaching Methodology course.",w_visit:"↗ You are here",stat1:"AGNs analyzed",stat2:"Active projects",stat3:"Languages",stat4:"Semester",w3t:"Design your lesson — Flipped Classroom",w3d:"A Flipped Classroom design for electrostatics. BEFORE-DURING-AFTER structure with experiments, PhET simulator and creative assessment.",w4t:"Create your case — The drop tower mystery",w4d:"A Case-Based Learning activity on magnetic braking using Faraday and Ohm laws.",w1t:"Digital teaching portfolio",w1d:"This very site — designed and developed as a presentation portfolio for the Physics Teaching Methodology course. Built with HTML, CSS and JavaScript.",w2t:"Flipped Classroom lesson plan",w2d:"Design of a didactic sequence for kinematics using the flipped classroom model: pre-class video + PhET simulation + collaborative closure.",w3t:"Case study: first image of a black hole",w3d:"Case-based activity where students reconstruct and evaluate the physical principles behind the EHT image in 2019.",w4t:"Project: orbital modeling with Python",w4d:"PBL proposal where student teams model orbital trajectories with Python and real NASA data, producing an original scientific report.",w5t:"ICT analysis in university physics",w5d:"Critical analysis of the most effective educational technologies for university physics, evaluating impact on deep learning and motivation.",link_iau:"↗ View IAU registry"},
-  ru:{nav_about:"Обо мне",nav_projects:"Проекты",nav_resources:"Ресурсы",nav_methods:"Методики",nav_contact:"Контакт",fc1h:"Проектирует учебный опыт",fc1p:"Создаю занятия, где студенты формулируют гипотезы, разрабатывают эксперименты и оценивают результаты — на высших уровнях критического мышления.",fc2h:"Исследует космос",fc2p:"От АЯГ с данными Chandra и SDSS до календарей МАС — та же научная методология, что в исследованиях, применяется в аудитории.",fc3h:"Строит научное будущее",fc3p:"Как член комитета Перуанских олимпиад по астрономии — оцениваю и воспитываю следующее поколение учёных.",hero_pre:"Исследователь, который",hero_hl:"оценивает, создаёт, преобразует",hero_post:"из астрофизики",hero_tagline:"Хиро Мартин Фабиан Васкес · Физика UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"Проекты →",hero_btn2:"Обо мне",reveal_pre:"Физика · UNMSM · 2026",reveal_h2:"Хиро Мартин<br/>Фабиан Васкес",about_h2:"Академический профиль",about_p1:"Студент 8-го семестра физического факультета <strong>UNMSM</strong>, Лима, Перу. Специализация — астрофизика компактных объектов.",about_p2:"Член <strong>SPACE UNMSM</strong> и вице-президент <strong>IEEE NPSS UNMSM</strong>. Организую <em>Viernes Astronómicos</em> и сотрудничаю с Музеем естественной истории.",about_p3:"Член комитета <strong>Национального олимпийского комитета по астрономии и космонавтике</strong>.",about_quote:'"Физику не запоминают — её создают. Моя цель — научить студентов строить собственные объяснения вселенной."',proj_h2:"Исследовательские проекты",proj_intro:"Проектирую и выполняю исследования в области наблюдательной астрофизики и популяризации науки.",sa:"● Активный",sp:"✓ Опубликован",sg:"◌ В подготовке",p1t:"Связь диска-короны в АЯГ",p1d:"Анализ 2530 АЯГ из SDSS DR16 × Chandra CSC 2.1. Связь УФ — рентгеновского излучения. DIA Peru 2026.",p3t:"Астрономический календарь 2026",p3d:"Публикация через SPACE UNMSM, зарегистрирована в МАС.",p4t:"Полёт птиц на экзопланетах",p4d:"Условия полёта птиц на обитаемых экзопланетах. Цель: Nature.",p5t:"Андская археоастрономия",p5d:"Астрономические практики андской цивилизации. Междисциплинарный проект.",p6t:"Обнаружение IASC/Pan-STARRS",p6d:"Обнаружение астероидов по данным Pan-STARRS.",rec_h2:"Образовательные ресурсы",rec_intro:"Инструменты для экспериментов, анализа и создания — не только запоминания.",r1d:"Симуляции механики и электричества. Студенты оценивают результаты в реальном времени.",r2d:"Лаборатории для проектирования вариаций эксперимента.",r3d:"Видео для подготовки, освобождающее занятие для создания.",r4d:"3D-визуализация для гипотез об орбитальной динамике.",r5d:"Апплеты для фазы исследования и анализа.",r6d:"Моделирование на Python. Студенты создают собственные модели.",met_h2:"Как я преподаю",met_intro:"Три стратегии, где студент проектирует, оценивает и производит знание.",m1t:"Перевёрнутый класс",m1d:"Теория дома — занятие для анализа, применения и создания.",m1s1:"До занятия: видео + опрос Google Forms.",m1s2:"На занятии: PhET + проектирование экспериментов.",m1s3:"Студент производит оригинальные результаты.",m2t:"ОМС — Обучение на основе случаев",m2d:"Реальный научный случай. Студенты формулируют гипотезы и аргументируют выводы.",m2s1:"Случай: «Физика первой фотографии чёрной дыры?»",m2s2:"Групповое исследование: ЭМ волны, интерферометрия, ОТО.",m2s3:"Каждая команда строит и защищает собственное объяснение.",m3t:"ПОО — Проектно-ориентированное обучение",m3d:"Студенты проектируют и реализуют полный проект.",m3s1:"Проект: «Траектория спутника по данным NASA.»",m3s2:"Этапы: исследование → данные → симуляция → анализ.",m3s3:"3 недели. Команды 3–4 человека. Оригинальный продукт.",tic_h2:"Технологии в аудитории",tic_intro:"Инструменты для визуализации, оценки и персонализации обучения.",th1:"Инструмент",th2:"Категория",th3:"Педагогическое применение",tr1:"Проектировать и оценивать виртуальные эксперименты",tr2:"Материал для подготовки, освобождающий занятие для создания",tr3:"Формативная диагностика и обратная связь",tr4:"Отслеживание обучения и опросники",tr5:"Генерация задач и персональная обратная связь",tr6:"Организация ресурсов и коммуникация",tr7:"Создание вычислительных физических моделей",tr8:"Исследование и гипотезы о 3D Солнечной системе",footer_sub:"Методика преподавания физики · Д-р Сильвия Эспиноса Суарес · UNMSM 2026",link_paper:"↗ Публикация",nav_works:"Работы",works_h2:"Учебные работы",works_intro:"Академические работы курса методики преподавания физики.",w_visit:"↗ Вы здесь",stat1:"АЯГ проанализировано",stat2:"Активных проектов",stat3:"Языка",stat4:"Семестр",w3t:"Спланируй урок — перевёрнутый класс",w3d:"Дизайн урока по электростатике с экспериментами и PhET.",w4t:"Создай кейс — тайна башни падения",w4d:"Кейс о магнитном торможении через закон Фарадея и закон Ома.",w1t:"Цифровое педагогическое портфолио",w1d:"Этот сайт — разработан как портфолио для курса методики преподавания физики.",w2t:"Планирование: перевёрнутый класс",w2d:"Дидактическая последовательность для кинематики: видео + PhET + совместное закрепление.",w3t:"Кейс: первое изображение чёрной дыры",w3d:"Занятие, где студенты реконструируют физические принципы изображения EHT 2019.",w4t:"Проект: орбитальное моделирование на Python",w4d:"ПОО-проект: команды моделируют орбиты с данными NASA и пишут научный отчёт.",w5t:"Анализ ИКТ в университетской физике",w5d:"Критический анализ образовательных технологий для физики вуза.",link_iau:"↗ Реестр МАС"}
+  es:{nav_about:"Sobre mí",nav_projects:"Proyectos",nav_resources:"Recursos",nav_methods:"Metodologías",nav_contact:"Contacto",fc1h:"Diseña experiencias de aprendizaje",fc1p:"Creo sesiones donde los estudiantes formulan hipótesis, diseñan experimentos y evalúan resultados — operando en los niveles superiores del pensamiento crítico.",fc2h:"Investiga el cosmos",fc2p:"Desde AGN con datos de Chandra y SDSS hasta calendarios registrados ante la IAU — la misma metodología científica que aplico en investigación, la transfiero al aula.",fc3h:"Construye el futuro científico",fc3p:"Como miembro del comité de las Olimpiadas Peruanas de Astronomía y Astronáutica, evalúo y formo a la próxima generación de científicos del espacio en el Perú.",hero_pre:"Explorando el universo,",hero_hl:"una clase a la vez",hero_tagline:"Jiro Martín Fabián Vásquez · Física UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"Ver proyectos →",hero_btn2:"Sobre mí",reveal_pre:"Física · UNMSM · 2026",reveal_h2:"Jiro Martín<br/>Fabián Vásquez",about_h2:"Perfil académico",about_p1:"Soy estudiante de 8.° semestre de Física en la <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Perú. Mi formación se orienta hacia la astrofísica de objetos compactos y la física de altas energías.",about_p2:"Miembro activo de <strong>SPACE UNMSM</strong>, el primer grupo de astronomía profesional del Perú, y Vicepresidente del <strong>IEEE NPSS UNMSM</strong>. Organizo los <em>Viernes Astronómicos</em> y participo como colaborador en el Museo de Historia Natural UNMSM.",about_p3:"Formo parte del comité del <strong>Comité Olímpico Nacional de las Olimpiadas Peruanas de Astronomía y Astronáutica</strong>, contribuyendo a la formación de nuevos talentos en ciencias del espacio.",about_quote:'"La física no se memoriza — se experimenta, se visualiza y se cuestiona. Mi objetivo es que cada estudiante logre crear sus propias explicaciones del universo."',proj_h2:"Proyectos de investigación",proj_intro:"Diseño y ejecuto investigación en astrofísica observacional, astronomía computacional y divulgación científica.",sa:"● En curso",sp:"✓ Publicado",sg:"◌ En preparación",p1t:"Acoplamiento disco-corona en AGN",p1d:"Análisis de 2,530 AGN Tipo 1 cruzando SDSS DR16 × Chandra CSC 2.1. Estudio de la relación UV óptica — rayos X en el contexto del acoplamiento disco-corona. Presentado en DIA Peru — Cajamarca 2026.",p3t:"Calendario Astronómico 2026",p3d:"Publicación del Calendario Astronómico 2026 a través de SPACE UNMSM, registrado ante la IAU y con cobertura en Agencia Andina.",p4t:"Vuelo aviar en exoplanetas",p4d:"Manuscrito sobre condiciones físicas que permitirían el vuelo de aves en exoplanetas habitables. Target: Nature.",p5t:"Arqueoastronomía andina",p5d:"Investigación sobre prácticas astronómicas en la civilización andina y su relación con el entorno celeste. Proyecto interdisciplinario en curso.",p6t:"Detección IASC/Pan-STARRS",p6d:"Detección de asteroides en el programa IASC usando datos de Pan-STARRS.",rec_h2:"Recursos educativos",rec_intro:"Herramientas seleccionadas para que los estudiantes experimenten, analicen y creen — no solo memoricen.",r1d:"Симуляция гравитации между Солнцем, Землёй и Луной.",r2d:"Исследование преломления и полного внутреннего отражения.",r3d:"Визуализация интерференции волн — основа интерферометрии.",r4d:"Три закона Кеплера в реальном времени: эллиптические орбиты и периоды.",r5d:"Изменение температуры звезды и наблюдение спектра — закон Планка.",r6d:"Исторические модели атома и эмиссия фотонов.",met_h2:"Cómo enseño",met_intro:"Tres estrategias donde el estudiante diseña, evalúa y produce conocimiento propio — no solo lo recibe.",ai_note:"<strong>IA como copiloto pedagógico:</strong> Diseño cada una de estas metodologías junto a <strong>Claude</strong>, mi compañero de IA, para crear casos, generar variantes de problemas y refinar la secuencia didáctica. La tecnología no reemplaza al docente, amplifica su creatividad.",m1t:"Flipped Classroom — Aula invertida",m1d:"El estudiante accede al contenido teórico en casa y llega listo para analizar, aplicar y crear.",m1s1:"Antes de clase: video Khan Academy + formulario Google Forms.",m1s2:"En clase: PhET + diseño de experimentos propios.",m1s3:"El estudiante produce resultados originales, no copia del pizarrón.",m2t:"ABC — Aprendizaje Basado en Casos",m2d:"Un caso científico real como punto de partida. Los estudiantes investigan, formulan hipótesis y argumentan sus conclusiones.",m2s1:"Caso: '¿Qué principios explican la primera foto de un agujero negro?'",m2s2:"Investigación grupal: ondas EM, interferometría, relatividad general.",m2s3:"Cada equipo construye y defiende su propia explicación.",m3t:"AOP — Aprendizaje Orientado a Proyectos",m3d:"Los estudiantes diseñan y ejecutan un proyecto completo — alcanzando el nivel más alto del pensamiento científico.",m3s1:"Proyecto: 'Modela la trayectoria de un satélite con datos NASA.'",m3s2:"Etapas: investigación → datos → simulación → análisis → presentación.",m3s3:"3 semanas. Equipos de 3–4 personas. Producto final original.",tic_h2:"Tecnologías en el aula",tic_intro:"Herramientas para visualizar, evaluar y personalizar el aprendizaje de la física.",th1:"Herramienta",th2:"Categoría",th3:"Uso pedagógico",tr1:"Diseñar y evaluar experimentos virtuales interactivos",tr2:"Material previo que libera la clase para crear y aplicar",tr3:"Diagnóstico formativo y retroalimentación inmediata",tr4:"Seguimiento del aprendizaje y cuestionarios previos",tr5:"Co-diseño de clases, casos y material — mi compañero de planificación pedagógica",tr5b:"Generar ejercicios contextualizados y retroalimentación rápida",tr5c:"Resumir papers y crear guías de estudio a partir de fuentes",tr9:"Graficar funciones y visualizar conceptos físico-matemáticos",tr10:"Planetario virtual para enseñar el cielo nocturno en tiempo real",tr11:"Encuestas y nubes de palabras en vivo durante la clase",tr12:"Crear infografías y presentaciones visuales atractivas",tr6:"Organizar recursos, entregas y comunicación",tr7:"Construir modelos físicos computacionales con Python",tr8:"Explorar y formular hipótesis sobre el sistema solar en 3D",footer_sub:"Metodología de la Enseñanza en Física · Dra. Silvia Marisel Espinoza Suárez · UNMSM 2026",link_paper:"↗ Ver publicación",nav_works:"Trabajos",works_h2:"Trabajos de clase",works_intro:"Producciones académicas de la asignatura Metodología de la Enseñanza en Física.",w_visit:"↗ Estás aquí",stat1:"AGN analizados",stat2:"Proyectos activos",stat3:"Idiomas",stat4:"Semestre",col_label:"Física de partículas",col_h2:"Colisión de partículas",col_intro:"Una visualización 3D de cómo dos partículas colisionan y liberan energía, como en un acelerador. Haz clic para provocar una colisión.",col_btn:"⚡ Provocar colisión",col_hint:"También colisiona sola cada pocos segundos",w3t:"Programa tu clase — Aula invertida",w3d:"Diseño de una clase con el modelo Flipped Classroom para electrostática. Estructura ANTES–DURANTE–DESPUÉS con experimentos, simulador PhET y evaluación creativa.",w4t:"Crea tu caso — El misterio de la torre de caída",w4d:"Caso ABC sobre frenado magnético. Los estudiantes resuelven un problema de ingeniería usando la Ley de Faraday, corrientes inducidas y la Ley de Ohm.",w1t:"Portafolio docente digital",w1d:"Este mismo sitio — diseñado y desarrollado como portafolio para la asignatura de Metodología de la Enseñanza en Física. Construido con HTML, CSS y JavaScript.",w2t:"Planificación con Flipped Classroom",w2d:"Diseño de secuencia didáctica para cinemática: video previo + simulación PhET + cierre colaborativo.",w3t:"Caso: primera imagen de un agujero negro",w3d:"Actividad ABC donde los estudiantes reconstruyen y evalúan los principios físicos detrás de la imagen del EHT en 2019.",w4t:"Proyecto: modelamiento orbital con Python",w4d:"Propuesta AOP donde equipos modelan trayectorias orbitales con datos NASA y producen un informe científico propio.",w5t:"Análisis de TIC en física universitaria",w5d:"Análisis crítico de tecnologías educativas efectivas para física universitaria, evaluando impacto en aprendizaje profundo."},
+  en:{nav_about:"About",nav_projects:"Projects",nav_resources:"Resources",nav_methods:"Methods",nav_contact:"Contact",fc1h:"Design learning experiences",fc1p:"I create sessions where students formulate hypotheses, design experiments and evaluate results — always operating at the highest levels of critical thinking.",fc2h:"Research the cosmos",fc2p:"From AGN with Chandra and SDSS data to IAU-registered calendars — the same scientific methodology I apply in research, I transfer to the classroom.",fc3h:"Build the scientific future",fc3p:"As a committee member of the Peruvian Olympiads on Astronomy and Astronautics, I evaluate and mentor Peru's next generation of space scientists.",hero_pre:"Exploring the universe,",hero_hl:"one class at a time",hero_tagline:"Jiro Martín Fabián Vásquez · Physics UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"See projects →",hero_btn2:"About me",reveal_pre:"Physics · UNMSM · 2026",reveal_h2:"Jiro Martín<br/>Fabián Vásquez",about_h2:"Academic profile",about_p1:"I am an 8th-semester Physics student at the <strong>Universidad Nacional Mayor de San Marcos (UNMSM)</strong>, Lima, Peru. My focus is compact object astrophysics and high-energy physics.",about_p2:"Active member of <strong>SPACE UNMSM</strong>, Peru's first professional astronomy group, and Vice-President of <strong>IEEE NPSS UNMSM</strong>. I organize the <em>Viernes Astronómicos</em> and serve as a collaborator at the Natural History Museum UNMSM.",about_p3:"I am part of the committee of the <strong>National Olympic Committee of the Peruvian Olympiads on Astronomy and Astronautics</strong>, helping develop new talent in space sciences.",about_quote:'"Physics is not memorized — it is experienced, visualized and questioned. My goal is for every student to create their own explanations of the universe."',proj_h2:"Research projects",proj_intro:"I design and execute research in observational astrophysics, computational astronomy and science outreach.",sa:"● Active",sp:"✓ Published",sg:"◌ In preparation",p1t:"AGN disk-corona coupling",p1d:"Analysis of 2,530 Type 1 AGNs cross-matching SDSS DR16 × Chandra CSC 2.1. Study of UV-optical to X-ray relationship in disk-corona coupling context. Presented at DIA Peru — Cajamarca 2026.",p3t:"Astronomical Calendar 2026",p3d:"Publication of the 2026 Astronomical Calendar through SPACE UNMSM, registered with the IAU and covered by Agencia Andina.",p4t:"Avian flight on exoplanets",p4d:"Manuscript on physical conditions allowing bird flight on habitable exoplanets. Target: Nature.",p5t:"Andean archaeoastronomy",p5d:"Research on astronomical practices in Andean civilization. Ongoing interdisciplinary project.",p6t:"IASC/Pan-STARRS detection",p6d:"Asteroid detection in the IASC program using Pan-STARRS data.",rec_h2:"Educational resources",rec_intro:"Tools selected so students can experiment, analyze and create — not just memorize.",r1d:"Simulations for mechanics, electricity, waves and thermodynamics. Students manipulate variables and evaluate results.",r2d:"Virtual labs that allow designing variations and analyzing differences.",r3d:"Conceptual videos to free class time for applying and creating.",r4d:"3D solar system visualization ideal for formulating orbital dynamics hypotheses.",r5d:"Interactive applets perfect for exploration and analysis phases.",r6d:"Physical modeling with Python. Students build their own computational models.",r7d:"3D-визуализация искривления пространства-времени массой.",r8d:"3D-визуализация Солнечной системы с данными NASA.",r9d:"Виртуальный планетарий для наблюдения ночного неба.",r10d:"Архив подтверждённых экзопланет NASA.",r11d:"Реальные данные гравитационных волн LIGO/Virgo.",r12d:"Астрофизическая база данных NASA с миллионами статей.",r13d:"Физическое моделирование на Python в браузере.",r14d:"Динамические графики функций, векторов и полей.",r15d:"Решение физических уравнений пошагово.",r16d:"Графический калькулятор для физических функций.",r17d:"Видео и задачи по физике для перевёрнутого класса.",r18d:"Видео с встроенными вопросами для интерактивных занятий.",r19d:"Видеоанализ физики: измерение движения кадр за кадром.",r20d:"Мой ИИ-партнёр для разработки уроков и учебных материалов.",r10d:"Interactive 3D model of the solar system and sky. Perfect for teaching scales, orbits and planetary motion.",r11d:"Advanced physics applets: circuits, electromagnetic waves, quantum mechanics and fields. Ideal for university level.",r12d:"Modern physics simulations: photoelectric effect, atomic models and quantum tunneling for advanced topics.",r13d:"NASA interactive exoplanet archive. Students explore real worlds beyond the solar system.",r14d:"Computational knowledge engine. Solves physics equations step by step and graphs results instantly.",r10d:"Real-time 3D model of the solar system and sky. Students explore orbits, distances and planetary motions.",r11d:"Real-time electric circuit simulator. Visualizes current, voltage and fields interactively.",r12d:"Thermodynamics simulation where students observe molecular behavior by changing temperature and pressure.",r13d:"NASA astrophysics database. Access to millions of scientific papers for research and evidence-based learning.",r14d:"Visual quantum physics: students experience the photoelectric effect by varying light frequency and intensity.",met_h2:"How I teach",met_intro:"Three strategies where students design, evaluate and produce their own knowledge.",ai_note:"<strong>AI as pedagogical co-pilot:</strong> I design each of these methodologies alongside <strong>Claude</strong>, my AI partner, to create cases, generate problem variants and refine the didactic sequence. Technology amplifies the teacher's creativity.",m1t:"Flipped Classroom",m1d:"Students access theory at home and arrive ready to analyze, apply and create.",m1s1:"Before class: Khan Academy video + Google Forms quiz.",m1s2:"In class: PhET + designing their own experiments.",m1s3:"Students produce original results, not copies from the board.",m2t:"CBL — Case-Based Learning",m2d:"A real scientific case as starting point. Students investigate, formulate hypotheses and argue conclusions.",m2s1:"Case: 'What physics explains the first black hole photo?'",m2s2:"Group research: EM waves, interferometry, general relativity.",m2s3:"Each team builds and defends their own explanation.",m3t:"PBL — Project-Based Learning",m3d:"Students design and execute a full project — reaching the highest level of scientific thinking.",m3s1:"Project: 'Model a satellite trajectory with real NASA data.'",m3s2:"Stages: research → data → simulation → analysis → presentation.",m3s3:"3 weeks. Teams of 3–4. Original final product.",tic_h2:"Technologies in the classroom",tic_intro:"Tools to visualize, evaluate and personalize physics learning.",th1:"Tool",th2:"Category",th3:"Pedagogical use",tr1:"Design and evaluate interactive virtual experiments",tr2:"Pre-class material that frees class time to create and apply",tr3:"Formative diagnosis and immediate feedback",tr4:"Learning tracking and pre-class quizzes",tr5:"Generate cases, exercises and personalized feedback",tr6:"Organize resources, assignments and communication",tr7:"Build computational physical models with Python",tr8:"Explore and formulate hypotheses about the 3D solar system",footer_sub:"Physics Teaching Methodology · Dr. Silvia Marisel Espinoza Suárez · UNMSM 2026",link_paper:"↗ View publication",nav_works:"Works",works_h2:"Class works",works_intro:"Academic productions from the Physics Teaching Methodology course.",w_visit:"↗ You are here",stat1:"AGNs analyzed",stat2:"Active projects",stat3:"Languages",stat4:"Semester",w3t:"Design your lesson — Flipped Classroom",w3d:"A Flipped Classroom design for electrostatics. BEFORE-DURING-AFTER structure with experiments, PhET simulator and creative assessment.",w4t:"Create your case — The drop tower mystery",w4d:"A Case-Based Learning activity on magnetic braking using Faraday and Ohm laws.",w1t:"Digital teaching portfolio",w1d:"This very site — designed and developed as a presentation portfolio for the Physics Teaching Methodology course. Built with HTML, CSS and JavaScript.",w2t:"Flipped Classroom lesson plan",w2d:"Design of a didactic sequence for kinematics using the flipped classroom model: pre-class video + PhET simulation + collaborative closure.",w3t:"Case study: first image of a black hole",w3d:"Case-based activity where students reconstruct and evaluate the physical principles behind the EHT image in 2019.",w4t:"Project: orbital modeling with Python",w4d:"PBL proposal where student teams model orbital trajectories with Python and real NASA data, producing an original scientific report.",w5t:"ICT analysis in university physics",w5d:"Critical analysis of the most effective educational technologies for university physics, evaluating impact on deep learning and motivation.",col_label:"Particle physics",col_h2:"Particle collision",col_intro:"A 3D visualization of how two particles collide and release energy, like in an accelerator. Click to trigger a collision.",col_btn:"⚡ Trigger collision",col_hint:"It also collides on its own every few seconds",link_iau:"↗ View IAU registry"},
+  ru:{nav_about:"Обо мне",nav_projects:"Проекты",nav_resources:"Ресурсы",nav_methods:"Методики",nav_contact:"Контакт",fc1h:"Проектирует учебный опыт",fc1p:"Создаю занятия, где студенты формулируют гипотезы, разрабатывают эксперименты и оценивают результаты — на высших уровнях критического мышления.",fc2h:"Исследует космос",fc2p:"От АЯГ с данными Chandra и SDSS до календарей МАС — та же научная методология, что в исследованиях, применяется в аудитории.",fc3h:"Строит научное будущее",fc3p:"Как член комитета Перуанских олимпиад по астрономии — оцениваю и воспитываю следующее поколение учёных.",hero_pre:"Исследуя вселенную,",hero_hl:"урок за уроком",hero_tagline:"Хиро Мартин Фабиан Васкес · Физика UNMSM · SPACE UNMSM · IEEE NPSS",hero_btn1:"Проекты →",hero_btn2:"Обо мне",reveal_pre:"Физика · UNMSM · 2026",reveal_h2:"Хиро Мартин<br/>Фабиан Васкес",about_h2:"Академический профиль",about_p1:"Студент 8-го семестра физического факультета <strong>UNMSM</strong>, Лима, Перу. Специализация — астрофизика компактных объектов.",about_p2:"Член <strong>SPACE UNMSM</strong> и вице-президент <strong>IEEE NPSS UNMSM</strong>. Организую <em>Viernes Astronómicos</em> и сотрудничаю с Музеем естественной истории.",about_p3:"Член комитета <strong>Национального олимпийского комитета по астрономии и космонавтике</strong>.",about_quote:'"Физику не запоминают — её создают. Моя цель — научить студентов строить собственные объяснения вселенной."',proj_h2:"Исследовательские проекты",proj_intro:"Проектирую и выполняю исследования в области наблюдательной астрофизики и популяризации науки.",sa:"● Активный",sp:"✓ Опубликован",sg:"◌ В подготовке",p1t:"Связь диска-короны в АЯГ",p1d:"Анализ 2530 АЯГ из SDSS DR16 × Chandra CSC 2.1. Связь УФ — рентгеновского излучения. DIA Peru 2026.",p3t:"Астрономический календарь 2026",p3d:"Публикация через SPACE UNMSM, зарегистрирована в МАС.",p4t:"Полёт птиц на экзопланетах",p4d:"Условия полёта птиц на обитаемых экзопланетах. Цель: Nature.",p5t:"Андская археоастрономия",p5d:"Астрономические практики андской цивилизации. Междисциплинарный проект.",p6t:"Обнаружение IASC/Pan-STARRS",p6d:"Обнаружение астероидов по данным Pan-STARRS.",rec_h2:"Образовательные ресурсы",rec_intro:"Инструменты для экспериментов, анализа и создания — не только запоминания.",r1d:"Симуляции механики и электричества. Студенты оценивают результаты в реальном времени.",r2d:"Лаборатории для проектирования вариаций эксперимента.",r3d:"Видео для подготовки, освобождающее занятие для создания.",r4d:"3D-визуализация для гипотез об орбитальной динамике.",r5d:"Апплеты для фазы исследования и анализа.",r6d:"Моделирование на Python. Студенты создают собственные модели.",r7d:"Виртуальный планетарий в браузере для изучения ночного неба.",r8d:"Визуальная математика и физика. Динамические графики функций и векторов.",r9d:"Мой ИИ-партнёр для совместной разработки уроков и учебных материалов.",r10d:"Визуальная термодинамика: поведение молекул при изменении температуры и давления.",r11d:"Интерактивная визуализация искривления пространства-времени массой по ОТО.",r12d:"Реальные данные гравитационных волн LIGO/Virgo.",r13d:"Симуляция квантового туннелирования через потенциальный барьер.",r14d:"Продвинутый графический калькулятор функций и производных.",r15d:"Полные курсы и упражнения по физике, исчислению и линейной алгебре.",r16d:"Организация занятий, ресурсов и отслеживание студентов.",r17d:"Превращает видео в интерактивные уроки с вопросами.",r18d:"Видеоанализ физики: измерение положения, скорости и ускорения.",r19d:"Астрофизическая база данных NASA с миллионами статей.",r19d:"Астрофизическая база данных NASA с миллионами статей.",r10d:"Интерактивная 3D-модель Солнечной системы для изучения орбит и масштабов.",r11d:"Апплеты продвинутой физики: цепи, ЭМ волны, квантовая механика.",r12d:"Симуляции современной физики: фотоэффект, атомные модели, туннелирование.",r13d:"Интерактивный архив экзопланет NASA для изучения реальных миров.",r14d:"Вычислительный движок знаний. Решает физические уравнения пошагово.",r10d:"3D-модель Солнечной системы в реальном времени.",r11d:"Симулятор электрических цепей в реальном времени.",r12d:"Симуляция термодинамики и молекулярного поведения.",r13d:"Астрофизическая база данных NASA с миллионами научных статей.",r14d:"Визуальная квантовая физика: фотоэлектрический эффект.",met_h2:"Как я преподаю",met_intro:"Три стратегии, где студент проектирует, оценивает и производит знание.",ai_note:"<strong>ИИ как педагогический помощник:</strong> Я разрабатываю каждую методику вместе с <strong>Claude</strong>, моим ИИ-партнёром. Технология усиливает творчество преподавателя.",m1t:"Перевёрнутый класс",m1d:"Теория дома — занятие для анализа, применения и создания.",m1s1:"До занятия: видео + опрос Google Forms.",m1s2:"На занятии: PhET + проектирование экспериментов.",m1s3:"Студент производит оригинальные результаты.",m2t:"ОМС — Обучение на основе случаев",m2d:"Реальный научный случай. Студенты формулируют гипотезы и аргументируют выводы.",m2s1:"Случай: «Физика первой фотографии чёрной дыры?»",m2s2:"Групповое исследование: ЭМ волны, интерферометрия, ОТО.",m2s3:"Каждая команда строит и защищает собственное объяснение.",m3t:"ПОО — Проектно-ориентированное обучение",m3d:"Студенты проектируют и реализуют полный проект.",m3s1:"Проект: «Траектория спутника по данным NASA.»",m3s2:"Этапы: исследование → данные → симуляция → анализ.",m3s3:"3 недели. Команды 3–4 человека. Оригинальный продукт.",tic_h2:"Технологии в аудитории",tic_intro:"Инструменты для визуализации, оценки и персонализации обучения.",th1:"Инструмент",th2:"Категория",th3:"Педагогическое применение",tr1:"Проектировать и оценивать виртуальные эксперименты",tr2:"Материал для подготовки, освобождающий занятие для создания",tr3:"Формативная диагностика и обратная связь",tr4:"Отслеживание обучения и опросники",tr5:"Генерация задач и персональная обратная связь",tr6:"Организация ресурсов и коммуникация",tr7:"Создание вычислительных физических моделей",tr8:"Исследование и гипотезы о 3D Солнечной системе",footer_sub:"Методика преподавания физики · Д-р Сильвия Эспиноса Суарес · UNMSM 2026",link_paper:"↗ Публикация",nav_works:"Работы",works_h2:"Учебные работы",works_intro:"Академические работы курса методики преподавания физики.",w_visit:"↗ Вы здесь",stat1:"АЯГ проанализировано",stat2:"Активных проектов",stat3:"Языка",stat4:"Семестр",w3t:"Спланируй урок — перевёрнутый класс",w3d:"Дизайн урока по электростатике с экспериментами и PhET.",w4t:"Создай кейс — тайна башни падения",w4d:"Кейс о магнитном торможении через закон Фарадея и закон Ома.",w1t:"Цифровое педагогическое портфолио",w1d:"Этот сайт — разработан как портфолио для курса методики преподавания физики.",w2t:"Планирование: перевёрнутый класс",w2d:"Дидактическая последовательность для кинематики: видео + PhET + совместное закрепление.",w3t:"Кейс: первое изображение чёрной дыры",w3d:"Занятие, где студенты реконструируют физические принципы изображения EHT 2019.",w4t:"Проект: орбитальное моделирование на Python",w4d:"ПОО-проект: команды моделируют орбиты с данными NASA и пишут научный отчёт.",w5t:"Анализ ИКТ в университетской физике",w5d:"Критический анализ образовательных технологий для физики вуза.",col_label:"Физика частиц",col_h2:"Столкновение частиц",col_intro:"3D-визуализация столкновения двух частиц с выделением энергии, как в ускорителе. Нажмите, чтобы вызвать столкновение.",col_btn:"⚡ Вызвать столкновение",col_hint:"Также сталкивается само каждые несколько секунд",link_iau:"↗ Реестр МАС"}
 };
 function setLang(l){
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent===l.toUpperCase()));
@@ -632,213 +609,268 @@ function setLang(l){
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k];});
 }
 
-/* ══ ANIMATED DEEP SPACE ══ */
+/* ══ 3D GALAXY (Three.js) — Enhanced ══ */
 (function(){
-  const c=document.getElementById('galaxy-canvas'),x=c.getContext('2d');
-  let W,H,stars=[],dustParticles=[],nebClouds=[],shootingStars=[];
-  let frame=0;
-
-  function rnd(a,b){return Math.random()*(b-a)+a;}
-
-  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;init();}
-
-  function init(){
-    // Stars — color by temperature
-    stars=[];
-    for(let i=0;i<480;i++){
-      const mag=Math.pow(Math.random(),2.5);
-      const t=Math.random();
-      const col=t<.08?[155,176,255]:t<.2?[200,215,255]:t<.42?[255,255,240]:t<.68?[255,240,190]:t<.85?[255,210,140]:[255,170,90];
-      stars.push({x:rnd(0,1),y:rnd(0,1),r:mag<.04?rnd(2,3.2):mag<.2?rnd(1,2):rnd(.2,.9),a:(.2+mag*.8)*(rnd(.65,1)),col,tw:rnd(0,6.28),spd:rnd(.003,.013)});
-    }
-
-    // Slow-moving dust/gas particles that drift across screen
-    dustParticles=[];
-    for(let i=0;i<120;i++){
-      const hue=Math.random();
-      const col=hue<.3?[180,100,255]:hue<.6?[80,160,255]:[255,100,80];
-      dustParticles.push({
-        x:rnd(0,W),y:rnd(0,H),
-        vx:rnd(-.04,.04),vy:rnd(-.02,.015),
-        r:rnd(1.5,5),
-        a:rnd(.02,.08),
-        col,tw:rnd(0,6.28),spd:rnd(.005,.015)
-      });
-    }
-
-    // Nebula clouds — animated, slow rotation/pulse
-    nebClouds=[
-      // Large emission nebula — hot pink/magenta (dominant, left)
-      {x:.15,y:.44,rx:.38,ry:.28,angle:-.12,
-       stops:[[255,60,120,.28],[200,20,80,.14],[100,5,40,.05],[0,0,0,0]],
-       core:[255,130,160,.18],dAngle:.00008,pulse:0,pspd:.0018,ph:0},
-      // Blue-violet reflection nebula (upper right)
-      {x:.72,y:.20,rx:.30,ry:.22,angle:.08,
-       stops:[[80,120,255,.22],[50,80,220,.11],[20,30,150,.04],[0,0,0,0]],
-       core:[130,180,255,.14],dAngle:-.00006,pulse:0,pspd:.0014,ph:2.1},
-      // Teal emission nebula (lower center)
-      {x:.50,y:.78,rx:.24,ry:.18,angle:.05,
-       stops:[[30,210,200,.20],[15,150,160,.10],[5,70,100,.04],[0,0,0,0]],
-       core:[60,240,220,.12],dAngle:.0001,pulse:0,pspd:.002,ph:4.2},
-      // Deep violet (right mid)
-      {x:.85,y:.55,rx:.20,ry:.15,angle:-.05,
-       stops:[[160,50,230,.18],[100,20,180,.08],[50,5,120,.03],[0,0,0,0]],
-       core:[200,90,255,.11],dAngle:.00007,pulse:0,pspd:.0016,ph:1.4},
-      // Faint warm glow (upper left — like a distant galaxy)
-      {x:.06,y:.18,rx:.14,ry:.10,angle:.2,
-       stops:[[255,180,80,.12],[200,120,40,.06],[100,50,10,.02],[0,0,0,0]],
-       core:[255,200,120,.08],dAngle:-.00005,pulse:0,pspd:.0012,ph:3.5},
-    ];
-
-    // Milky Way band star density
-    const mwStars=[];
-    for(let i=0;i<600;i++){
-      const t=rnd(0,1);
-      const bandY=.38+Math.sin(t*Math.PI*.9)*.10+rnd(-.22,.22);
-      mwStars.push({x:t*W,y:bandY*H,r:rnd(.15,.7),a:rnd(.03,.16)});
-    }
-    stars._mw=mwStars;
-
-    shootingStars=[];
+  if(typeof THREE==='undefined'){
+    const c=document.getElementById('galaxy-canvas'),x=c.getContext('2d');
+    let W,H,st=[];
+    function rs(){W=c.width=innerWidth;H=c.height=innerHeight;st=[];for(let i=0;i<400;i++)st.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.2,a:Math.random()*.7+.1,tw:Math.random()*6.28,s:Math.random()*.01+.003});}
+    function dr(){x.fillStyle='#010109';x.fillRect(0,0,W,H);st.forEach(s=>{s.tw+=s.s;const a=s.a*(.5+.5*Math.sin(s.tw));x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fillStyle=`rgba(232,244,253,${a})`;x.fill();});requestAnimationFrame(dr);}
+    addEventListener('resize',rs);rs();dr();
+    return;
   }
 
-  function spawnShootingStar(){
-    if(Math.random()>.004) return;
-    shootingStars.push({
-      x:rnd(.1,.9)*W, y:rnd(.05,.4)*H,
-      vx:rnd(3,8)*( Math.random()>.5?1:-1 ),
-      vy:rnd(1,3),
-      len:rnd(60,140),
-      life:1, decay:rnd(.025,.05)
-    });
+  const canvas=document.getElementById('galaxy-canvas');
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.setSize(innerWidth,innerHeight);
+
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x05030f,0.00055);
+
+  const camera=new THREE.PerspectiveCamera(62,innerWidth/innerHeight,1,4000);
+  camera.position.set(0,160,440);
+
+  // soft circular sprite
+  const tcan=document.createElement('canvas');tcan.width=tcan.height=64;
+  const tx=tcan.getContext('2d');
+  const tg=tx.createRadialGradient(32,32,0,32,32,32);
+  tg.addColorStop(0,'rgba(255,255,255,1)');tg.addColorStop(.25,'rgba(255,255,255,.75)');
+  tg.addColorStop(.55,'rgba(255,255,255,.25)');tg.addColorStop(1,'rgba(255,255,255,0)');
+  tx.fillStyle=tg;tx.fillRect(0,0,64,64);
+  const sprite=new THREE.CanvasTexture(tcan);
+
+  // ── GALAXY ── richer color palette + dust
+  const COUNT=32000;
+  const RADIUS=520;
+  const BRANCHES=5;
+  const SPIN=1.4;
+
+  const positions=new Float32Array(COUNT*3);
+  const colors=new Float32Array(COUNT*3);
+
+  const cIn=new THREE.Color('#fff0c4');     // hot white-gold core
+  const cMid=new THREE.Color('#ff8866');    // orange mid
+  const cOut=new THREE.Color('#5a7be0');    // blue arms
+  const cDust=new THREE.Color('#c850ff');   // magenta nebula dust
+
+  for(let i=0;i<COUNT;i++){
+    const i3=i*3;
+    const radius=Math.pow(Math.random(),1.6)*RADIUS;
+    const branchAngle=((i%BRANCHES)/BRANCHES)*Math.PI*2;
+    const spinAngle=radius*SPIN/100;
+
+    const rp=2.9;
+    const rx=Math.pow(Math.random(),rp)*(Math.random()<.5?1:-1)*0.42*radius;
+    const ry=Math.pow(Math.random(),rp)*(Math.random()<.5?1:-1)*0.16*radius;
+    const rz=Math.pow(Math.random(),rp)*(Math.random()<.5?1:-1)*0.42*radius;
+
+    positions[i3]  =Math.cos(branchAngle+spinAngle)*radius+rx;
+    positions[i3+1]=ry;
+    positions[i3+2]=Math.sin(branchAngle+spinAngle)*radius+rz;
+
+    // color: blend core->mid->out by radius, sprinkle dust
+    const f=radius/RADIUS;
+    let col;
+    if(f<.35){col=cIn.clone().lerp(cMid,f/.35);}
+    else{col=cMid.clone().lerp(cOut,(f-.35)/.65);}
+    if(Math.random()>.88){col.lerp(cDust,Math.random()*.6);}
+    // a few bright white stars
+    if(Math.random()>.985){col.setRGB(1,1,1);}
+    colors[i3]=col.r;colors[i3+1]=col.g;colors[i3+2]=col.b;
   }
 
-  function drawDeepSpace(){
-    x.clearRect(0,0,W,H);
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  geo.setAttribute('color',new THREE.BufferAttribute(colors,3));
 
-    // True deep space background
-    const bg=x.createLinearGradient(0,0,W*.7,H);
-    bg.addColorStop(0,'#010109');
-    bg.addColorStop(.3,'#020212');
-    bg.addColorStop(.65,'#010209');
-    bg.addColorStop(1,'#000004');
-    x.fillStyle=bg;x.fillRect(0,0,W,H);
+  const mat=new THREE.PointsMaterial({
+    size:3.4,sizeAttenuation:true,depthWrite:false,
+    blending:THREE.AdditiveBlending,vertexColors:true,
+    map:sprite,transparent:true,opacity:.92
+  });
 
-    // Milky Way diffuse band
-    x.save();
-    x.translate(W*.35,H*.38);x.rotate(-.15);
-    const mwG=x.createRadialGradient(0,0,0,0,0,W*.48);
-    mwG.addColorStop(0,'rgba(160,155,210,0.045)');
-    mwG.addColorStop(.4,'rgba(120,110,180,0.025)');
-    mwG.addColorStop(1,'rgba(0,0,0,0)');
-    x.beginPath();x.ellipse(0,0,W*.48,H*.18,0,0,Math.PI*2);
-    x.fillStyle=mwG;x.fill();
-    x.restore();
+  const galaxy=new THREE.Points(geo,mat);
+  galaxy.rotation.x=0.48;
+  scene.add(galaxy);
 
-    // Milky Way band stars
-    if(stars._mw) stars._mw.forEach(s=>{
-      x.beginPath();x.arc(s.x,s.y,s.r,0,Math.PI*2);
-      x.fillStyle=`rgba(232,240,255,${s.a})`;x.fill();
-    });
+  // ── GLOWING CORE (layered sprites) ──
+  const coreGroup=new THREE.Group();
+  [[170,0xffe6b0,.9],[110,0xffd080,.7],[60,0xffffff,.85]].forEach(([s,c,o])=>{
+    const m=new THREE.SpriteMaterial({map:sprite,color:c,transparent:true,opacity:o,blending:THREE.AdditiveBlending,depthWrite:false});
+    const sp=new THREE.Sprite(m);sp.scale.set(s,s,1);coreGroup.add(sp);
+  });
+  galaxy.add(coreGroup);
 
-    // Animated nebula clouds
-    nebClouds.forEach(n=>{
-      n.angle+=n.dAngle;
-      n.pulse+=n.pspd;
-      const scale=1+.06*Math.sin(n.pulse+n.ph);
-      const cx=n.x*W, cy=n.y*H;
-      const rx=n.rx*Math.min(W,H)*scale;
-      const ry=n.ry*Math.min(W,H)*scale;
+  // ── DISTANT STARFIELD (3 depth layers) ──
+  const starLayers=[];
+  [[3000,1400,2200,1.6,.7],[1800,2200,3000,2.4,.55],[900,3000,3800,3.4,.4]].forEach(([n,rMin,rMax,size,op])=>{
+    const sg=new THREE.BufferGeometry();
+    const sp=new Float32Array(n*3),sc=new Float32Array(n*3);
+    for(let i=0;i<n;i++){
+      const i3=i*3,r=rMin+Math.random()*(rMax-rMin);
+      const th=Math.random()*Math.PI*2,ph=Math.acos(2*Math.random()-1);
+      sp[i3]=r*Math.sin(ph)*Math.cos(th);sp[i3+1]=r*Math.sin(ph)*Math.sin(th);sp[i3+2]=r*Math.cos(ph);
+      const t=Math.random();let col;
+      if(t<.15)col=[.6,.72,1];else if(t<.5)col=[1,1,1];else if(t<.8)col=[1,.93,.78];else col=[1,.78,.6];
+      sc[i3]=col[0];sc[i3+1]=col[1];sc[i3+2]=col[2];
+    }
+    sg.setAttribute('position',new THREE.BufferAttribute(sp,3));
+    sg.setAttribute('color',new THREE.BufferAttribute(sc,3));
+    const sm=new THREE.PointsMaterial({size,sizeAttenuation:true,vertexColors:true,transparent:true,opacity:op,map:sprite,depthWrite:false,blending:THREE.AdditiveBlending});
+    const pts=new THREE.Points(sg,sm);scene.add(pts);starLayers.push(pts);
+  });
 
-      x.save();
-      x.translate(cx,cy);x.rotate(n.angle);
-      x.scale(1,ry/rx);x.translate(-cx,-cy);
-      const gr=x.createRadialGradient(cx,cy,0,cx,cy,rx);
-      n.stops.forEach(([r,g,b,a],i)=>{gr.addColorStop(i/3,`rgba(${r},${g},${b},${a*(scale*.85+.15)})`);});
-      x.beginPath();x.arc(cx,cy,rx,0,Math.PI*2);
-      x.fillStyle=gr;x.fill();
-      x.restore();
+  // ── NEBULA CLOUD PLANES (big soft sprites for color wash) ──
+  const nebulae=[];
+  [['#ff3d7f',-360,40,-200,700],['#4060ff',380,-60,-150,640],['#00d0c0',60,-180,-300,560],['#a040ff',280,120,100,520]].forEach(([c,px,py,pz,s])=>{
+    const m=new THREE.SpriteMaterial({map:sprite,color:new THREE.Color(c),transparent:true,opacity:.14,blending:THREE.AdditiveBlending,depthWrite:false});
+    const sp=new THREE.Sprite(m);sp.position.set(px,py,pz);sp.scale.set(s,s,1);
+    scene.add(sp);nebulae.push(sp);
+  });
 
-      // Bright core
-      x.save();
-      x.translate(cx,cy);x.rotate(n.angle);x.scale(1,ry/rx*.6);x.translate(-cx,-cy);
-      const [cr,cg,cb,ca]=n.core;
-      const gc=x.createRadialGradient(cx,cy,0,cx,cy,rx*.28);
-      gc.addColorStop(0,`rgba(${cr},${cg},${cb},${ca*scale})`);
-      gc.addColorStop(1,'rgba(0,0,0,0)');
-      x.beginPath();x.arc(cx,cy,rx*.28,0,Math.PI*2);
-      x.fillStyle=gc;x.fill();
-      x.restore();
-    });
+  // ── INTERACTION ──
+  let mx=0,my=0,tx2=0,ty=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;});
+  let scrollProg=0;
+  addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-innerHeight;scrollProg=h>0?scrollY/h:0;},{passive:true});
 
-    // Drifting dust particles
-    dustParticles.forEach(p=>{
-      p.x+=p.vx; p.y+=p.vy;
-      p.tw+=p.spd;
-      if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20;
-      if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20;
-      const a=p.a*(.6+.4*Math.sin(p.tw));
-      const [r,g,b]=p.col;
-      x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);
-      x.fillStyle=`rgba(${r},${g},${b},${a})`;x.fill();
-    });
+  const clock=new THREE.Clock();
+  function animate(){
+    const t=clock.getElapsedTime();
+    galaxy.rotation.y=t*0.045;
+    starLayers.forEach((s,i)=>{s.rotation.y=t*(0.004+i*0.002);});
+    coreGroup.children.forEach((c,i)=>{c.material.opacity=(.6+.25*Math.sin(t*1.3+i))*(i===2?1:.8);});
+    nebulae.forEach((n,i)=>{n.material.opacity=.1+.05*Math.sin(t*.4+i*1.7);});
 
-    // Twinkling stars with diffraction on bright ones
-    stars.forEach(s=>{
-      s.tw+=s.spd;
-      const tw=.65+.35*Math.sin(s.tw);
-      const a=s.a*tw;
-      const [r,g,b]=s.col;
-      const sx=s.x*W, sy=s.y*H;
-      if(s.r>1.8){
-        x.save();x.strokeStyle=`rgba(${r},${g},${b},${a*.3})`;x.lineWidth=.6;
-        const sl=s.r*4;
-        x.beginPath();x.moveTo(sx-sl,sy);x.lineTo(sx+sl,sy);x.stroke();
-        x.beginPath();x.moveTo(sx,sy-sl);x.lineTo(sx,sy+sl);x.stroke();
-        x.restore();
-        // glow
-        const gg=x.createRadialGradient(sx,sy,0,sx,sy,s.r*3);
-        gg.addColorStop(0,`rgba(${r},${g},${b},${a*.4})`);
-        gg.addColorStop(1,'rgba(0,0,0,0)');
-        x.beginPath();x.arc(sx,sy,s.r*3,0,Math.PI*2);
-        x.fillStyle=gg;x.fill();
-      }
-      x.beginPath();x.arc(sx,sy,s.r,0,Math.PI*2);
-      x.fillStyle=`rgba(${r},${g},${b},${a})`;x.fill();
-    });
+    // smooth parallax + scroll dive with easing
+    tx2+=(mx-tx2)*0.035;ty+=(my-ty)*0.035;
+    const ease=scrollProg*scrollProg*(3-2*scrollProg); // smoothstep
+    const camDist=440-ease*260;
+    const camHeight=160-ease*110;
+    camera.position.x=tx2*140;
+    camera.position.y=camHeight-ty*70;
+    camera.position.z=camDist;
+    camera.lookAt(0,ease*-20,0);
+    galaxy.rotation.x=0.48-ease*0.3; // tilt to face-on as you dive in
 
-    // Shooting stars
-    spawnShootingStar();
-    shootingStars=shootingStars.filter(s=>{
-      s.x+=s.vx; s.y+=s.vy; s.life-=s.decay;
-      if(s.life<=0) return false;
-      const ex=s.x-s.vx*(s.len/Math.hypot(s.vx,s.vy));
-      const ey=s.y-s.vy*(s.len/Math.hypot(s.vx,s.vy));
-      const grad=x.createLinearGradient(ex,ey,s.x,s.y);
-      grad.addColorStop(0,'rgba(255,255,255,0)');
-      grad.addColorStop(1,`rgba(255,255,255,${s.life*.7})`);
-      x.beginPath();x.moveTo(ex,ey);x.lineTo(s.x,s.y);
-      x.strokeStyle=grad;x.lineWidth=1.5;x.stroke();
-      return true;
-    });
-
-    frame++;
-    requestAnimationFrame(drawDeepSpace);
+    renderer.render(scene,camera);
+    requestAnimationFrame(animate);
   }
+  animate();
 
-  window.addEventListener('resize',resize);
-  resize();
-  drawDeepSpace();
+  addEventListener('resize',()=>{
+    camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();
+    renderer.setSize(innerWidth,innerHeight);
+  });
 })();
 
-/* ══ PARTICLES ══ */
+/* ══ 3D PLANET SYSTEM (profile) ══ */
 (function(){
-  const c=document.getElementById('particles-canvas'),x=c.getContext('2d');
-  let pts=[];
-  function resize(){c.width=innerWidth;c.height=innerHeight;build();}
-  function build(){pts=[];const n=Math.floor(c.width*c.height/13000);for(let i=0;i<n;i++)pts.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.1+.3,a:Math.random()*.3+.08});}
-  function draw(){x.clearRect(0,0,c.width,c.height);pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=`rgba(232,244,253,${p.a})`;x.fill();});requestAnimationFrame(draw);}
-  window.addEventListener('resize',resize);resize();draw();
+  const canvas=document.getElementById('planet-canvas');
+  if(!canvas||typeof THREE==='undefined')return;
+
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  function sz(){const r=canvas.getBoundingClientRect();renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}
+
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,1,0.1,100);
+  camera.position.set(0,2.5,8);
+  camera.lookAt(0,0,0);
+
+  // Lighting
+  scene.add(new THREE.AmbientLight(0x334466,0.6));
+  const sun=new THREE.PointLight(0xfff0d0,2.2,50);
+  sun.position.set(0,0,0);scene.add(sun);
+
+  // ── SUN (center star) ──
+  const sunMat=new THREE.MeshBasicMaterial({color:0xffcc44});
+  const sunMesh=new THREE.Mesh(new THREE.SphereGeometry(0.85,32,32),sunMat);
+  scene.add(sunMesh);
+  // sun glow sprite
+  const gcan=document.createElement('canvas');gcan.width=gcan.height=128;
+  const gx=gcan.getContext('2d');
+  const gg=gx.createRadialGradient(64,64,0,64,64,64);
+  gg.addColorStop(0,'rgba(255,210,100,0.9)');gg.addColorStop(.4,'rgba(255,150,40,0.4)');gg.addColorStop(1,'rgba(255,100,0,0)');
+  gx.fillStyle=gg;gx.fillRect(0,0,128,128);
+  const glowSp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(gcan),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+  glowSp.scale.set(4,4,1);scene.add(glowSp);
+
+  // ── PLANETS ──
+  const planets=[];
+  const planetData=[
+    {r:1.7,size:0.16,color:0x4CC9F0,speed:0.9,ring:false},
+    {r:2.5,size:0.24,color:0xff6b6b,speed:0.6,ring:false},
+    {r:3.4,size:0.30,color:0xc850ff,speed:0.42,ring:true},
+    {r:4.3,size:0.20,color:0x66ddaa,speed:0.3,ring:false},
+  ];
+  planetData.forEach((p,i)=>{
+    const mesh=new THREE.Mesh(
+      new THREE.SphereGeometry(p.size,24,24),
+      new THREE.MeshStandardMaterial({color:p.color,roughness:.6,metalness:.2,emissive:p.color,emissiveIntensity:.15})
+    );
+    const pivot=new THREE.Object3D();
+    pivot.add(mesh);
+    mesh.position.x=p.r;
+    pivot.rotation.x=(Math.random()-.5)*0.3;
+    pivot.userData={speed:p.speed,phase:Math.random()*Math.PI*2};
+    scene.add(pivot);
+    planets.push(pivot);
+
+    // Orbit ring line
+    const orbitGeo=new THREE.BufferGeometry();
+    const segs=64,op=[];
+    for(let s=0;s<=segs;s++){const a=s/segs*Math.PI*2;op.push(Math.cos(a)*p.r,0,Math.sin(a)*p.r);}
+    orbitGeo.setAttribute('position',new THREE.Float32BufferAttribute(op,3));
+    const orbit=new THREE.Line(orbitGeo,new THREE.LineBasicMaterial({color:0x4CC9F0,transparent:true,opacity:.12}));
+    scene.add(orbit);
+
+    // Saturn-like ring
+    if(p.ring){
+      const ring=new THREE.Mesh(
+        new THREE.RingGeometry(p.size*1.4,p.size*2.2,32),
+        new THREE.MeshBasicMaterial({color:0xddccaa,side:THREE.DoubleSide,transparent:true,opacity:.5})
+      );
+      ring.rotation.x=Math.PI/2.2;
+      mesh.add(ring);
+    }
+  });
+
+  // tiny background stars
+  const sg=new THREE.BufferGeometry();
+  const sn=300,sp=new Float32Array(sn*3);
+  for(let i=0;i<sn;i++){const i3=i*3,r=15+Math.random()*20,th=Math.random()*6.28,ph=Math.acos(2*Math.random()-1);sp[i3]=r*Math.sin(ph)*Math.cos(th);sp[i3+1]=r*Math.sin(ph)*Math.sin(th);sp[i3+2]=r*Math.cos(ph);}
+  sg.setAttribute('position',new THREE.BufferAttribute(sp,3));
+  scene.add(new THREE.Points(sg,new THREE.PointsMaterial({color:0xffffff,size:0.06,transparent:true,opacity:.6})));
+
+  // interaction: gentle drag-free auto-rotate + subtle mouse tilt
+  let mx=0,my=0;
+  canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;});
+  canvas.addEventListener('mouseleave',()=>{mx=0;my=0;});
+
+  const clock=new THREE.Clock();
+  let camAngle=0;
+  function animate(){
+    const t=clock.getElapsedTime();
+    sunMesh.rotation.y=t*0.3;
+    planets.forEach(p=>{p.rotation.y=t*p.userData.speed+p.userData.phase;});
+
+    // slow auto orbit camera + mouse influence
+    camAngle+=0.0025;
+    const camR=8;
+    camera.position.x=Math.sin(camAngle+mx*0.5)*camR;
+    camera.position.z=Math.cos(camAngle+mx*0.5)*camR;
+    camera.position.y=2.5-my*1.5;
+    camera.lookAt(0,0,0);
+
+    renderer.render(scene,camera);
+    requestAnimationFrame(animate);
+  }
+  sz();animate();
+  addEventListener('resize',sz);
+  // re-size when it scrolls into view (in case layout shifted)
+  new IntersectionObserver(()=>sz()).observe(canvas);
 })();
 
 /* ══ HERO FADE ══ */
@@ -890,25 +922,6 @@ obs2.observe(document.getElementById('reveal-inner'));
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
 document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.stagger').forEach(el=>obs.observe(el));
 
-/* ══ ASTRONAUT ══ */
-(function(){
-  const svg=document.getElementById('bhSvg');if(!svg)return;
-  const lp=document.getElementById('pupilL'),rp=document.getElementById('pupilR');
-  const LP={x:131,y:140},RP={x:149,y:140};
-  document.addEventListener('mousemove',e=>{
-    const rect=svg.getBoundingClientRect();
-    const mx=(e.clientX-rect.left)/rect.width*280,my=(e.clientY-rect.top)/rect.height*320;
-    function mv(el,b){const dx=mx-b.x,dy=my-b.y,d=Math.sqrt(dx*dx+dy*dy)||1,m=Math.min(d*.05,2);el.setAttribute('cx',(b.x+dx/d*m).toFixed(2));el.setAttribute('cy',(b.y+dy/d*m).toFixed(2));}
-    if(lp)mv(lp,LP);if(rp)mv(rp,RP);
-  });
-})();
-
-/* ══ SIMULATION TOGGLE ══ */
-function toggleSim(id, btn){
-  const wrap=document.getElementById(id);
-  const open=wrap.classList.toggle('open');
-  btn.textContent=open?'▼ Ocultar simulación':'▶ '+btn.textContent.slice(2);
-}
 
 
 /* ══ PRELOADER ══ */
@@ -998,6 +1011,294 @@ function toggleSim(id, btn){
   });
 })();
 
+
+
+
+
+/* ══ 3D SPACETIME CURVATURE ══ */
+(function(){
+  const canvas=document.getElementById('spacetime-canvas');
+  const wrap=document.getElementById('spacetime-canvas-wrap');
+  if(!canvas||!wrap||typeof THREE==='undefined')return;
+  let inited=false, renderer, scene, camera, geo, ptsGeo, grid, masses, massMeshes, basePos, clock;
+  let mx=0, my=0;
+
+  function buildScene(){
+    renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+    scene=new THREE.Scene();
+    camera=new THREE.PerspectiveCamera(50,1,0.1,300);
+    camera.position.set(0,34,48);
+    camera.lookAt(0,-4,0);
+
+    scene.add(new THREE.AmbientLight(0x556699,0.85));
+    const pl=new THREE.PointLight(0x4CC9F0,1.6,300);pl.position.set(20,45,20);scene.add(pl);
+    const pl2=new THREE.PointLight(0xff5090,0.8,300);pl2.position.set(-25,30,-15);scene.add(pl2);
+
+    // Grid mesh — the fabric of spacetime
+    const SIZE=64, SEG=46;
+    geo=new THREE.PlaneGeometry(SIZE,SIZE,SEG,SEG);
+    geo.rotateX(-Math.PI/2);
+    grid=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({color:0x4CC9F0,wireframe:true,transparent:true,opacity:.38}));
+    scene.add(grid);
+
+    ptsGeo=geo.clone();
+    scene.add(new THREE.Points(ptsGeo,new THREE.PointsMaterial({color:0x9be8ff,size:.45,transparent:true,opacity:.55})));
+
+    // Masses
+    masses=[
+      {x:0,z:0,m:66,color:0xffd060,r:2.4},
+      {x:-16,z:10,m:34,color:0x4CC9F0,r:1.4},
+      {x:15,z:-12,m:42,color:0xff5090,r:1.7},
+    ];
+    massMeshes=[];
+    masses.forEach(ms=>{
+      const sph=new THREE.Mesh(new THREE.SphereGeometry(ms.r,28,28),
+        new THREE.MeshStandardMaterial({color:ms.color,emissive:ms.color,emissiveIntensity:.55,roughness:.4}));
+      scene.add(sph);massMeshes.push(sph);
+      const gcan=document.createElement('canvas');gcan.width=gcan.height=64;
+      const gx=gcan.getContext('2d');
+      const gg=gx.createRadialGradient(32,32,0,32,32,32);
+      const col='#'+ms.color.toString(16).padStart(6,'0');
+      gg.addColorStop(0,col);gg.addColorStop(1,'rgba(0,0,0,0)');
+      gx.fillStyle=gg;gx.globalAlpha=.65;gx.fillRect(0,0,64,64);
+      const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(gcan),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+      sp.scale.set(ms.r*4.5,ms.r*4.5,1);ms.sprite=sp;scene.add(sp);
+    });
+
+    basePos=geo.attributes.position.array.slice();
+    clock=new THREE.Clock();
+
+    canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;});
+  }
+
+  function resize(){
+    const w=wrap.clientWidth||wrap.offsetWidth;
+    const h=wrap.clientHeight||wrap.offsetHeight;
+    if(w<5||h<5)return false;
+    renderer.setSize(w,h,false);
+    camera.aspect=w/h;
+    camera.updateProjectionMatrix();
+    return true;
+  }
+
+  function warp(t){
+    const pos=geo.attributes.position.array;
+    const ppos=ptsGeo.attributes.position.array;
+    masses[1].x=Math.cos(t*0.3)*18;masses[1].z=Math.sin(t*0.3)*18;
+    masses[2].x=Math.cos(t*0.22+2)*22;masses[2].z=Math.sin(t*0.22+2)*22;
+    for(let i=0;i<pos.length;i+=3){
+      const x=basePos[i], z=basePos[i+2];
+      let y=0;
+      for(let k=0;k<masses.length;k++){
+        const dx=x-masses[k].x, dz=z-masses[k].z;
+        y-=masses[k].m/(Math.sqrt(dx*dx+dz*dz)+2.2);
+      }
+      pos[i+1]=y;ppos[i+1]=y;
+    }
+    geo.attributes.position.needsUpdate=true;
+    ptsGeo.attributes.position.needsUpdate=true;
+    massMeshes.forEach((mm,idx)=>{
+      const ms=masses[idx];let y=0;
+      masses.forEach(o=>{const dx=ms.x-o.x,dz=ms.z-o.z,d=Math.sqrt(dx*dx+dz*dz);y-=o.m/((d<0.1?0:d)+2.2);});
+      mm.position.set(ms.x,y+ms.r,ms.z);
+      ms.sprite.position.copy(mm.position);
+      mm.rotation.y+=0.01;
+    });
+  }
+
+  function animate(){
+    if(!inited)return;
+    requestAnimationFrame(animate);
+    if(wrap.clientWidth<5)return; // paused while hidden
+    const t=clock.getElapsedTime();
+    warp(t);
+    const camR=52;
+    camera.position.x=Math.sin(t*0.1+mx)*camR;
+    camera.position.z=Math.cos(t*0.1+mx)*camR;
+    camera.position.y=34-my*22;
+    camera.lookAt(0,-4,0);
+    renderer.render(scene,camera);
+  }
+
+  function init(){
+    if(!inited){
+      buildScene();
+      inited=true;
+      animate();
+    }
+    // try to size now and a few more times as panel expands
+    resize();
+    setTimeout(resize,120);
+    setTimeout(resize,400);
+  }
+
+  addEventListener('resize',()=>{if(inited)resize();});
+
+  // Use ResizeObserver on the canvas-wrap — fires the moment it gets real dimensions
+  const ro=new ResizeObserver(entries=>{
+    for(const e of entries){
+      if(e.contentRect.width>10){
+        if(!inited){buildScene();inited=true;animate();}
+        resize();
+      }
+    }
+  });
+  ro.observe(wrap);
+
+  // Also hook toggle for explicit triggers
+  const origToggle=window.toggleSim;
+  window.toggleSim=function(id,btn){
+    if(origToggle)origToggle(id,btn);
+    if(id==='sim-spacetime'){
+      if(!inited){
+        setTimeout(()=>{
+          buildScene();inited=true;animate();
+          resize();setTimeout(resize,200);
+        },50);
+      } else {
+        resize();setTimeout(resize,200);
+      }
+    }
+  };
+})();
+
+/* ══ 3D VISUALIZATIONS — RECURSOS ══ */
+(function(){
+  if(typeof THREE==='undefined')return;
+
+  function softTex(){
+    var tc=document.createElement('canvas');tc.width=tc.height=64;
+    var tx=tc.getContext('2d'),tg=tx.createRadialGradient(32,32,0,32,32,32);
+    tg.addColorStop(0,'rgba(255,255,255,1)');tg.addColorStop(.4,'rgba(255,255,255,.5)');tg.addColorStop(1,'rgba(0,0,0,0)');
+    tx.fillStyle=tg;tx.fillRect(0,0,64,64);return new THREE.CanvasTexture(tc);
+  }
+  function mkGlow(col,size){
+    var tc=document.createElement('canvas');tc.width=tc.height=64;
+    var tx=tc.getContext('2d'),tg=tx.createRadialGradient(32,32,0,32,32,32);
+    tg.addColorStop(0,'#'+col.toString(16).padStart(6,'0'));tg.addColorStop(1,'rgba(0,0,0,0)');
+    tx.fillStyle=tg;tx.fillRect(0,0,64,64);
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(tc),transparent:true,blending:THREE.AdditiveBlending,depthWrite:false}));
+    sp.scale.set(size,size,1);return sp;
+  }
+  function autoInit(canvasId,buildFn){
+    var canvas=document.getElementById(canvasId);
+    if(!canvas)return;
+    var done=false;
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting&&!done){done=true;obs.disconnect();buildFn(canvas);}});
+    },{threshold:.01,rootMargin:'0px 0px 200px 0px'});
+    obs.observe(canvas);
+  }
+  function fit(renderer,camera,canvas){
+    var r=canvas.getBoundingClientRect();
+    if(r.width<5||r.height<5)return;
+    renderer.setSize(r.width,r.height,false);
+    camera.aspect=r.width/r.height;camera.updateProjectionMatrix();
+  }
+
+  /* 1. GRAVITY & ORBITS */
+  autoInit('orbit-canvas-3d',function(canvas){
+    var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+    var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(50,1,.1,500);
+    camera.position.set(0,60,100);camera.lookAt(0,0,0);
+    scene.add(new THREE.AmbientLight(0x223355,.7));
+    var pl=new THREE.PointLight(0xffe080,2,400);pl.position.set(0,0,0);scene.add(pl);
+    var sun=new THREE.Mesh(new THREE.SphereGeometry(4,32,32),new THREE.MeshBasicMaterial({color:0xffe080}));
+    scene.add(sun);var sg=mkGlow(0xffe080,22);scene.add(sg);
+    var bodies=[{r:15,spd:1.1,size:1.0,col:0x44aaff,tilt:.1},{r:24,spd:.7,size:1.4,col:0xff6644,tilt:.2},{r:36,spd:.45,size:1.2,col:0xc0c0ff,tilt:.05},{r:50,spd:.28,size:2.0,col:0xddbb88,tilt:.3,ring:true}];
+    var bm=[];
+    bodies.forEach(function(b){
+      var mesh=new THREE.Mesh(new THREE.SphereGeometry(b.size,24,24),new THREE.MeshStandardMaterial({color:b.col,emissive:b.col,emissiveIntensity:.2}));
+      if(b.ring){var rg=new THREE.Mesh(new THREE.RingGeometry(b.size*1.5,b.size*2.5,32),new THREE.MeshBasicMaterial({color:0xddccaa,side:THREE.DoubleSide,transparent:true,opacity:.5}));rg.rotation.x=Math.PI/2.2;mesh.add(rg);}
+      var pts=[];for(var i=0;i<=64;i++){var a=i/64*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*b.r,0,Math.sin(a)*b.r));}
+      scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:b.col,transparent:true,opacity:.15})));
+      scene.add(mesh);bm.push({mesh:mesh,r:b.r,spd:b.spd,t:Math.random()*6.28,tilt:b.tilt});
+    });
+    var sge=new THREE.BufferGeometry(),spe=new Float32Array(1200*3);
+    for(var i=0;i<1200;i++){var rv=200+Math.random()*200,th=Math.random()*6.28,ph=Math.acos(2*Math.random()-1);spe[i*3]=rv*Math.sin(ph)*Math.cos(th);spe[i*3+1]=rv*Math.sin(ph)*Math.sin(th);spe[i*3+2]=rv*Math.cos(ph);}
+    sge.setAttribute('position',new THREE.BufferAttribute(spe,3));
+    scene.add(new THREE.Points(sge,new THREE.PointsMaterial({color:0xffffff,size:.8,transparent:true,opacity:.5})));
+    fit(renderer,camera,canvas);
+    addEventListener('resize',function(){fit(renderer,camera,canvas);});
+    var clock=new THREE.Clock();
+    (function anim(){
+      requestAnimationFrame(anim);
+      var dt=clock.getDelta(),et=clock.elapsedTime;
+      bm.forEach(function(b){b.t+=dt*b.spd;b.mesh.position.set(Math.cos(b.t)*b.r,Math.sin(b.tilt)*Math.sin(b.t)*b.r*.15,Math.sin(b.t)*b.r);b.mesh.rotation.y+=.01;});
+      sun.rotation.y+=.003;
+      camera.position.x=Math.sin(et*.08)*110;camera.position.z=Math.cos(et*.08)*110;camera.position.y=60;camera.lookAt(0,0,0);
+      renderer.render(scene,camera);
+    })();
+  });
+
+  /* 2. WAVE INTERFERENCE */
+  autoInit('wave-canvas-3d',function(canvas){
+    var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+    var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(50,1,.1,200);
+    camera.position.set(0,28,42);camera.lookAt(0,0,0);
+    scene.add(new THREE.AmbientLight(0x334477,.8));
+    var stx=softTex();
+    var N=52,SIZE=38,geo=new THREE.BufferGeometry();
+    var pos=new Float32Array(N*N*3),col=new Float32Array(N*N*3);
+    for(var i=0,k=0;i<N;i++)for(var j=0;j<N;j++,k++){pos[k*3]=(i/(N-1)-.5)*SIZE;pos[k*3+1]=0;pos[k*3+2]=(j/(N-1)-.5)*SIZE;col[k*3]=.3;col[k*3+1]=.8;col[k*3+2]=1;}
+    geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+    scene.add(new THREE.Points(geo,new THREE.PointsMaterial({vertexColors:true,size:.55,transparent:true,opacity:.9,blending:THREE.AdditiveBlending,depthWrite:false,map:stx})));
+    [-8,8].forEach(function(x){var m=new THREE.Mesh(new THREE.SphereGeometry(.7,16,16),new THREE.MeshBasicMaterial({color:0xff5090}));m.position.set(x,0,0);scene.add(m);var g=mkGlow(0xff5090,5);g.position.set(x,0,0);scene.add(g);});
+    fit(renderer,camera,canvas);
+    addEventListener('resize',function(){fit(renderer,camera,canvas);});
+    var K=.5,W=2.2,clock=new THREE.Clock();
+    (function anim(){
+      requestAnimationFrame(anim);
+      var t=clock.getElapsedTime(),p=geo.attributes.position.array,cl=geo.attributes.color.array;
+      for(var i=0;i<N*N;i++){var x=p[i*3],z=p[i*3+2],r1=Math.sqrt((x+8)*(x+8)+z*z)+.01,r2=Math.sqrt((x-8)*(x-8)+z*z)+.01,amp=(Math.sin(K*r1-W*t)/r1+Math.sin(K*r2-W*t)/r2)*3.5;p[i*3+1]=amp;var v=Math.max(0,Math.min(1,(amp+3.5)/7));cl[i*3]=v*.4+.1;cl[i*3+1]=v*.6+.3;cl[i*3+2]=1;}
+      geo.attributes.position.needsUpdate=true;geo.attributes.color.needsUpdate=true;
+      var et=clock.elapsedTime;camera.position.x=Math.sin(et*.1)*44;camera.position.z=Math.cos(et*.1)*44;camera.lookAt(0,0,0);
+      renderer.render(scene,camera);
+    })();
+  });
+
+  /* 3. KEPLER ORBITS */
+  autoInit('kepler-canvas-3d',function(canvas){
+    var renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:true,alpha:true});
+    renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+    var scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(50,1,.1,300);
+    camera.position.set(0,22,50);camera.lookAt(0,0,0);
+    scene.add(new THREE.AmbientLight(0x223355,.7));
+    var pl=new THREE.PointLight(0xffe080,2,200);pl.position.set(0,0,0);scene.add(pl);
+    var star=new THREE.Mesh(new THREE.SphereGeometry(2,32,32),new THREE.MeshBasicMaterial({color:0xffe080}));
+    scene.add(star);scene.add(mkGlow(0xffe080,14));
+    var bodies=[{a:10,e:.6,col:0x4CC9F0,spd:.8,inc:.2},{a:16,e:.3,col:0xff8866,spd:.5,inc:.35},{a:22,e:.15,col:0xc850ff,spd:.3,inc:.15}];
+    var bm=[];
+    bodies.forEach(function(b){
+      var bv=b.a*Math.sqrt(1-b.e*b.e),cf=b.a*b.e,pts=[];
+      for(var i=0;i<=64;i++){var a=i/64*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*b.a-cf,0,Math.sin(a)*bv));}
+      var ol=new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:b.col,transparent:true,opacity:.22}));
+      ol.rotation.x=b.inc;scene.add(ol);
+      var mesh=new THREE.Mesh(new THREE.SphereGeometry(.7,20,20),new THREE.MeshStandardMaterial({color:b.col,emissive:b.col,emissiveIntensity:.4}));
+      scene.add(mesh);bm.push({mesh:mesh,a:b.a,bv:bv,cf:cf,spd:b.spd,t:Math.random()*6.28,inc:b.inc});
+    });
+    var sge=new THREE.BufferGeometry(),spe=new Float32Array(600*3);
+    for(var i=0;i<600;i++){var rv=90+Math.random()*80,th=Math.random()*6.28,ph=Math.acos(2*Math.random()-1);spe[i*3]=rv*Math.sin(ph)*Math.cos(th);spe[i*3+1]=rv*Math.sin(ph)*Math.sin(th);spe[i*3+2]=rv*Math.cos(ph);}
+    sge.setAttribute('position',new THREE.BufferAttribute(spe,3));
+    scene.add(new THREE.Points(sge,new THREE.PointsMaterial({color:0xffffff,size:.4,transparent:true,opacity:.5})));
+    fit(renderer,camera,canvas);
+    addEventListener('resize',function(){fit(renderer,camera,canvas);});
+    var clock=new THREE.Clock();
+    (function anim(){
+      requestAnimationFrame(anim);
+      var dt=clock.getDelta(),et=clock.elapsedTime;
+      bm.forEach(function(b){var rn=Math.sqrt(Math.pow(Math.cos(b.t)*b.a-b.cf,2)+Math.pow(Math.sin(b.t)*b.bv,2));b.t+=dt*b.spd*(b.a/Math.max(rn,1))*.8;var x=Math.cos(b.t)*b.a-b.cf,z=Math.sin(b.t)*b.bv;b.mesh.position.set(x,Math.sin(b.inc)*z,z*Math.cos(b.inc));});
+      star.rotation.y+=.005;
+      camera.position.x=Math.sin(et*.1)*54;camera.position.z=Math.cos(et*.1)*54;camera.position.y=22;camera.lookAt(0,0,0);
+      renderer.render(scene,camera);
+    })();
+  });
+
+})();
 </script>
 <!-- BACK TO TOP -->
 <button id="back-to-top" aria-label="Volver arriba">↑</button>
